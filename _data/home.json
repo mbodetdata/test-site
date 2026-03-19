@@ -18,89 +18,91 @@
     ]
   },
   "stats": [
-    { "value": "10+", "label": "Années d'expérience", "icon": "calendar" },
-    { "value": "50+", "label": "Projets réalisés",     "icon": "chart" },
+    { "value": "5+", "label": "Années d'expérience", "icon": "calendar" },
+    { "value": "20+", "label": "Projets réalisés",     "icon": "chart" },
     { "value": "100%", "label": "Clients satisfaits",  "icon": "star" },
     { "value": "48 h", "label": "Délai de réponse",    "icon": "clock" }
   ],
+
   "problems": {
-    "title": "Vous reconnaissez-vous dans l'une de ces situations ?",
-    "subtitle": "Des difficultés que rencontrent la plupart des TPE/PME avec leurs données",
+    "title": "Ces situations vous parlent ?",
+    "subtitle": "Beaucoup de TPE/PME perdent du temps à cause d'outils mal connectés et de tâches encore trop manuelles",
     "items": [
       {
         "icon": "table",
-        "title": "Des fichiers Excel qui s'accumulent",
-        "description": "Chaque service a son propre fichier, personne ne sait quelle version est la bonne. Les données se contredisent, la confusion grandit."
+        "title": "Vos informations sont éparpillées",
+        "description": "Entre Excel, votre CRM, votre comptabilité ou vos fichiers internes, il devient difficile d'avoir une base claire et fiable."
       },
       {
         "icon": "clock",
-        "title": "Des heures perdues à préparer des reportings",
-        "description": "Vous ou votre équipe passez trop de temps à extraire, copier, coller des chiffres pour produire des rapports qui pourraient se faire automatiquement."
-      },
-      {
-        "icon": "question",
-        "title": "Des décisions prises sans données fiables",
-        "description": "Vous avancez à l'instinct parce que vous n'avez pas les bons indicateurs sous les yeux. Vous sentez que vous manquez d'informations clés."
+        "title": "Vous passez trop de temps sur des tâches répétitives",
+        "description": "Certaines opérations reviennent tous les jours, toutes les semaines ou tous les mois, et mobilisent du temps qui pourrait être consacré à votre activité."
       },
       {
         "icon": "puzzle",
-        "title": "Des outils qui ne se parlent pas",
-        "description": "Votre CRM, votre comptabilité, vos tableaux de suivi... tout est cloisonné. Impossible d'avoir une vue d'ensemble sans ressaisir manuellement."
+        "title": "Vous voulez changer d'outil sans savoir par où commencer",
+        "description": "La migration des données peut vite devenir un frein quand on manque de méthode, de temps ou de visibilité."
+      },
+      {
+        "icon": "question",
+        "title": "Vous manquez de visibilité pour décider",
+        "description": "Sans reporting clair et à jour, il est plus difficile de suivre les bons indicateurs et de prendre des décisions avec confiance."
       }
     ]
   },
+
   "services_intro": {
-    "title": "Ce que BM Data peut faire pour vous",
-    "subtitle": "Des missions concrètes, des résultats mesurables, un accompagnement adapté à votre structure",
-    "link_label": "Voir tous les services",
+    "title": "Comment BM Data peut vous aider",
+    "subtitle": "Automatisation, migration de données et reporting : des solutions concrètes pour gagner du temps, fiabiliser vos informations et mieux piloter votre activité",
+    "link_label": "Découvrir les services",
     "link_url": "/services/"
   },
   "services_featured": [
-    {
-      "icon": "dashboard",
-      "title": "Tableaux de bord de pilotage",
-      "description": "Visualisez en temps réel les indicateurs qui comptent vraiment pour votre activité. Prenez de meilleures décisions, plus vite.",
-      "url": "/services/#tableaux-de-bord"
-    },
-    {
-      "icon": "analyse",
-      "title": "Analyse et valorisation des données",
-      "description": "Comprenez ce que vous disent réellement vos chiffres. Identifiez vos leviers de croissance et vos points de fuite.",
-      "url": "/services/#analyse"
-    },
-    {
-      "icon": "automatisation",
-      "title": "Automatisation des reportings",
-      "description": "Libérez votre équipe des tâches répétitives. Vos rapports se génèrent automatiquement, toujours à jour, sans erreur.",
-      "url": "/services/#automatisation"
-    }
-  ],
-  "why": {
-    "title": "Pourquoi BM Data ?",
-    "subtitle": "Un accompagnement taillé pour les réalités des TPE et PME",
-    "items": [
-      {
-        "icon": "local",
-        "title": "Ancrage local",
-        "description": "Basé à Agen, je connais le tissu économique local du Lot-et-Garonne et j'interviens facilement sur place ou à distance."
-      },
-      {
-        "icon": "language",
-        "title": "Zéro jargon",
-        "description": "Je traduis le monde de la data en bénéfices concrets pour votre entreprise, sans vous noyer dans la technique."
-      },
-      {
-        "icon": "target",
-        "title": "Orienté résultats",
-        "description": "Je m'engage sur des objectifs clairs et mesurables. Mon travail n'a de valeur que s'il améliore votre quotidien."
-      },
-      {
-        "icon": "scale",
-        "title": "Adapté à votre taille",
-        "description": "Les grandes entreprises ont leurs DSI. Vous, vous avez BM Data : l'expertise data à l'échelle de votre structure."
-      }
-    ]
+  {
+    "icon": "automatisation",
+    "title": "Automatiser les tâches répétitives",
+    "description": "Réduisez les copier-coller, les mises à jour manuelles et les risques d’erreur grâce à des automatisations simples et adaptées à votre fonctionnement.",
+    "url": "/services/#automatisation"
   },
+  {
+    "icon": "migration",
+    "title": "Réussir vos migrations de données",
+    "description": "Changez d’outil ou regroupez vos données plus simplement. Vos informations sont reprises proprement, sans repartir de zéro.",
+    "url": "/services/#migration"
+  },
+  {
+    "icon": "dashboard",
+    "title": "Mettre en place un reporting clair",
+    "description": "Suivez les indicateurs importants dans des tableaux de bord faciles à lire pour gagner en visibilité et piloter votre activité plus sereinement.",
+    "url": "/services/#reporting"
+  }
+],
+"why": {
+  "title": "Pourquoi choisir BM Data ?",
+  "subtitle": "Un accompagnement simple, concret et adapté aux réalités des TPE et PME",
+  "items": [
+    {
+      "icon": "local",
+      "title": "Proche de votre réalité",
+      "description": "Basé à Agen, j’accompagne les entreprises du territoire avec une approche pratique, sur place ou à distance selon vos besoins."
+    },
+    {
+      "icon": "language",
+      "title": "Un discours clair et compréhensible",
+      "description": "Pas de jargon inutile : je vous explique les choses simplement pour que vous compreniez les enjeux, les solutions et les résultats."
+    },
+    {
+      "icon": "target",
+      "title": "Des solutions utiles au quotidien",
+      "description": "L’objectif n’est pas de faire compliqué, mais de vous faire gagner du temps, fiabiliser vos données et vous aider à mieux piloter votre activité."
+    },
+    {
+      "icon": "scale",
+      "title": "Pensé pour les petites structures",
+      "description": "Mes accompagnements sont adaptés à la taille de votre entreprise, à votre budget et à vos priorités, sans usine à gaz ni solution surdimensionnée."
+    }
+  ]
+},
   "realisations_intro": {
     "title": "Quelques projets récents",
     "subtitle": "Des résultats concrets obtenus pour des TPE et PME de la région",
