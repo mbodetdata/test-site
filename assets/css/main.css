@@ -519,6 +519,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   max-width: 680px;
   margin: 0 auto var(--space-16);
 }
+.section-header .section-eyebrow { display: block; margin-bottom: var(--space-2); }
 .section-header h2 { margin-bottom: var(--space-4); }
 .section-header p   { font-size: var(--text-lg); color: var(--color-gray-500); }
 
