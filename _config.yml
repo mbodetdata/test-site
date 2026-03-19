@@ -10,12 +10,13 @@ description: "BM Data est un consultant data basé à Agen. Il aide les TPE et P
 # GitHub Pages sans domaine custom → baseurl: "/test-site" / url: "https://mbodetdata.github.io"
 #
 # Version TEST (GitHub Pages sans domaine custom) :
-baseurl: "/test-site"
-url: "https://mbodetdata.github.io"
+# baseurl: "/test-site"
+# url: "https://mbodetdata.github.io"
 #
 # Décommentez ci-dessous et commentez les lignes ci-dessus quand le domaine custom est actif :
-# baseurl: ""
+baseurl: ""
 # url: "https://bmdata.fr"
+url: "https://test.bmdata.fr"
 lang: "fr"
 
 # Identité
