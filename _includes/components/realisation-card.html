@@ -4,49 +4,89 @@
 
 {% assign p = include.project %}
 
-<article class="realisation-card fade-up" data-category="{{ p.category | downcase | replace: ' ', '-' }}">
-  <div class="realisation-card__image">
+<article class="realisation-card fade-up"
+         data-category="{{ p.category | downcase | replace: ' ', '-' }}"
+         {% if p.featured %}data-featured="true"{% endif %}>
+
+  <!-- ── VISUEL ── -->
+  <div class="rc-visual">
     {% if p.image %}
     <img src="{{ p.image | relative_url }}"
          alt="{{ p.image_alt }}"
          loading="lazy"
-         width="640"
-         height="360">
+         width="640" height="360">
     {% else %}
-    <div class="placeholder-icon" aria-hidden="true">📊</div>
+    <div class="rc-visual__placeholder" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M3 9h18M9 21V9"/>
+      </svg>
+    </div>
+    {% endif %}
+    <div class="rc-visual__overlay" aria-hidden="true"></div>
+
+    <!-- Badge catégorie flottant -->
+    <span class="rc-category-badge">
+      <span class="rc-category-badge__dot" aria-hidden="true"></span>
+      {{ p.category }}
+    </span>
+
+    {% if p.featured %}
+    <span class="rc-featured-badge" aria-label="Projet mis en avant">
+      <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      Projet phare
+    </span>
     {% endif %}
   </div>
 
-  <div class="realisation-card__body">
-    <span class="realisation-card__badge">{{ p.category }}</span>
-    <div class="realisation-card__meta">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      {{ p.location }}
-      <span>·</span>
-      {{ p.sector }}
-    </div>
+  <!-- ── CORPS ── -->
+  <div class="rc-body">
+    <p class="rc-meta">
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      {{ p.location }}<span class="rc-meta__sep" aria-hidden="true">·</span>{{ p.sector }}
+    </p>
 
-    <h3>{{ p.title }}</h3>
-    <p>{{ p.challenge | truncate: 130 }}</p>
+    <h3 class="rc-title">{{ p.title }}</h3>
+    <p class="rc-desc">{{ p.challenge | truncate: 115 }}</p>
 
-    {% if p.results %}
-    <div class="realisation-results">
-      {% for r in p.results limit: 3 %}
-      <div class="result-item">
-        <span class="result-value">{{ r.value }}</span>
-        <span class="result-label">{{ r.label }}</span>
-      </div>
+    {% if p.tools %}
+    <div class="rc-tools" aria-label="Outils utilisés">
+      {% for t in p.tools limit: 3 %}
+      <span class="rc-tool">{{ t }}</span>
       {% endfor %}
     </div>
     {% endif %}
 
-    <div style="margin-top:1.25rem;">
-      <a href="{{ '/realisations/' | relative_url }}#{{ p.id }}"
-         class="btn btn-ghost btn-sm"
-         aria-label="Voir le détail : {{ p.title }}">
-        En savoir plus
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
+    {% if p.results %}
+    <div class="rc-metrics" aria-label="Résultats clés">
+      {% for r in p.results limit: 3 %}
+      <div class="rc-metric">
+        <b class="rc-metric__val">{{ r.value }}</b>
+        <span class="rc-metric__lbl">{{ r.label }}</span>
+      </div>
+      {% endfor %}
     </div>
+    {% endif %}
   </div>
+
+  <!-- ── CTA ── -->
+  <div class="rc-footer">
+    <a href="{{ '/realisations/' | relative_url }}#{{ p.id }}"
+       class="rc-cta"
+       aria-label="Voir le projet : {{ p.title }}">
+      <span>En savoir plus</span>
+      <span class="rc-cta__arrow" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
 </article>
