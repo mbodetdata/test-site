@@ -81,7 +81,13 @@
   </div>
 
   <!-- ── CTA ── -->
-  <a href="{{ '/realisations/' | relative_url }}#{{ p.id }}"
+  {% assign proj_detail = site.data.projets | where: "id", p.id | first %}
+  {% if proj_detail %}
+    {% assign rc_href = proj_detail.link | relative_url %}
+  {% else %}
+    {% assign rc_href = '/realisations/' | append: '#' | append: p.id | relative_url %}
+  {% endif %}
+  <a href="{{ rc_href }}"
      class="rc-cta"
      aria-label="Voir le projet : {{ p.title }}">
     <span class="rc-cta__label">{{ p.category }}</span>

@@ -1,0 +1,282 @@
+{% comment %}
+  Portfolio Case Study — template détail projet
+  Usage : {% include portfolio-case.html project=project sector=page.sector %}
+{% endcomment %}
+
+{% assign p = include.project %}
+{% assign g = site.data.global %}
+
+{% if p == nil %}
+
+<section class="pc-notfound">
+  <div class="container">
+    <p class="pc-notfound__msg">Projet introuvable.</p>
+    <a href="{{ '/realisations/' | relative_url }}" class="btn btn-primary">← Retour aux réalisations</a>
+  </div>
+</section>
+
+{% else %}
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════ -->
+<section class="pc-hero" aria-label="En-tête du projet">
+
+  <!-- Décors d'arrière-plan -->
+  <div class="pc-hero__bg" aria-hidden="true">
+    <div class="pc-hero__glow pc-hero__glow--blue"></div>
+    <div class="pc-hero__glow pc-hero__glow--green"></div>
+    <div class="pc-hero__grid"></div>
+  </div>
+
+  <div class="container pc-hero__inner">
+
+    <!-- Fil d'Ariane -->
+    {% if page.breadcrumbs %}
+    <nav class="pc-breadcrumb" aria-label="Fil d'Ariane">
+      {% for crumb in page.breadcrumbs %}
+        {% unless forloop.last %}
+          <a href="{{ crumb.url | relative_url }}" class="pc-breadcrumb__link">{{ crumb.name }}</a>
+          <span class="pc-breadcrumb__sep" aria-hidden="true">›</span>
+        {% endunless %}
+        {% if forloop.last %}
+          <span class="pc-breadcrumb__current" aria-current="page">{{ crumb.name }}</span>
+        {% endif %}
+      {% endfor %}
+    </nav>
+    {% endif %}
+
+    <!-- Badges -->
+    <div class="pc-hero__badges">
+      <span class="pc-badge pc-badge--sector">
+        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        {{ p.sector }}
+      </span>
+      <span class="pc-badge pc-badge--category">{{ p.category }}</span>
+      {% if p.featured %}
+      <span class="pc-badge pc-badge--featured">
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Projet phare
+      </span>
+      {% endif %}
+    </div>
+
+    <!-- Titre -->
+    <h1 class="pc-hero__title">{{ p.title }}</h1>
+
+    <!-- Stack technique -->
+    {% if p.tools %}
+    <div class="pc-hero__tools" aria-label="Outils utilisés">
+      {% for t in p.tools %}
+      <span class="pc-tool-chip">{{ t }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Ligne décorative -->
+    <div class="pc-hero__divider" aria-hidden="true"></div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CONTENU PRINCIPAL + SIDEBAR
+═══════════════════════════════════════════════════ -->
+<div class="pc-layout">
+  <div class="container">
+    <div class="pc-layout__inner">
+
+      <!-- ── COLONNE PRINCIPALE ── -->
+      <main class="pc-content" id="pc-main">
+
+        <!-- ① Contexte & défi -->
+        <article class="pc-block pc-block--challenge">
+          <header class="pc-block__header">
+            <div class="pc-block__icon-wrap pc-block__icon-wrap--challenge" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </div>
+            <div>
+              <p class="pc-block__eyebrow">01 — Contexte</p>
+              <h2 class="pc-block__title">Le défi à relever</h2>
+            </div>
+          </header>
+          <div class="pc-block__body">
+            <p class="pc-block__text">{{ p.challenge }}</p>
+          </div>
+        </article>
+
+        <!-- ② Solution -->
+        <article class="pc-block pc-block--solution">
+          <header class="pc-block__header">
+            <div class="pc-block__icon-wrap pc-block__icon-wrap--solution" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 11 12 14 22 4"/>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </div>
+            <div>
+              <p class="pc-block__eyebrow">02 — Approche</p>
+              <h2 class="pc-block__title">La solution mise en place</h2>
+            </div>
+          </header>
+          <div class="pc-block__body">
+            <p class="pc-block__text">{{ p.solution }}</p>
+
+            {% if p.steps %}
+            <ol class="pc-steps" aria-label="Étapes de la solution">
+              {%- for step in p.steps -%}
+              <li class="pc-step">
+                <span class="pc-step__num" aria-hidden="true">{{ forloop.index }}</span>
+                <span class="pc-step__text">{{ step }}</span>
+              </li>
+              {%- endfor -%}
+            </ol>
+            {% endif %}
+          </div>
+        </article>
+
+        <!-- ③ Résultats -->
+        <article class="pc-block pc-block--results">
+          <header class="pc-block__header">
+            <div class="pc-block__icon-wrap pc-block__icon-wrap--results" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                <polyline points="16 7 22 7 22 13"/>
+              </svg>
+            </div>
+            <div>
+              <p class="pc-block__eyebrow">03 — Résultats</p>
+              <h2 class="pc-block__title">Ce que ça a apporté</h2>
+            </div>
+          </header>
+          <div class="pc-block__body">
+            {% if p.results %}
+            <div class="pc-results">
+              {% for r in p.results %}
+              <div class="pc-result-card">
+                <span class="pc-result-card__value">{{ r.value }}</span>
+                <span class="pc-result-card__label">{{ r.label }}</span>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </article>
+
+        <!-- ④ Citation (optionnelle) -->
+        {% if p.quote %}
+        <article class="pc-block pc-block--quote">
+          <blockquote class="pc-quote">
+            <svg class="pc-quote__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+            <p class="pc-quote__text">{{ p.quote }}</p>
+            {% if p.quote_author %}
+            <footer class="pc-quote__author">— {{ p.quote_author }}</footer>
+            {% endif %}
+          </blockquote>
+        </article>
+        {% endif %}
+
+        <!-- Retour mobile -->
+        <div class="pc-back-mobile">
+          <a href="{{ '/realisations/' | relative_url }}" class="pc-back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Retour aux réalisations
+          </a>
+        </div>
+
+      </main>
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="pc-sidebar" aria-label="Informations du projet">
+
+        <!-- Carte : fiche projet -->
+        <div class="pc-card pc-card--info">
+          <h3 class="pc-card__title">Fiche projet</h3>
+          <dl class="pc-info-list">
+            <div class="pc-info-item">
+              <dt>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Client
+              </dt>
+              <dd>{{ p.client }}</dd>
+            </div>
+
+            <div class="pc-info-item">
+              <dt>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                Secteur
+              </dt>
+              <dd>{{ p.sector }}</dd>
+            </div>
+
+            <div class="pc-info-item">
+              <dt>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Type
+              </dt>
+              <dd>{{ p.category }}</dd>
+            </div>
+
+            {% if p.tools %}
+            <div class="pc-info-item pc-info-item--tools">
+              <dt>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                Stack
+              </dt>
+              <dd class="pc-info-tools">
+                {% for t in p.tools %}
+                <span class="pc-info-tool">{{ t }}</span>
+                {% endfor %}
+              </dd>
+            </div>
+            {% endif %}
+
+          </dl>
+        </div>
+
+        <!-- Carte : CTA -->
+        <div class="pc-card pc-card--cta">
+          <div class="pc-card__cta-glow" aria-hidden="true"></div>
+          <p class="pc-card__cta-eyebrow">Besoin similaire ?</p>
+          <p class="pc-card__cta-text">Parlons de votre contexte. Je vous aide à trouver la bonne approche.</p>
+          <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-sm pc-card__cta-btn">
+            Prendre rendez-vous
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="{{ '/contact/?audit=1' | relative_url }}" class="pc-card__audit-link">
+            Demander un audit gratuit
+          </a>
+        </div>
+
+        <!-- Retour desktop -->
+        <a href="{{ '/realisations/' | relative_url }}" class="pc-back-link pc-back-desktop">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Retour aux réalisations
+        </a>
+
+      </aside>
+
+    </div><!-- /.pc-layout__inner -->
+  </div><!-- /.container -->
+</div><!-- /.pc-layout -->
+
+
+<!-- ═══════════════════════════════════════════════════
+     CTA BANNIÈRE
+═══════════════════════════════════════════════════ -->
+{% assign rc = site.data.realisations.cta %}
+{% include components/cta-section.html
+  title=rc.title
+  subtitle=rc.subtitle
+  cta_primary_label=rc.primary.label
+  cta_primary_url=rc.primary.url
+  cta_secondary_label=rc.secondary.label
+  cta_secondary_url=rc.secondary.url
+%}
+
+{% endif %}
