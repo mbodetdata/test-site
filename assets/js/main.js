@@ -20,12 +20,17 @@
   const navToggle  = document.querySelector('.nav-toggle');
   const siteNav    = document.querySelector('.site-nav');
   const navBackdrop = document.getElementById('nav-backdrop');
+  let savedScrollY = 0;
 
   function openNav() {
+    savedScrollY = window.scrollY;
     siteNav.classList.add('nav-open');
     navToggle.classList.add('active');
     navToggle.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+    // Fix scroll iOS Safari : position fixed + restauration scroll
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + savedScrollY + 'px';
+    document.body.style.width = '100%';
     if (navBackdrop) navBackdrop.classList.add('active');
   }
 
@@ -33,7 +38,11 @@
     siteNav.classList.remove('nav-open');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    // Restaurer la position de scroll
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, savedScrollY);
     if (navBackdrop) navBackdrop.classList.remove('active');
   }
 

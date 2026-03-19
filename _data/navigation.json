@@ -5,6 +5,7 @@
     { "label": "Réalisations",  "url": "/realisations/",   "active_path": "/realisations/" },
     { "label": "À propos",      "url": "/a-propos/",       "active_path": "/a-propos/" },
     { "label": "Blog",          "url": "/blog/",           "active_path": "/blog/" },
+    { "label": "FAQ",           "url": "/faq/",            "active_path": "/faq/" },
     { "label": "Contact",       "url": "/contact/",        "active_path": "/contact/", "highlight": true }
   ],
   "footer_col1": [
