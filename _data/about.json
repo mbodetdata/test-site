@@ -7,7 +7,7 @@
     "eyebrow": "À propos",
     "title": "Martial Bodet, consultant data",
     "subtitle": "Des données aux décisions : un accompagnement humain, concret et orienté résultats pour les TPE et PME.",
-    "image": "/assets/images/martial-bodet-consultant-data-agen.jpg",
+    "image": "/assets/img/Photo_profil-960.webp",
     "image_alt": "Martial Bodet, consultant data BM Data à Agen"
   },
   "intro": {
@@ -43,69 +43,76 @@
       }
     ]
   },
-  "expertise": {
-    "title": "Compétences et outils",
-    "categories": [
-      {
-        "name": "Analyse & visualisation",
-        "items": ["Power BI", "Google Looker Studio", "Metabase", "Excel avancé"]
-      },
-      {
-        "name": "Programmation & automatisation",
-        "items": ["Python", "SQL", "Power Automate", "Apps Script", "VBA"]
-      },
-      {
-        "name": "Données & intégration",
-        "items": ["ETL / Data pipelines", "API REST", "Bases de données SQL", "CRM"]
-      },
-      {
-        "name": "Méthodes & conseil",
-        "items": ["Gouvernance des données", "RGPD", "Stratégie data", "Formation"]
-      }
-    ]
-  },
-  "parcours": {
-    "title": "Parcours",
-    "items": [
-      {
-        "year": "2020",
-        "title": "Création de BM Data",
-        "description": "Lancement de l'activité de conseil data indépendant à Agen, avec un focus sur les TPE/PME du Lot-et-Garonne."
-      },
-      {
-        "year": "2017–2020",
-        "title": "Consultant data senior",
-        "description": "Accompagnement de moyennes et grandes entreprises dans leur transformation data : mise en place de solutions décisionnelles, formation des équipes."
-      },
-      {
-        "year": "2014–2017",
-        "title": "Analyste data",
-        "description": "Analyse de données et construction d'outils de reporting dans des secteurs variés (industrie, services, commerce)."
-      },
-      {
-        "year": "2014",
-        "title": "Formation",
-        "description": "Diplômé d'une école d'ingénieur / formation en statistiques et informatique décisionnelle."
-      }
-    ]
-  },
-  "local": {
-    "title": "Ancrés localement, opérationnels partout",
-    "text": "BM Data est basé à Agen et intervient principalement en Lot-et-Garonne (47), dans le Gers (32), les Landes (40) et sur l'ensemble de la Nouvelle-Aquitaine. Les missions à distance sont également possibles partout en France.",
-    "zones": [
-      "Agen et agglomération",
-      "Villeneuve-sur-Lot",
-      "Marmande",
-      "Nérac",
-      "Lot-et-Garonne (47)",
-      "Nouvelle-Aquitaine",
-      "France entière (à distance)"
-    ]
-  },
-  "cta": {
-    "title": "Envie d'en savoir plus sur mon approche ?",
-    "subtitle": "Je vous propose un premier échange gratuit de 30 minutes pour découvrir votre situation et vous montrer concrètement comment les données peuvent vous aider.",
-    "primary": { "label": "Prendre rendez-vous", "url": "/contact/" },
-    "secondary": { "label": "Voir les réalisations", "url": "/realisations/" }
-  }
+"expertise": {
+  "title": "Expertises et outils",
+  "categories": [
+    {
+      "name": "Expertise principale",
+      "items": ["Talend", "Talaxie", "Power BI"]
+    },
+    {
+      "name": "Intégration & automatisation",
+      "items": ["Talend ETL / Data pipelines", "SQL", "API REST", "Python", "Power Automate", "Apps Script", "VBA"]
+    },
+    {
+      "name": "Analyse & reporting",
+      "items": ["Power BI", "Excel avancé", "Google Looker Studio", "Metabase"]
+    },
+    {
+      "name": "Outils en exploration",
+      "items": ["n8n", "ClicData", "TIMi"]
+    }
+  ]
+},
+ "parcours": {
+  "title": "Parcours",
+  "items": [
+    {
+      "year": "2025",
+      "title": "Création de BM Data",
+      "description": "Lancement de mon activité de conseil data indépendant à Agen, avec une volonté claire : rendre l’automatisation, la migration de données et le reporting accessibles aux TPE et PME du Lot-et-Garonne. BM Data est née pour proposer un accompagnement concret, utile et adapté aux réalités des petites structures."
+    },
+    {
+      "year": "2023-2025",
+      "title": "Analyste développeur Talend / Talaxie",
+      "description": "Accompagnement de moyennes et grandes entreprises dans leurs projets data, avec un rôle à la fois technique et fonctionnel. Mise en place de solutions décisionnelles, structuration des flux de données, amélioration des reportings et formation des équipes pour faciliter la prise en main des outils."
+    },
+    {
+      "year": "2021-2023",
+      "title": "Intégrateur Talend / Power BI",
+      "description": "Participation à des projets d’intégration et de valorisation de la donnée dans des secteurs variés comme l’industrie, les services ou le commerce. Cette expérience m’a permis de développer une approche orientée terrain, centrée sur la fiabilité des données, la clarté des tableaux de bord et l’utilité des outils pour les utilisateurs au quotidien."
+    },
+        {
+      "year": "2020",
+      "title": "Formation développeur Java JEE / Angular",
+      "description": "Première base solide dans le développement d’applications et la logique informatique. Cette formation m’a apporté les fondamentaux techniques qui me servent encore aujourd’hui : comprendre le fonctionnement des outils, structurer des solutions robustes et concevoir des environnements fiables, pensés pour durer."
+    },
+    {
+      "year": "2019",
+      "title": "Master de bio-informatique",
+      "description": "Une étape clé dans mon parcours, qui m’a permis de renforcer ma maîtrise de l’analyse de données, du traitement de l’information et de la logique scientifique. Cette formation m’a appris à manipuler des volumes de données complexes, à structurer une démarche d’analyse rigoureuse et à transformer des données brutes en informations exploitables."
+    }
+  ]
+},
+"local": {
+  "title": "Basé à Agen, disponible localement et à distance",
+  "text": "BM Data accompagne les TPE et PME depuis Agen, principalement en Lot-et-Garonne, dans le Gers, les Landes et plus largement en Nouvelle-Aquitaine. Les missions peuvent se faire sur place ou à distance, partout en France, selon vos besoins.",
+  "zones": [
+    "Agen et son agglomération",
+    "Villeneuve-sur-Lot",
+    "Marmande",
+    "Nérac",
+    "Lot-et-Garonne (47)",
+    "Gers (32)",
+    "Landes (40)",
+    "Nouvelle-Aquitaine",
+    "France entière à distance"
+  ]
+},
+"cta": {
+  "title": "Parlons simplement de vos besoins",
+  "subtitle": "Je vous propose un premier échange gratuit de 30 minutes pour faire le point sur votre organisation, vos outils et vos reportings, et voir où vous pouvez gagner du temps et en clarté.",
+  "primary": { "label": "Prendre rendez-vous", "url": "/contact/" },
+  "secondary": { "label": "Voir les réalisations", "url": "/realisations/" }
+}
 }

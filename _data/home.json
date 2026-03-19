@@ -1,22 +1,22 @@
 {
-  "hero": {
-    "eyebrow": "Consultant Data · Agen · Lot-et-Garonne",
-    "title": "Transformez vos données en décisions qui font la différence",
-    "subtitle": "BM Data accompagne les TPE et PME dans la maîtrise de leurs données. Tableaux de bord, analyses, automatisations : passez de l'intuition à la certitude.",
-    "cta_primary": {
-      "label": "Prendre rendez-vous",
-      "url": "/contact/"
-    },
-    "cta_secondary": {
-      "label": "Découvrir les services",
-      "url": "/services/"
-    },
-    "trust_indicators": [
-      "Réponse sous 24 h",
-      "Premier échange offert",
-      "Sans jargon technique"
-    ]
+"hero": {
+  "eyebrow": "Automatisation · Changement d’outil · Tableaux de bord",
+  "title": "Gagnez du temps et voyez plus clair dans votre activité",
+  "subtitle": "BM Data aide les TPE et PME à automatiser les tâches répétitives, transférer leurs informations d’un outil à un autre et mettre en place des tableaux de bord simples pour suivre les chiffres importants.\nAvec BM Data, la bonne donnée, au bon endroit, au bon moment.",
+  "cta_primary": {
+    "label": "Parler de votre besoin",
+    "url": "/contact/"
   },
+  "cta_secondary": {
+    "label": "Découvrir les services",
+    "url": "/services/"
+  },
+  "trust_indicators": [
+    "Réponse sous 24 h",
+    "Premier échange offert",
+    "Explications simples"
+  ]
+},
   "stats": [
     { "value": "5+", "label": "Années d'expérience", "icon": "calendar" },
     { "value": "20+", "label": "Projets réalisés",     "icon": "chart" },
