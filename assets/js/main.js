@@ -17,33 +17,45 @@
   }
 
   /* ─── Navigation mobile ─── */
-  const navToggle = document.querySelector('.nav-toggle');
-  const siteNav   = document.querySelector('.site-nav');
+  const navToggle  = document.querySelector('.nav-toggle');
+  const siteNav    = document.querySelector('.site-nav');
+  const navBackdrop = document.getElementById('nav-backdrop');
+
+  function openNav() {
+    siteNav.classList.add('nav-open');
+    navToggle.classList.add('active');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    if (navBackdrop) navBackdrop.classList.add('active');
+  }
+
+  function closeNav() {
+    siteNav.classList.remove('nav-open');
+    navToggle.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (navBackdrop) navBackdrop.classList.remove('active');
+  }
+
   if (navToggle && siteNav) {
     navToggle.addEventListener('click', () => {
-      const open = siteNav.classList.toggle('nav-open');
-      navToggle.classList.toggle('active', open);
-      navToggle.setAttribute('aria-expanded', String(open));
-      document.body.style.overflow = open ? 'hidden' : '';
+      siteNav.classList.contains('nav-open') ? closeNav() : openNav();
     });
 
     // Fermer en cliquant sur un lien
-    siteNav.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        siteNav.classList.remove('nav-open');
-        navToggle.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
+    siteNav.querySelectorAll('.nav-link, .nav-mobile-hub').forEach(link => {
+      link.addEventListener('click', closeNav);
     });
+
+    // Fermer via le backdrop
+    if (navBackdrop) {
+      navBackdrop.addEventListener('click', closeNav);
+    }
 
     // Fermer avec Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && siteNav.classList.contains('nav-open')) {
-        siteNav.classList.remove('nav-open');
-        navToggle.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+        closeNav();
         navToggle.focus();
       }
     });

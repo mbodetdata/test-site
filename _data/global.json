@@ -25,6 +25,10 @@
     "phone_label": "Appeler directement",
     "devis_label": "Demander un devis"
   },
+  "hub": {
+    "url": "https://hub.bmdata.fr",
+    "label": "Accéder au Hub BM Data"
+  },
   "footer": {
     "copyright": "BM Data — Tous droits réservés",
     "legal_url": "/mentions-legales/",
