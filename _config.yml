@@ -5,8 +5,17 @@
 title: "BM Data"
 tagline: "Conseil en données pour TPE/PME"
 description: "BM Data est un consultant data basé à Agen. Il aide les TPE et PME à exploiter leurs données pour prendre de meilleures décisions, optimiser leurs performances et gagner du temps."
-baseurl: ""
-url: "https://bmdata.fr"
+# ─── DÉPLOIEMENT ───────────────────────────────────────────────
+# Domaine personnalisé bmdata.fr → baseurl: "" / url: "https://bmdata.fr"
+# GitHub Pages sans domaine custom → baseurl: "/test-site" / url: "https://mbodetdata.github.io"
+#
+# Version TEST (GitHub Pages sans domaine custom) :
+baseurl: "/test-site"
+url: "https://mbodetdata.github.io"
+#
+# Décommentez ci-dessous et commentez les lignes ci-dessus quand le domaine custom est actif :
+# baseurl: ""
+# url: "https://bmdata.fr"
 lang: "fr"
 
 # Identité
