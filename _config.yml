@@ -41,9 +41,9 @@ social:
   twitter: ""
 
 # SEO & open graph
-favicon: "/assets/img/favicon/favicon-32.webp"
-logo: "/assets/img/logo_512.webp"
-og_image: "/assets/img/logo_512.webp"
+favicon: "/assets/img/favicon/favicon-32.png"
+logo: "/assets/img/logo_256.webp"
+og_image: "/assets/img/logo_256.webp"
 twitter_card: "summary_large_image"
 
 # Build
