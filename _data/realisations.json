@@ -35,7 +35,7 @@
       "quote": null,
       "quote_author": null,
       "tools": ["Talend", "Collecte multi-sources", "Tableau de bord temps réel"],
-      "featured": true,
+      "featured": false,
       "image": null,
       "image_alt": "Pilotage temps réel des opérations DashboardTV"
     },
@@ -189,7 +189,7 @@
       "quote": null,
       "quote_author": null,
       "tools": ["Talend OSS", "Talaxie"],
-      "featured": true,
+      "featured": false,
       "image": null,
       "image_alt": "Étude de migration de Talend OSS vers Talaxie"
     },
@@ -211,7 +211,7 @@
       "quote": null,
       "quote_author": null,
       "tools": ["Power BI", "iTop"],
-      "featured": true,
+      "featured": false,
       "image": null,
       "image_alt": "Dashboard Power BI connecté à iTop"
     },
@@ -233,7 +233,7 @@
       "quote": null,
       "quote_author": null,
       "tools": ["API KeplerVo", "MySQL"],
-      "featured": false,
+      "featured": true,
       "image": null,
       "image_alt": "Interconnexion API KeplerVo et base MySQL pour SOFIPEL"
     },
