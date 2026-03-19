@@ -211,4 +211,154 @@
     });
   }
 
+  /* ─── Barre de progression au scroll ─── */
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  progressBar.setAttribute('aria-hidden', 'true');
+  document.body.prepend(progressBar);
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    progressBar.style.width = (scrolled * 100) + '%';
+  }, { passive: true });
+
+  /* ─── Orbes animés dans le hero ─── */
+  const hero = document.querySelector('.hero');
+  if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    [1, 2, 3].forEach(i => {
+      const orb = document.createElement('div');
+      orb.className = `hero-orb hero-orb-${i}`;
+      orb.setAttribute('aria-hidden', 'true');
+      hero.appendChild(orb);
+    });
+
+    /* Indicateur scroll (flèche bas) */
+    const scrollHint = document.createElement('div');
+    scrollHint.className = 'hero-scroll-hint';
+    scrollHint.setAttribute('aria-hidden', 'true');
+    scrollHint.innerHTML = '<div class="scroll-mouse"><div class="scroll-wheel"></div></div><span>Défiler</span>';
+    hero.appendChild(scrollHint);
+    /* Masquer au premier scroll */
+    window.addEventListener('scroll', function hideHint() {
+      if (window.scrollY > 80) {
+        scrollHint.style.opacity = '0';
+        window.removeEventListener('scroll', hideHint);
+      }
+    }, { passive: true });
+  }
+
+  /* ─── Compteur animé des statistiques ─── */
+  function animateCounter(el) {
+    const raw = el.textContent.trim();
+    const match = raw.match(/([\d.]+)/);
+    if (!match) return;
+    const numStr = match[1];
+    const target = parseFloat(numStr);
+    const suffix = raw.replace(numStr, '');
+    const isFloat = numStr.includes('.');
+    const decimals = isFloat ? (numStr.split('.')[1] || '').length : 0;
+    const duration = 1600;
+    const startTime = performance.now();
+    el.classList.add('counting');
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = eased * target;
+      el.textContent = (isFloat ? value.toFixed(decimals) : Math.round(value)) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = raw;
+        el.classList.remove('counting');
+      }
+    };
+    requestAnimationFrame(tick);
+  }
+
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat-value').forEach(el => counterObserver.observe(el));
+  }
+
+  /* ─── Animations en cascade pour les grilles ─── */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.problems-grid, .skills-grid').forEach(grid => {
+      grid.querySelectorAll('.fade-up').forEach((card, i) => {
+        card.style.transitionDelay = (i * 0.11) + 's';
+      });
+    });
+    /* Grilles génériques 3 colonnes */
+    document.querySelectorAll('.grid-3, .grid-auto').forEach(grid => {
+      grid.querySelectorAll('.fade-up').forEach((card, i) => {
+        if (!card.style.transitionDelay) {
+          card.style.transitionDelay = (i * 0.1) + 's';
+        }
+      });
+    });
+  }
+
+  /* ─── Cursor spotlight sur sections sombres ─── */
+  if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const spotlight = document.createElement('div');
+    spotlight.className = 'cursor-spotlight';
+    spotlight.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(spotlight);
+    let spotX = 0, spotY = 0, rafSpot;
+    document.addEventListener('mousemove', (e) => {
+      spotX = e.clientX;
+      spotY = e.clientY;
+      const darkEl = e.target.closest('.section--dark, .section--navy, .hero, .stats-band, .cta-banner');
+      if (darkEl) {
+        spotlight.classList.add('active');
+      } else {
+        spotlight.classList.remove('active');
+      }
+      if (!rafSpot) {
+        rafSpot = requestAnimationFrame(() => {
+          spotlight.style.left = spotX + 'px';
+          spotlight.style.top  = spotY + 'px';
+          rafSpot = null;
+        });
+      }
+    }, { passive: true });
+  }
+
+  /* ─── Effet magnétique sur les boutons principaux ─── */
+  if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.btn-gold, .btn-primary').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.18;
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.18;
+        btn.style.transform = `translateY(-1px) translate(${x}px, ${y}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  /* ─── Effet tilt 3D sur les cards (desktop) ─── */
+  if (window.innerWidth > 1024 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.service-card, .realisation-card, .testimonial-card').forEach(card => {
+      card.style.transformStyle = 'preserve-3d';
+      card.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease';
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientY - rect.top - rect.height / 2) / rect.height;
+        const y = (e.clientX - rect.left - rect.width / 2) / rect.width;
+        card.style.transform = `perspective(700px) rotateX(${-x * 5}deg) rotateY(${y * 5}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
 })();
