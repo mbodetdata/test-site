@@ -11,24 +11,22 @@ layout: default
 
 <!-- Post Hero -->
 <header class="post-hero" {% if page.image %}style="--hero-img: url('{{ page.image | relative_url }}')"{% endif %}>
-  <div class="post-hero__noise"></div>
-  <div class="post-hero__mesh"></div>
+  <div class="post-hero__noise" aria-hidden="true"></div>
+  <div class="post-hero__mesh" aria-hidden="true"></div>
 
   <div class="container post-hero__inner">
 
-    <!-- Breadcrumb -->
     <nav class="breadcrumb post-hero__breadcrumb" aria-label="Fil d'Ariane">
       <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
       <a href="{{ '/blog/' | relative_url }}">Blog</a>
-      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
       <span>{{ page.title | truncate: 45 }}</span>
     </nav>
 
     <div class="post-hero__body">
       <div class="post-hero__left">
 
-        <!-- Eyebrow -->
         <div class="post-hero__eyebrow">
           {% if page.category_label %}
           <span class="post-hero__category-pill">{{ page.category_label }}</span>
@@ -41,15 +39,12 @@ layout: default
           {% endif %}
         </div>
 
-        <!-- Title -->
         <h1 class="post-hero__title">{{ page.title }}</h1>
 
-        <!-- Excerpt -->
         {% if page.description %}
         <p class="post-hero__excerpt">{{ page.description }}</p>
         {% endif %}
 
-        <!-- Meta + quick share -->
         <div class="post-hero__footer">
           <div class="post-hero__author">
             <div class="post-hero__avatar" aria-hidden="true">MB</div>
@@ -66,7 +61,7 @@ layout: default
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-qshare-btn post-qshare-btn--li" aria-label="Partager sur LinkedIn" title="Partager sur LinkedIn">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
-            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-qshare-btn post-qshare-btn--x" aria-label="Partager sur X (Twitter)" title="Partager sur X">
+            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-qshare-btn post-qshare-btn--x" aria-label="Partager sur X" title="Partager sur X">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
           </div>
@@ -83,11 +78,11 @@ layout: default
       </div>
       {% endif %}
 
-    </div><!-- /.post-hero__body -->
-  </div><!-- /.container -->
+    </div>
+  </div>
 </header>
 
-<!-- Decorative wave -->
+<!-- Wave separator -->
 <div class="post-hero-wave" aria-hidden="true">
   <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="var(--color-white)"/></svg>
 </div>
@@ -97,32 +92,38 @@ layout: default
   <div class="container">
     <div class="post-layout">
 
-      <!-- ── Sidebar flottante ── -->
-      <aside class="post-sidebar" aria-label="Partager l'article">
+      <!-- ── Sidebar : sommaire + partage ── -->
+      <aside class="post-sidebar" id="postSidebar" aria-label="Navigation et partage">
         <div class="post-sidebar__sticky">
 
-          <div class="post-share-panel">
-            <p class="post-share-panel__title">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <!-- Table des matières -->
+          <nav class="post-toc post-toc--hidden" id="postToc" aria-label="Sommaire">
+            <div class="post-toc__header">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              Sommaire
+            </div>
+            <ol class="post-toc__list" id="postTocList"></ol>
+          </nav>
+
+          <!-- Partage compact -->
+          <div class="post-sidebar-share" aria-label="Partager l'article">
+            <p class="post-sidebar-share__label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
               Partager
             </p>
+            <div class="post-sidebar-share__btns">
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-sidebar-share__btn post-sidebar-share__btn--li" aria-label="LinkedIn" title="Partager sur LinkedIn">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-sidebar-share__btn post-sidebar-share__btn--x" aria-label="X / Twitter" title="Partager sur X">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <button class="post-sidebar-share__btn post-sidebar-share__btn--copy" id="copyLinkBtn" type="button" aria-label="Copier le lien" title="Copier le lien">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </button>
+            </div>
+          </div>
 
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-item post-share-item--li" aria-label="Partager sur LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              <span>LinkedIn</span>
-            </a>
-
-            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-item post-share-item--x" aria-label="Partager sur X (Twitter)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              <span>X / Twitter</span>
-            </a>
-
-            <button class="post-share-item post-share-item--copy" id="copyLinkBtn" type="button" aria-label="Copier le lien de l'article">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              <span>Copier le lien</span>
-            </button>
-
-          </div><!-- /.post-share-panel -->
         </div>
       </aside>
 
@@ -133,7 +134,7 @@ layout: default
 
         <!-- Tags -->
         {% if page.tags.size > 0 %}
-        <div class="post-tags">
+        <div class="post-tags reveal">
           <span class="post-tags__label">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
             Tags
@@ -147,9 +148,9 @@ layout: default
         {% endif %}
 
         <!-- Share CTA inline -->
-        <div class="post-share-cta" aria-label="Partager cet article">
+        <div class="post-share-cta reveal" aria-label="Partager cet article">
           <div class="post-share-cta__icon" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           </div>
           <div class="post-share-cta__copy">
             <strong>Cet article vous a été utile ?</strong>
@@ -157,22 +158,22 @@ layout: default
           </div>
           <div class="post-share-cta__actions">
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-cta__btn post-share-cta__btn--li" aria-label="Partager sur LinkedIn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               LinkedIn
             </a>
             <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-cta__btn post-share-cta__btn--x" aria-label="Partager sur X">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               X
             </a>
             <button class="post-share-cta__btn post-share-cta__btn--copy" id="copyLinkBtn2" type="button">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               Copier
             </button>
           </div>
         </div>
 
-        <!-- Author bio card -->
-        <div class="post-author-card">
+        <!-- Author card -->
+        <div class="post-author-card reveal">
           <div class="post-author-card__avatar" aria-hidden="true">MB</div>
           <div class="post-author-card__body">
             <div class="post-author-card__header">
@@ -189,8 +190,8 @@ layout: default
       </div><!-- /.post-content -->
     </div><!-- /.post-layout -->
 
-    <!-- ── CTA banner ── -->
-    <div class="post-cta-wrap">
+    <!-- CTA banner -->
+    <div class="post-cta-wrap reveal">
       <div class="cta-banner">
         <h2>Cet article vous a inspiré ?</h2>
         <p>Découvrez comment ces idées pourraient s'appliquer concrètement à votre entreprise.</p>
@@ -201,8 +202,13 @@ layout: default
       </div>
     </div>
 
-  </div><!-- /.container -->
+  </div>
 </article>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" type="button" aria-label="Retour en haut de page" title="Retour en haut">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <!-- Articles récents -->
 <section class="section section--light">
@@ -228,10 +234,10 @@ layout: default
 (function () {
   'use strict';
 
-  /* Reading progress bar */
-  var bar   = document.getElementById('readingProgressBar');
-  var prog  = document.getElementById('readingProgress');
-  var art   = document.getElementById('postArticle');
+  /* ─── 1. Reading progress bar ─── */
+  var bar  = document.getElementById('readingProgressBar');
+  var prog = document.getElementById('readingProgress');
+  var art  = document.getElementById('postArticle');
 
   if (bar && art) {
     window.addEventListener('scroll', function () {
@@ -244,29 +250,130 @@ layout: default
     }, { passive: true });
   }
 
-  /* Copy link helper */
-  function setupCopy(btn) {
+  /* ─── 2. Table des matières ─── */
+  var content = document.getElementById('postContent');
+  var tocEl   = document.getElementById('postToc');
+  var tocList = document.getElementById('postTocList');
+
+  if (content && tocList) {
+    var headings = content.querySelectorAll('h2, h3');
+
+    if (headings.length >= 2) {
+      tocEl.classList.remove('post-toc--hidden');
+
+      headings.forEach(function (h, i) {
+        /* assign id if missing */
+        if (!h.id) {
+          h.id = 'heading-' + i + '-' + h.textContent
+            .toLowerCase()
+            .replace(/[^a-z0-9\u00C0-\u017E]+/gi, '-')
+            .replace(/^-|-$/g, '')
+            .substring(0, 50);
+        }
+
+        var li  = document.createElement('li');
+        var a   = document.createElement('a');
+        a.href  = '#' + h.id;
+        a.textContent = h.textContent;
+        a.className   = 'post-toc__link';
+        if (h.tagName === 'H3') li.classList.add('post-toc__item--sub');
+        li.className  = 'post-toc__item';
+        li.appendChild(a);
+        tocList.appendChild(li);
+
+        /* smooth scroll */
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var target = document.getElementById(h.id);
+          if (target) {
+            var offset = 88;
+            var top    = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        });
+      });
+
+      /* ── Active heading tracking via IntersectionObserver ── */
+      var links     = tocList.querySelectorAll('.post-toc__link');
+      var headingIds = Array.from(headings).map(function (h) { return h.id; });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var idx = headingIds.indexOf(entry.target.id);
+            links.forEach(function (l) { l.classList.remove('is-active'); });
+            if (idx > -1 && links[idx]) links[idx].classList.add('is-active');
+          }
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+
+      headings.forEach(function (h) { observer.observe(h); });
+    }
+  }
+
+  /* ─── 3. Scroll-reveal ─── */
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    /* auto-reveal post content children */
+    if (content) {
+      var revealEls = content.querySelectorAll(
+        'h2, h3, p, ul, ol, blockquote, pre, img, table, .post-tags, .post-share-cta, .post-author-card'
+      );
+      revealEls.forEach(function (el) {
+        el.classList.add('reveal');
+        revealObserver.observe(el);
+      });
+    }
+
+    /* manual .reveal on other elements */
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      if (!el.classList.contains('is-visible')) revealObserver.observe(el);
+    });
+  } else {
+    /* fallback: show everything */
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  /* ─── 4. Copy link ─── */
+  function setupCopy(btn, label) {
     if (!btn) return;
     btn.addEventListener('click', function () {
       var self = this;
       navigator.clipboard.writeText(window.location.href).then(function () {
-        var svgHTML = self.querySelector('svg').outerHTML;
-        self.innerHTML = svgHTML + '<span>Copié !</span>';
+        var svg = self.querySelector('svg') ? self.querySelector('svg').outerHTML : '';
+        self.innerHTML = svg + (label ? '<span>Copié !</span>' : 'Copié !');
         self.classList.add('is-copied');
         setTimeout(function () {
           self.classList.remove('is-copied');
-          /* restore label */
-          if (self.id === 'copyLinkBtn') {
-            self.innerHTML = svgHTML + '<span>Copier le lien</span>';
-          } else {
-            self.innerHTML = svgHTML + 'Copier';
-          }
+          self.innerHTML = svg + (label ? '<span>' + label + '</span>' : label || 'Copier');
         }, 2200);
       });
     });
   }
 
-  setupCopy(document.getElementById('copyLinkBtn'));
-  setupCopy(document.getElementById('copyLinkBtn2'));
+  setupCopy(document.getElementById('copyLinkBtn'),  'Copier le lien');
+  setupCopy(document.getElementById('copyLinkBtn2'), false);
+
+  /* ─── 5. Back to top ─── */
+  var btt = document.getElementById('backToTop');
+  if (btt) {
+    window.addEventListener('scroll', function () {
+      btt.classList.toggle('is-visible', window.scrollY > 600);
+    }, { passive: true });
+    btt.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
 })();
 </script>
