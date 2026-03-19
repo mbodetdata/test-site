@@ -1,0 +1,21 @@
+---
+layout: default
+title: "UBA • Data & Automatisation (Azure) | BM Data"
+description: "Cas client finance : centralisation Azure, automatisations Talend et tableau de bord Power BI pour fiabiliser le pilotage financier sans doubles saisies."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "UBA • Data & Automatisation (Azure)"
+    url: /portfolio/uba-data-automation.html
+permalink: /portfolio/uba-data-automation.html
+project_link: "/portfolio/uba-data-automation.html"
+sector: "Services financiers"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

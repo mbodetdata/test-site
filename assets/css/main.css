@@ -2390,6 +2390,9 @@ p { line-height: 1.75; color: var(--color-gray-600); }
    Couleurs : --color-blue (#6677ff) / --color-gold (#2bd48f)
    ════════════════════════════════════════════════════════════ */
 
+/* ─── FILTRES RÉALISATIONS ─── */
+.filter-btn.active { background: var(--color-blue); color: white; border-color: var(--color-blue); }
+
 /* ─── NOT FOUND ─── */
 .pc-notfound {
   padding: var(--space-32) 0;

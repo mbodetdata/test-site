@@ -1,0 +1,21 @@
+---
+layout: default
+title: "EDI • WMS IzyPro | BM Data"
+description: "Cas client supply chain : flux EDI standardisés, supervision continue et alertes automatiques pour sécuriser un WMS IzyPro multi-clients."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "EDI • WMS IzyPro"
+    url: /portfolio/edi-wms-izypro.html
+permalink: /portfolio/edi-wms-izypro.html
+project_link: "/portfolio/edi-wms-izypro.html"
+sector: "Supply chain multi-clients"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

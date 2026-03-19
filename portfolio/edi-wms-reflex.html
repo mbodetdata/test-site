@@ -1,0 +1,21 @@
+---
+layout: default
+title: "EDI • WMS Reflex | BM Data"
+description: "Cas client logistique : maintenance EDI et optimisation des flux WMS Reflex pour réduire les incidents et améliorer la continuité des opérations."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "EDI • WMS Reflex"
+    url: /portfolio/edi-wms-reflex.html
+permalink: /portfolio/edi-wms-reflex.html
+project_link: "/portfolio/edi-wms-reflex.html"
+sector: "Logistique & WMS"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

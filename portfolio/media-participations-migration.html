@@ -1,0 +1,21 @@
+---
+layout: default
+title: "Media Participations • Migration applicative | BM Data"
+description: "Cas client édition : migration applicative avec Talend, contrôles qualité et conservation complète de l'historique métier."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "Media Participations • Migration applicative"
+    url: /portfolio/media-participations-migration.html
+permalink: /portfolio/media-participations-migration.html
+project_link: "/portfolio/media-participations-migration.html"
+sector: "Édition & médias"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}
