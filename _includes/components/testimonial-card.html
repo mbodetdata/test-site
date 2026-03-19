@@ -1,0 +1,27 @@
+{% comment %}
+  Usage : {% include components/testimonial-card.html testimonial=t %}
+{% endcomment %}
+
+{% assign t = include.testimonial %}
+
+<article class="testimonial-card fade-up">
+  <div class="testimonial-stars" aria-label="{{ t.rating }} étoiles sur 5">
+    {% for i in (1..t.rating) %}
+    <span aria-hidden="true">★</span>
+    {% endfor %}
+  </div>
+
+  <blockquote class="testimonial-quote">
+    "{{ t.quote }}"
+  </blockquote>
+
+  <div class="testimonial-author">
+    <div class="testimonial-avatar" aria-hidden="true">
+      {{ t.author | slice: 0 }}{% assign parts = t.author | split: " " %}{% if parts.size > 1 %}{{ parts[1] | slice: 0 }}{% endif %}
+    </div>
+    <div>
+      <div class="testimonial-name">{{ t.author }}</div>
+      <div class="testimonial-role">{{ t.role }}, {{ t.company }}</div>
+    </div>
+  </div>
+</article>

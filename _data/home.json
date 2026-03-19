@@ -1,0 +1,128 @@
+{
+  "hero": {
+    "eyebrow": "Consultant Data · Agen · Lot-et-Garonne",
+    "title": "Transformez vos données en décisions qui font la différence",
+    "subtitle": "BM Data accompagne les TPE et PME dans la maîtrise de leurs données. Tableaux de bord, analyses, automatisations : passez de l'intuition à la certitude.",
+    "cta_primary": {
+      "label": "Prendre rendez-vous",
+      "url": "/contact/"
+    },
+    "cta_secondary": {
+      "label": "Découvrir les services",
+      "url": "/services/"
+    },
+    "trust_indicators": [
+      "Réponse sous 24 h",
+      "Premier échange offert",
+      "Sans jargon technique"
+    ]
+  },
+  "stats": [
+    { "value": "10+", "label": "Années d'expérience", "icon": "calendar" },
+    { "value": "50+", "label": "Projets réalisés",     "icon": "chart" },
+    { "value": "100%", "label": "Clients satisfaits",  "icon": "star" },
+    { "value": "48 h", "label": "Délai de réponse",    "icon": "clock" }
+  ],
+  "problems": {
+    "title": "Vous reconnaissez-vous dans l'une de ces situations ?",
+    "subtitle": "Des difficultés que rencontrent la plupart des TPE/PME avec leurs données",
+    "items": [
+      {
+        "icon": "table",
+        "title": "Des fichiers Excel qui s'accumulent",
+        "description": "Chaque service a son propre fichier, personne ne sait quelle version est la bonne. Les données se contredisent, la confusion grandit."
+      },
+      {
+        "icon": "clock",
+        "title": "Des heures perdues à préparer des reportings",
+        "description": "Vous ou votre équipe passez trop de temps à extraire, copier, coller des chiffres pour produire des rapports qui pourraient se faire automatiquement."
+      },
+      {
+        "icon": "question",
+        "title": "Des décisions prises sans données fiables",
+        "description": "Vous avancez à l'instinct parce que vous n'avez pas les bons indicateurs sous les yeux. Vous sentez que vous manquez d'informations clés."
+      },
+      {
+        "icon": "puzzle",
+        "title": "Des outils qui ne se parlent pas",
+        "description": "Votre CRM, votre comptabilité, vos tableaux de suivi... tout est cloisonné. Impossible d'avoir une vue d'ensemble sans ressaisir manuellement."
+      }
+    ]
+  },
+  "services_intro": {
+    "title": "Ce que BM Data peut faire pour vous",
+    "subtitle": "Des missions concrètes, des résultats mesurables, un accompagnement adapté à votre structure",
+    "link_label": "Voir tous les services",
+    "link_url": "/services/"
+  },
+  "services_featured": [
+    {
+      "icon": "dashboard",
+      "title": "Tableaux de bord de pilotage",
+      "description": "Visualisez en temps réel les indicateurs qui comptent vraiment pour votre activité. Prenez de meilleures décisions, plus vite.",
+      "url": "/services/#tableaux-de-bord"
+    },
+    {
+      "icon": "analyse",
+      "title": "Analyse et valorisation des données",
+      "description": "Comprenez ce que vous disent réellement vos chiffres. Identifiez vos leviers de croissance et vos points de fuite.",
+      "url": "/services/#analyse"
+    },
+    {
+      "icon": "automatisation",
+      "title": "Automatisation des reportings",
+      "description": "Libérez votre équipe des tâches répétitives. Vos rapports se génèrent automatiquement, toujours à jour, sans erreur.",
+      "url": "/services/#automatisation"
+    }
+  ],
+  "why": {
+    "title": "Pourquoi BM Data ?",
+    "subtitle": "Un accompagnement taillé pour les réalités des TPE et PME",
+    "items": [
+      {
+        "icon": "local",
+        "title": "Ancrage local",
+        "description": "Basé à Agen, je connais le tissu économique local du Lot-et-Garonne et j'interviens facilement sur place ou à distance."
+      },
+      {
+        "icon": "language",
+        "title": "Zéro jargon",
+        "description": "Je traduis le monde de la data en bénéfices concrets pour votre entreprise, sans vous noyer dans la technique."
+      },
+      {
+        "icon": "target",
+        "title": "Orienté résultats",
+        "description": "Je m'engage sur des objectifs clairs et mesurables. Mon travail n'a de valeur que s'il améliore votre quotidien."
+      },
+      {
+        "icon": "scale",
+        "title": "Adapté à votre taille",
+        "description": "Les grandes entreprises ont leurs DSI. Vous, vous avez BM Data : l'expertise data à l'échelle de votre structure."
+      }
+    ]
+  },
+  "realisations_intro": {
+    "title": "Quelques projets récents",
+    "subtitle": "Des résultats concrets obtenus pour des TPE et PME de la région",
+    "link_label": "Voir toutes les réalisations",
+    "link_url": "/realisations/"
+  },
+  "testimonial_featured": {
+    "quote": "Avant BM Data, je passais chaque lundi matin à préparer mon reporting à la main. Aujourd'hui c'est automatique, et j'ai enfin le temps de piloter vraiment mon activité.",
+    "author": "Directeur commercial, PME industrielle — Agen",
+    "link_label": "Lire tous les témoignages",
+    "link_url": "/temoignages/"
+  },
+  "cta_section": {
+    "title": "Prêt à prendre les bonnes décisions avec vos données ?",
+    "subtitle": "Premier échange offert, sans engagement. Je vous explique concrètement comment vos données peuvent devenir un vrai levier pour votre activité.",
+    "cta_primary": {
+      "label": "Réserver un échange découverte",
+      "url": "/contact/"
+    },
+    "cta_secondary": {
+      "label": "Voir les réalisations",
+      "url": "/realisations/"
+    }
+  }
+}

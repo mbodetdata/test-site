@@ -1,0 +1,80 @@
+---
+layout: page
+title: "Mentions légales — BM Data"
+description: "Mentions légales du site bmdata.fr — BM Data, consultant data à Agen."
+permalink: /mentions-legales/
+robots: "noindex, follow"
+body_class: "page-legal"
+---
+
+{% assign g = site.data.global %}
+
+<section class="page-hero" style="padding-bottom:3rem;" aria-labelledby="legal-title">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="{{ '/' | relative_url }}">Accueil</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Mentions légales</span>
+    </nav>
+    <h1 id="legal-title" style="font-size:var(--text-3xl);">Mentions légales</h1>
+    <p style="color:rgba(255,255,255,.6);">Dernière mise à jour : {{ 'now' | date: "%B %Y" }}</p>
+  </div>
+</section>
+
+<div class="legal-content">
+
+  <h2>1. Éditeur du site</h2>
+  <p>
+    Le site <strong>bmdata.fr</strong> est édité par :<br>
+    <strong>BM Data</strong><br>
+    Entrepreneur individuel<br>
+    Représenté par Martial Bodet<br>
+    Adresse : Agen, 47000, France<br>
+    Email : <a href="mailto:{{ g.contact.email }}">{{ g.contact.email }}</a><br>
+    Téléphone : {{ g.contact.phone }}<br>
+    SIRET : [Numéro SIRET à compléter]<br>
+    N° TVA intracommunautaire : [À compléter si applicable]
+  </p>
+
+  <h2>2. Hébergement</h2>
+  <p>
+    Ce site est hébergé par :<br>
+    <strong>GitHub Pages</strong> (GitHub, Inc.)<br>
+    88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA<br>
+    <a href="https://pages.github.com" target="_blank" rel="noopener">pages.github.com</a>
+  </p>
+
+  <h2>3. Propriété intellectuelle</h2>
+  <p>
+    L'ensemble des contenus présents sur ce site (textes, images, graphismes, logo, icônes, etc.) sont protégés par le droit d'auteur et appartiennent à BM Data ou à leurs auteurs respectifs. Toute reproduction, distribution, modification ou utilisation de ces contenus, même partielle, est strictement interdite sans autorisation écrite préalable.
+  </p>
+
+  <h2>4. Responsabilité</h2>
+  <p>
+    BM Data s'efforce de fournir des informations exactes et à jour sur ce site. Cependant, BM Data ne peut garantir l'exactitude, la complétude ou l'actualité des informations publiées. BM Data décline toute responsabilité pour les dommages directs ou indirects résultant de l'utilisation de ce site ou des informations qu'il contient.
+  </p>
+  <p>
+    Les liens hypertextes présents sur ce site pointent vers des sites tiers. BM Data n'est pas responsable du contenu de ces sites et ne saurait être tenu responsable de tout préjudice résultant de leur consultation.
+  </p>
+
+  <h2>5. Données personnelles</h2>
+  <p>
+    La collecte et le traitement des données personnelles sur ce site sont décrits dans notre <a href="{{ '/politique-de-confidentialite/' | relative_url }}">Politique de confidentialité</a>.
+  </p>
+
+  <h2>6. Cookies</h2>
+  <p>
+    Ce site utilise des cookies techniques nécessaires à son bon fonctionnement. Aucun cookie publicitaire ou de suivi tiers n'est utilisé sans votre consentement. Pour en savoir plus, consultez notre <a href="{{ '/politique-de-confidentialite/' | relative_url }}">Politique de confidentialité</a>.
+  </p>
+
+  <h2>7. Droit applicable</h2>
+  <p>
+    Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux compétents seront ceux d'Agen (Lot-et-Garonne), sauf disposition légale contraire.
+  </p>
+
+  <h2>8. Contact</h2>
+  <p>
+    Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter à l'adresse : <a href="mailto:{{ g.contact.email }}">{{ g.contact.email }}</a>.
+  </p>
+
+</div>

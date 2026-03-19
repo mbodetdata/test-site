@@ -1,0 +1,169 @@
+{
+  "meta": {
+    "title": "Services — Conseil en données pour TPE/PME | BM Data Agen",
+    "description": "Tableaux de bord, analyse de données, automatisation des reportings, migration et formation : découvrez les services data de BM Data pour les TPE et PME du Lot-et-Garonne."
+  },
+  "hero": {
+    "eyebrow": "Services",
+    "title": "Des services data concrets pour votre entreprise",
+    "subtitle": "Pas de solutions génériques, pas de promesses vagues. Chaque mission est calibrée sur vos objectifs, vos outils et votre organisation."
+  },
+  "intro": {
+    "title": "Comment je travaille",
+    "text": "Je commence toujours par comprendre votre activité, vos vrais problèmes et vos objectifs business avant de proposer quoi que ce soit. Pas d'outil imposé, pas de méthode préfabriquée. Je construis avec vous une solution qui fonctionne dans votre réalité quotidienne."
+  },
+  "services": [
+    {
+      "id": "tableaux-de-bord",
+      "icon": "dashboard",
+      "number": "01",
+      "title": "Tableaux de bord de pilotage",
+      "subtitle": "Voyez en un coup d'œil où en est votre activité",
+      "description": "Un bon tableau de bord, c'est la différence entre piloter à l'aveugle et décider avec clarté. Je conçois des interfaces visuelles, claires et actualisées en temps réel, qui vous montrent exactement ce qui compte : ventes, marges, production, trésorerie...",
+      "benefits": [
+        "Gain de temps : plus besoin d'assembler des rapports manuellement",
+        "Décisions plus rapides et plus sûres",
+        "Partage facilité avec votre équipe ou vos associés",
+        "Alertes automatiques sur les indicateurs critiques"
+      ],
+      "tools": ["Power BI", "Google Looker Studio", "Excel avancé", "Metabase"],
+      "target": "Dirigeants, responsables commerciaux, directeurs opérationnels",
+      "cta": {
+        "label": "Discuter de mon projet",
+        "url": "/contact/?service=tableaux-de-bord"
+      }
+    },
+    {
+      "id": "analyse",
+      "icon": "analyse",
+      "number": "02",
+      "title": "Analyse et valorisation des données",
+      "subtitle": "Comprenez ce que vos chiffres vous disent vraiment",
+      "description": "Vos données sont une mine d'or inexploitée. Je les analyse pour en extraire des insights actionnables : identifier vos meilleurs clients, comprendre vos pertes, anticiper vos pics d'activité, détecter les anomalies.",
+      "benefits": [
+        "Identification des leviers de croissance cachés",
+        "Réduction des coûts et des pertes",
+        "Meilleure connaissance de vos clients et marchés",
+        "Prévisions fiables pour anticiper l'activité"
+      ],
+      "tools": ["Python", "SQL", "Excel", "Power BI"],
+      "target": "Dirigeants, responsables marketing, directeurs financiers",
+      "cta": {
+        "label": "Demander une analyse",
+        "url": "/contact/?service=analyse"
+      }
+    },
+    {
+      "id": "automatisation",
+      "icon": "automatisation",
+      "number": "03",
+      "title": "Automatisation des reportings",
+      "subtitle": "Libérez votre équipe des tâches répétitives",
+      "description": "Combien d'heures passez-vous chaque semaine à extraire, copier, coller des chiffres dans des tableaux ? Je mets en place des flux automatisés qui collectent, traitent et présentent vos données sans intervention humaine.",
+      "benefits": [
+        "Élimination des saisies manuelles et des erreurs",
+        "Rapports disponibles en temps réel",
+        "Économie de plusieurs heures par semaine",
+        "Données toujours fraîches et cohérentes"
+      ],
+      "tools": ["Python", "VBA/Macros", "Power Automate", "API"],
+      "target": "Assistants de direction, contrôleurs de gestion, équipes opérationnelles",
+      "cta": {
+        "label": "Automatiser mes reportings",
+        "url": "/contact/?service=automatisation"
+      }
+    },
+    {
+      "id": "strategie",
+      "icon": "strategie",
+      "number": "04",
+      "title": "Stratégie et gouvernance des données",
+      "subtitle": "Posez les bases d'une organisation data solide",
+      "description": "Avant de construire des tableaux de bord, il faut souvent remettre de l'ordre : définir quelles données collecter, comment les stocker, qui y a accès et sous quelle forme. Je vous aide à structurer cette base pour que tout le reste soit solide.",
+      "benefits": [
+        "Données fiables, cohérentes et centralisées",
+        "Gain de clarté sur les indicateurs vraiment importants",
+        "Conformité RGPD facilitée",
+        "Fondation solide pour grandir sans tout reconstruire"
+      ],
+      "tools": ["Audit", "Documentation", "RGPD", "Architecture data"],
+      "target": "Dirigeants, responsables informatiques, DAF",
+      "cta": {
+        "label": "Auditer mon organisation data",
+        "url": "/contact/?service=strategie&audit=1"
+      }
+    },
+    {
+      "id": "formation",
+      "icon": "formation",
+      "number": "05",
+      "title": "Formation et montée en compétences",
+      "subtitle": "Rendez vos équipes autonomes sur leurs données",
+      "description": "Avoir de bons outils, c'est bien. Savoir les utiliser, c'est mieux. Je forme vos collaborateurs à lire, interpréter et exploiter les tableaux de bord et analyses que nous construisons ensemble, ou à utiliser mieux les outils qu'ils ont déjà.",
+      "benefits": [
+        "Équipes plus autonomes et plus efficaces",
+        "Retour sur investissement durable",
+        "Formation sur mesure à vos outils et vos usages",
+        "Pédagogie accessible, sans jargon"
+      ],
+      "tools": ["Excel", "Power BI", "Looker Studio", "Ateliers pratiques"],
+      "target": "Équipes opérationnelles, managers, collaborateurs",
+      "cta": {
+        "label": "Organiser une formation",
+        "url": "/contact/?service=formation"
+      }
+    },
+    {
+      "id": "migration",
+      "icon": "migration",
+      "number": "06",
+      "title": "Migration et intégration de données",
+      "subtitle": "Faites communiquer vos outils entre eux",
+      "description": "Votre CRM, votre ERP, votre comptabilité... ces outils fonctionnent souvent en silo. Je connecte vos sources de données pour créer un environnement cohérent où tout se parle — sans ressaisie, sans erreur.",
+      "benefits": [
+        "Vision unifiée de votre activité",
+        "Suppression des doubles saisies",
+        "Fiabilité accrue des données",
+        "Intégration progressive, sans rupture d'activité"
+      ],
+      "tools": ["ETL", "API", "SQL", "Python", "Power Automate"],
+      "target": "DSI, directeurs financiers, responsables informatiques",
+      "cta": {
+        "label": "Parler de mon projet d'intégration",
+        "url": "/contact/?service=migration"
+      }
+    }
+  ],
+  "process": {
+    "title": "Comment se déroule une mission BM Data ?",
+    "subtitle": "Un processus clair, en 4 étapes",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Échange découverte",
+        "description": "30 minutes pour comprendre votre activité, vos enjeux et vos données. Sans engagement, sans discours commercial."
+      },
+      {
+        "number": "2",
+        "title": "Diagnostic et proposition",
+        "description": "J'analyse votre situation et vous propose un plan d'action concret, avec les objectifs, les livrables et le budget."
+      },
+      {
+        "number": "3",
+        "title": "Réalisation",
+        "description": "Je construis la solution avec vous, en itérant, en testant et en vous tenant informé à chaque étape."
+      },
+      {
+        "number": "4",
+        "title": "Transmission",
+        "description": "Je vous forme à utiliser ce que nous avons construit. L'objectif : votre autonomie, pas votre dépendance."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Quel service correspond à votre besoin ?",
+    "subtitle": "Parlons-en. Un premier échange de 30 minutes suffit souvent à identifier la meilleure piste.",
+    "primary": { "label": "Prendre rendez-vous", "url": "/contact/" },
+    "secondary": { "label": "Voir les réalisations", "url": "/realisations/" }
+  }
+}

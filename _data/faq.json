@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "FAQ — Questions fréquentes | BM Data, consultant data Agen",
+    "description": "Réponses aux questions les plus fréquentes sur les services de BM Data : budget, durée, outils, compatibilité, approche. Tout ce que vous voulez savoir avant de nous contacter."
+  },
+  "hero": {
+    "eyebrow": "FAQ",
+    "title": "Les questions qu'on me pose le plus souvent",
+    "subtitle": "Et leurs réponses claires, sans jargon."
+  },
+  "categories": [
+    {
+      "id": "general",
+      "label": "En général",
+      "questions": [
+        {
+          "id": "q1",
+          "question": "Qu'est-ce que le conseil en données et à quoi ça sert concrètement ?",
+          "answer": "Le conseil en données, c'est vous aider à mieux exploiter les informations que vous produisez déjà : ventes, stocks, clients, production... En les analysant et en les présentant intelligemment, on peut prendre de meilleures décisions, gagner du temps et identifier des opportunités que vous n'aviez pas vues. Concrètement : moins de temps sur Excel, plus de clarté dans vos décisions."
+        },
+        {
+          "id": "q2",
+          "question": "Est-ce que mes données sont suffisantes pour commencer ?",
+          "answer": "Presque toujours. La plupart des TPE et PME ont déjà bien plus de données utilisables qu'elles ne le pensent : factures, devis, données de caisse, fichiers clients, historiques Excel... Mon rôle commence souvent par vous aider à exploiter ce que vous avez déjà, avant d'envisager de collecter plus."
+        },
+        {
+          "id": "q3",
+          "question": "Je ne suis pas du tout à l'aise avec la technique. Est-ce que ça pose problème ?",
+          "answer": "C'est exactement pour ça que BM Data existe. Mon approche est entièrement conçue pour des dirigeants et responsables non techniques. Je traduis tout en bénéfices business, je construis des outils simples à utiliser, et je vous forme pour que vous soyez autonome. Vous n'avez pas besoin de comprendre le code pour bénéficier des résultats."
+        }
+      ]
+    },
+    {
+      "id": "offre",
+      "label": "L'offre",
+      "questions": [
+        {
+          "id": "q4",
+          "question": "Quels types d'entreprises accompagnez-vous ?",
+          "answer": "Je travaille principalement avec des TPE et PME de toutes tailles (de 2 à 200 personnes) dans des secteurs variés : commerce, industrie, artisanat, services, agroalimentaire... L'important n'est pas votre secteur, mais votre volonté d'améliorer votre façon de piloter votre activité."
+        },
+        {
+          "id": "q5",
+          "question": "Proposez-vous des forfaits ou travaillez-vous uniquement sur mesure ?",
+          "answer": "Je travaille principalement sur mesure, car chaque entreprise a des besoins, des outils et des données différents. Cela dit, certaines missions récurrentes (comme la mise en place d'un tableau de bord de base ou une formation Excel) peuvent faire l'objet d'un forfait. Je vous proposerai toujours la formule la plus adaptée à votre situation."
+        },
+        {
+          "id": "q6",
+          "question": "Intervenez-vous uniquement en Lot-et-Garonne ?",
+          "answer": "Je suis basé à Agen et j'interviens facilement dans tout le Lot-et-Garonne (47) et la Nouvelle-Aquitaine. Pour les missions à distance, j'interviens partout en France. La majorité des missions peuvent d'ailleurs se faire entièrement à distance si vous le souhaitez."
+        }
+      ]
+    },
+    {
+      "id": "budget",
+      "label": "Budget & tarifs",
+      "questions": [
+        {
+          "id": "q7",
+          "question": "Combien coûte une mission BM Data ?",
+          "answer": "Chaque mission est chiffrée sur mesure après l'échange découverte gratuit. Le budget dépend de la complexité du projet, du nombre de sources de données et du niveau de personnalisation. Une chose est certaine : je travaille avec des TPE et PME, donc mes tarifs sont pensés pour s'adapter à vos réalités. Le premier échange est toujours gratuit et sans engagement."
+        },
+        {
+          "id": "q8",
+          "question": "Mon investissement sera-t-il rentable ?",
+          "answer": "C'est la question que je pose moi-même à chaque mission. Si je ne vois pas un retour sur investissement clair pour vous, je vous le dis franchement. En général, les gains sont rapides : quelques heures économisées par semaine, une décision mieux informée qui évite une erreur coûteuse, un process optimisé... Souvent, le retour sur investissement se calcule en semaines, pas en années."
+        }
+      ]
+    },
+    {
+      "id": "process",
+      "label": "Déroulement",
+      "questions": [
+        {
+          "id": "q9",
+          "question": "Comment se déroule un premier contact ?",
+          "answer": "C'est très simple. Vous me contactez via le formulaire ou par téléphone. Je vous réponds sous 24 h pour planifier un échange découverte de 30 minutes (téléphone, visio ou en présentiel à Agen). Cet échange est gratuit, sans engagement et sans discours commercial. L'objectif est simplement de comprendre votre situation et de voir ensemble si je peux vous aider."
+        },
+        {
+          "id": "q10",
+          "question": "Combien de temps dure une mission type ?",
+          "answer": "Ça dépend du projet. Une formation de base peut se faire en 1 ou 2 jours. La mise en place d'un tableau de bord simple prend en général 2 à 4 semaines. Un projet d'automatisation ou d'analyse plus complexe peut s'étaler sur 1 à 3 mois. Dans tous les cas, je vous précise le calendrier avant de démarrer."
+        },
+        {
+          "id": "q11",
+          "question": "Puis-je faire appel à vous ponctuellement ou uniquement sur des projets longs ?",
+          "answer": "Les deux sont possibles. Je réalise des missions ponctuelles (audit, analyse spécifique, formation) comme des accompagnements sur le long terme. Certains clients font appel à moi ponctuellement chaque trimestre pour faire le point et optimiser leurs outils. L'organisation est flexible et s'adapte à vos besoins."
+        }
+      ]
+    },
+    {
+      "id": "technique",
+      "label": "Technique & outils",
+      "questions": [
+        {
+          "id": "q12",
+          "question": "Devrai-je changer mes outils actuels ?",
+          "answer": "Pas forcément. Je commence toujours par m'appuyer sur ce que vous utilisez déjà. Si Excel fonctionne pour vous, je commence avec Excel. Si vous avez un logiciel de gestion ou un CRM, je travaille avec lui. Je ne vous imposerai jamais un outil pour le plaisir de la modernité. Le changement n'est recommandé que s'il apporte un bénéfice réel et justifié."
+        },
+        {
+          "id": "q13",
+          "question": "Mes données seront-elles en sécurité ?",
+          "answer": "La sécurité et la confidentialité de vos données sont au cœur de ma démarche. Je travaille dans le respect du RGPD, je ne transmets aucune donnée à des tiers, et je vous accompagne si nécessaire dans la mise en conformité de vos pratiques data. Un accord de confidentialité peut être signé si vous le souhaitez."
+        },
+        {
+          "id": "q14",
+          "question": "Que se passe-t-il si j'ai un problème après la fin de la mission ?",
+          "answer": "Je reste disponible après chaque mission pour vous accompagner en cas de besoin. Je propose si nécessaire un suivi ou une maintenance légère. Mon objectif est que vous soyez autonome, mais je ne vous laisse pas sans filet. Un contrat de maintenance peut être prévu pour les projets qui le nécessitent."
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Vous avez une autre question ?",
+    "subtitle": "Posez-la moi directement. Je vous répondrai sous 24 h.",
+    "primary": { "label": "Contacter BM Data", "url": "/contact/" }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "À propos — Martial Bodet, consultant data | BM Data Agen",
+    "description": "Martial Bodet, consultant data basé à Agen. Découvrez son parcours, sa philosophie et pourquoi il accompagne les TPE et PME du Lot-et-Garonne dans la valorisation de leurs données."
+  },
+  "hero": {
+    "eyebrow": "À propos",
+    "title": "Martial Bodet, consultant data",
+    "subtitle": "Des données aux décisions : un accompagnement humain, concret et orienté résultats pour les TPE et PME.",
+    "image": "/assets/images/martial-bodet-consultant-data-agen.jpg",
+    "image_alt": "Martial Bodet, consultant data BM Data à Agen"
+  },
+  "intro": {
+    "title": "Bonjour, je suis Martial",
+    "paragraphs": [
+      "J'ai créé BM Data avec une conviction simple : les données ne sont pas réservées aux grandes entreprises. Une TPE ou une PME bien équipée, avec les bons indicateurs et les bons outils, peut prendre des décisions aussi éclairées que n'importe quel grand groupe.",
+      "Après plusieurs années dans le conseil et l'analyse de données dans des environnements variés, j'ai décidé de mettre cette expertise au service des entrepreneurs et des dirigeants locaux, ceux qui ont un vrai besoin mais qui n'ont pas la taille pour embaucher un directeur data à temps plein.",
+      "Basé à Agen, j'interviens principalement en Lot-et-Garonne et en Nouvelle-Aquitaine, en présentiel ou à distance selon vos préférences."
+    ]
+  },
+  "values": {
+    "title": "Ce qui guide ma façon de travailler",
+    "items": [
+      {
+        "icon": "clarity",
+        "title": "La clarté avant tout",
+        "description": "Je ne parle pas de data lakes, de machine learning ou de big data si ça ne vous apporte rien. Je traduis tout en bénéfices concrets pour votre activité."
+      },
+      {
+        "icon": "results",
+        "title": "Les résultats, pas les livrables",
+        "description": "Un tableau de bord que personne n'utilise, ça ne sert à rien. Mon objectif est que votre organisation s'améliore réellement après chaque mission."
+      },
+      {
+        "icon": "autonomy",
+        "title": "Votre autonomie",
+        "description": "Je ne cherche pas à vous rendre dépendant. Je vous forme, je documente, je construis des solutions que vous pouvez faire évoluer sans moi."
+      },
+      {
+        "icon": "proximity",
+        "title": "La proximité",
+        "description": "Être basé localement n'est pas qu'un argument commercial. C'est pouvoir venir chez vous, comprendre votre contexte et construire une relation de confiance durable."
+      }
+    ]
+  },
+  "expertise": {
+    "title": "Compétences et outils",
+    "categories": [
+      {
+        "name": "Analyse & visualisation",
+        "items": ["Power BI", "Google Looker Studio", "Metabase", "Excel avancé"]
+      },
+      {
+        "name": "Programmation & automatisation",
+        "items": ["Python", "SQL", "Power Automate", "Apps Script", "VBA"]
+      },
+      {
+        "name": "Données & intégration",
+        "items": ["ETL / Data pipelines", "API REST", "Bases de données SQL", "CRM"]
+      },
+      {
+        "name": "Méthodes & conseil",
+        "items": ["Gouvernance des données", "RGPD", "Stratégie data", "Formation"]
+      }
+    ]
+  },
+  "parcours": {
+    "title": "Parcours",
+    "items": [
+      {
+        "year": "2020",
+        "title": "Création de BM Data",
+        "description": "Lancement de l'activité de conseil data indépendant à Agen, avec un focus sur les TPE/PME du Lot-et-Garonne."
+      },
+      {
+        "year": "2017–2020",
+        "title": "Consultant data senior",
+        "description": "Accompagnement de moyennes et grandes entreprises dans leur transformation data : mise en place de solutions décisionnelles, formation des équipes."
+      },
+      {
+        "year": "2014–2017",
+        "title": "Analyste data",
+        "description": "Analyse de données et construction d'outils de reporting dans des secteurs variés (industrie, services, commerce)."
+      },
+      {
+        "year": "2014",
+        "title": "Formation",
+        "description": "Diplômé d'une école d'ingénieur / formation en statistiques et informatique décisionnelle."
+      }
+    ]
+  },
+  "local": {
+    "title": "Ancrés localement, opérationnels partout",
+    "text": "BM Data est basé à Agen et intervient principalement en Lot-et-Garonne (47), dans le Gers (32), les Landes (40) et sur l'ensemble de la Nouvelle-Aquitaine. Les missions à distance sont également possibles partout en France.",
+    "zones": [
+      "Agen et agglomération",
+      "Villeneuve-sur-Lot",
+      "Marmande",
+      "Nérac",
+      "Lot-et-Garonne (47)",
+      "Nouvelle-Aquitaine",
+      "France entière (à distance)"
+    ]
+  },
+  "cta": {
+    "title": "Envie d'en savoir plus sur mon approche ?",
+    "subtitle": "Je vous propose un premier échange gratuit de 30 minutes pour découvrir votre situation et vous montrer concrètement comment les données peuvent vous aider.",
+    "primary": { "label": "Prendre rendez-vous", "url": "/contact/" },
+    "secondary": { "label": "Voir les réalisations", "url": "/realisations/" }
+  }
+}

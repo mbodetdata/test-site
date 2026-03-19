@@ -1,0 +1,73 @@
+{% assign g   = site.data.global %}
+{% assign nav = site.data.navigation %}
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Col 1 : Brand -->
+      <div class="footer-brand">
+        <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="{{ g.site_name }} — Accueil">
+          <div class="logo-mark" aria-hidden="true">BM</div>
+          <span class="logo-text">BM<span> Data</span></span>
+        </a>
+        <p class="footer-desc">
+          Consultant data pour TPE/PME, basé à Agen (Lot-et-Garonne). J'aide les dirigeants à prendre de meilleures décisions grâce à leurs données.
+        </p>
+        <div class="footer-social">
+          <a href="{{ g.social.linkedin }}" rel="noopener noreferrer" target="_blank" aria-label="{{ g.social.linkedin_label }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <a href="mailto:{{ g.contact.email }}" style="font-size:.875rem;color:rgba(255,255,255,.55);display:block;margin-bottom:.5rem;">{{ g.contact.email }}</a>
+          <a href="tel:{{ g.contact.phone | remove: ' ' | remove: '(' | remove: ')' }}" style="font-size:.875rem;color:rgba(255,255,255,.55);">{{ g.contact.phone_display }}</a>
+        </div>
+      </div>
+
+      <!-- Col 2 : Pages -->
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          {% for item in nav.footer_col1 %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Col 3 : Ressources -->
+      <div class="footer-col">
+        <h5>Ressources</h5>
+        <ul>
+          {% for item in nav.footer_col2 %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Col 4 : Légal -->
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          {% for item in nav.footer_col3 %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.label }}</a></li>
+          {% endfor %}
+        </ul>
+        <div style="margin-top:2rem;">
+          <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-sm">Prendre rendez-vous</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © {{ 'now' | date: "%Y" }} {{ g.footer.copyright }}. Basé à Agen, Lot-et-Garonne.
+      </p>
+      <p class="footer-copy">
+        Fait avec soin en France 🇫🇷
+      </p>
+    </div>
+  </div>
+</footer>

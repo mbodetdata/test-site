@@ -1,0 +1,82 @@
+{% assign g = site.data.global %}
+{% assign page_title    = page.title | default: g.site_name %}
+{% assign page_desc     = page.description | default: site.description %}
+{% assign page_image    = page.og_image | default: site.og_image %}
+{% assign canonical_url = page.url | absolute_url %}
+
+<!-- Charset & Viewport -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Title -->
+{% if page.url == "/" %}
+<title>{{ g.site_name }} — {{ g.baseline }}</title>
+{% else %}
+<title>{{ page_title }} | {{ g.site_name }}</title>
+{% endif %}
+
+<!-- Meta description -->
+<meta name="description" content="{{ page_desc | strip_html | truncate: 160 }}">
+
+<!-- Canonical -->
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- Robots -->
+{% if page.robots %}
+<meta name="robots" content="{{ page.robots }}">
+{% else %}
+<meta name="robots" content="index, follow">
+{% endif %}
+
+<!-- Open Graph -->
+<meta property="og:type"         content="{{ page.og_type | default: 'website' }}">
+<meta property="og:title"        content="{{ page_title }}">
+<meta property="og:description"  content="{{ page_desc | strip_html | truncate: 200 }}">
+<meta property="og:url"          content="{{ canonical_url }}">
+<meta property="og:image"        content="{{ page_image | absolute_url }}">
+<meta property="og:site_name"    content="{{ g.site_name }}">
+<meta property="og:locale"       content="fr_FR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="{{ site.twitter_card | default: 'summary_large_image' }}">
+<meta name="twitter:title"       content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_desc | strip_html | truncate: 200 }}">
+<meta name="twitter:image"       content="{{ page_image | absolute_url }}">
+
+<!-- Author -->
+<meta name="author" content="{{ g.contact.email }}">
+
+<!-- Langue -->
+<meta name="language" content="fr">
+<meta name="geo.region" content="FR-47">
+<meta name="geo.placename" content="{{ g.location.city }}">
+
+<!-- Couleur du navigateur -->
+<meta name="theme-color" content="#0f172a">
+<meta name="msapplication-TileColor" content="#0f172a">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+
+<!-- Manifest -->
+<link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+<!-- Feed -->
+<link rel="alternate" type="application/rss+xml" title="{{ g.site_name }} Blog" href="{{ '/feed.xml' | relative_url }}">
+
+<!-- Schema.org -->
+{% include schema.html %}

@@ -1,0 +1,32 @@
+{% assign g   = site.data.global %}
+{% assign nav = site.data.navigation %}
+
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+
+    <!-- Logo -->
+    <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="{{ g.site_name }} — Retour à l'accueil">
+      <div class="logo-mark" aria-hidden="true">BM</div>
+      <span class="logo-text">BM<span> Data</span></span>
+    </a>
+
+    <!-- Navigation principale -->
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Navigation principale">
+      {% for item in nav.main %}
+      <a href="{{ item.url | relative_url }}"
+         class="nav-link{% if item.highlight %} nav-cta{% endif %}{% if page.url == item.url or page.url == item.active_path %} active{% endif %}"
+         {% if page.url == item.url or page.url == item.active_path %}aria-current="page"{% endif %}>
+        {{ item.label }}
+      </a>
+      {% endfor %}
+    </nav>
+
+    <!-- Burger mobile -->
+    <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>

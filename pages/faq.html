@@ -1,0 +1,83 @@
+---
+layout: page
+title: "FAQ — Questions fréquentes sur BM Data"
+description: "Réponses aux questions les plus fréquentes sur les services de BM Data : budget, durée, outils, compatibilité, approche. Tout ce que vous voulez savoir avant de nous contacter."
+permalink: /faq/
+body_class: "page-faq"
+---
+
+{% assign d = site.data.faq %}
+{% assign g = site.data.global %}
+
+<!-- HERO -->
+<section class="page-hero" aria-labelledby="faq-title">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="{{ '/' | relative_url }}">Accueil</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>FAQ</span>
+    </nav>
+    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+    <h1 id="faq-title">{{ d.hero.title }}</h1>
+    <p>{{ d.hero.subtitle }}</p>
+  </div>
+</section>
+
+<!-- FILTRES CATÉGORIES -->
+<section class="section section--light" style="padding:1.5rem 0;">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;" role="tablist" aria-label="Filtrer les questions par catégorie">
+      <button class="btn btn-sm btn-primary faq-filter active" data-category="all" role="tab">Toutes les questions</button>
+      {% for cat in d.categories %}
+      <button class="btn btn-sm btn-outline faq-filter" data-category="{{ cat.id }}" role="tab">{{ cat.label }}</button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- FAQ CONTENU -->
+<section class="section">
+  <div class="container" style="max-width:780px;margin:0 auto;">
+    {% for cat in d.categories %}
+    <div class="faq-section fade-up" data-category="{{ cat.id }}" style="margin-bottom:3rem;">
+      <h2 style="font-size:var(--text-lg);color:var(--color-blue);margin-bottom:1.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:var(--text-xs);">{{ cat.label }}</h2>
+      {% for q in cat.questions %}
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-{{ q.id }}"
+                id="faq-btn-{{ q.id }}"
+                itemprop="name">
+          {{ q.question }}
+          <span class="faq-chevron" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"
+             id="faq-answer-{{ q.id }}"
+             role="region"
+             aria-labelledby="faq-btn-{{ q.id }}"
+             itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <span itemprop="text">{{ q.answer }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section--light">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <h2>{{ d.cta.title }}</h2>
+      <p style="margin:1rem auto 2rem;">{{ d.cta.subtitle }}</p>
+      <a href="{{ d.cta.primary.url | relative_url }}" class="btn btn-primary btn-lg">{{ d.cta.primary.label }}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.faq-filter.active { background:var(--color-blue);color:white;border-color:var(--color-blue); }
+</style>

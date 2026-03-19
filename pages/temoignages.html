@@ -1,0 +1,72 @@
+---
+layout: page
+title: "Témoignages clients — BM Data"
+description: "Ce que disent les clients de BM Data : témoignages de dirigeants de TPE et PME accompagnés par Martial Bodet dans leur transformation data à Agen."
+permalink: /temoignages/
+body_class: "page-temoignages"
+---
+
+{% assign d = site.data.temoignages %}
+{% assign g = site.data.global %}
+
+<!-- HERO -->
+<section class="page-hero" aria-labelledby="temoignages-title">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="{{ '/' | relative_url }}">Accueil</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Témoignages</span>
+    </nav>
+    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+    <h1 id="temoignages-title">{{ d.hero.title }}</h1>
+    <p>{{ d.hero.subtitle }}</p>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES GRILLE -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-auto">
+      {% for t in d.testimonials %}
+        {% include components/testimonial-card.html testimonial=t %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- RÉSUMÉ STATS -->
+<section class="stats-band" aria-label="Résultats clients">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-value">100%</span>
+        <span class="stat-label">Clients satisfaits</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">5/5</span>
+        <span class="stat-label">Note moyenne</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">50+</span>
+        <span class="stat-label">Projets réalisés</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">10+</span>
+        <span class="stat-label">Années d'expérience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>{{ d.cta.title }}</h2>
+      <p>{{ d.cta.subtitle }}</p>
+      <div class="cta-actions">
+        <a href="{{ d.cta.primary.url | relative_url }}" class="btn btn-gold btn-lg">{{ d.cta.primary.label }}</a>
+      </div>
+    </div>
+  </div>
+</section>

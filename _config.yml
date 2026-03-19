@@ -1,0 +1,93 @@
+# ─────────────────────────────────────────────────────────────────
+# BM DATA — Configuration Jekyll
+# ─────────────────────────────────────────────────────────────────
+
+title: "BM Data"
+tagline: "Conseil en données pour TPE/PME"
+description: "BM Data est un consultant data basé à Agen. Il aide les TPE et PME à exploiter leurs données pour prendre de meilleures décisions, optimiser leurs performances et gagner du temps."
+baseurl: ""
+url: "https://bmdata.fr"
+lang: "fr"
+
+# Identité
+author:
+  name: "Martial Bodet"
+  email: "contact@bmdata.fr"
+  twitter: "@bmdata_fr"
+
+# Localisation
+location:
+  city: "Agen"
+  region: "Lot-et-Garonne"
+  country: "France"
+  postal_code: "47000"
+  phone: "+33 (0)6 XX XX XX XX"
+  address: "Agen, 47000, France"
+
+# Réseaux sociaux
+social:
+  linkedin: "https://www.linkedin.com/in/martial-bodet/"
+  github: ""
+  twitter: ""
+
+# SEO & open graph
+logo: "/assets/images/logo-bmdata.svg"
+og_image: "/assets/images/og-bmdata.jpg"
+twitter_card: "summary_large_image"
+
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Plugins (compatibles GitHub Pages)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
+
+# Pagination blog
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Exclusions du build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .gitignore
+  - README.md
+  - "*.sh"
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Martial Bodet"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Timezone
+timezone: Europe/Paris
+
+# Feed
+feed:
+  path: feed.xml

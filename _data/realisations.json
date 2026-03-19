@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "title": "Réalisations — Projets data pour TPE/PME | BM Data Agen",
+    "description": "Découvrez les projets data réalisés par BM Data pour des TPE et PME du Lot-et-Garonne : tableaux de bord, automatisations, analyses et plus encore."
+  },
+  "hero": {
+    "eyebrow": "Réalisations",
+    "title": "Des projets concrets, des résultats mesurables",
+    "subtitle": "Chaque réalisation illustre un problème réel résolu pour une entreprise comme la vôtre. Les chiffres et les témoignages parlent d'eux-mêmes."
+  },
+  "filters": ["Tous", "Tableau de bord", "Automatisation", "Analyse", "Formation", "Stratégie"],
+  "projects": [
+    {
+      "id": "reporting-commercial-negoce",
+      "title": "Automatisation du reporting commercial",
+      "client": "Négoce en matériaux de construction",
+      "location": "Agen (47)",
+      "sector": "Commerce B2B",
+      "category": "Automatisation",
+      "tags": ["Automatisation", "Tableau de bord"],
+      "challenge": "Le directeur commercial passait 4 heures chaque lundi à compiler les résultats de 6 commerciaux depuis différents fichiers Excel pour produire son rapport hebdomadaire.",
+      "solution": "Mise en place d'un flux automatisé qui consolide les données de tous les commerciaux en temps réel dans un tableau de bord Power BI actualisé chaque nuit.",
+      "results": [
+        { "value": "4 h", "label": "gagnées chaque semaine" },
+        { "value": "0", "label": "erreur de saisie manuelle" },
+        { "value": "100 %", "label": "des données disponibles en temps réel" }
+      ],
+      "quote": "Le lundi matin, au lieu de passer des heures sur Excel, j'ouvre mon tableau de bord et j'ai tout. C'est une autre façon de travailler.",
+      "quote_author": "Directeur commercial",
+      "tools": ["Power BI", "Python", "Excel"],
+      "featured": true,
+      "image": "/assets/images/realisations/reporting-commercial.jpg",
+      "image_alt": "Tableau de bord commercial automatisé sous Power BI"
+    },
+    {
+      "id": "pilotage-production-industrie",
+      "title": "Tableau de bord de production industrielle",
+      "client": "PME industrielle",
+      "location": "Lot-et-Garonne (47)",
+      "sector": "Industrie",
+      "category": "Tableau de bord",
+      "tags": ["Tableau de bord", "Analyse"],
+      "challenge": "La direction ne disposait d'aucun outil de suivi de la production en temps réel. Les décisions étaient prises sur la base de données de la veille, saisies manuellement.",
+      "solution": "Connexion directe aux machines via API et création d'un tableau de bord de production temps réel avec alertes automatiques en cas d'anomalie.",
+      "results": [
+        { "value": "-30 %", "label": "de temps d'arrêt machine" },
+        { "value": "+15 %", "label": "de productivité" },
+        { "value": "Temps réel", "label": "suivi de la production" }
+      ],
+      "quote": "On voit maintenant ce qui se passe à l'atelier depuis le bureau. Les pannes sont détectées bien plus vite.",
+      "quote_author": "Responsable de production",
+      "tools": ["Python", "API", "Power BI"],
+      "featured": true,
+      "image": "/assets/images/realisations/production-industrielle.jpg",
+      "image_alt": "Tableau de bord de production industrielle en temps réel"
+    },
+    {
+      "id": "analyse-clientele-commerce",
+      "title": "Analyse de la clientèle et segmentation",
+      "client": "Commerce de détail",
+      "location": "Agen (47)",
+      "sector": "Commerce de détail",
+      "category": "Analyse",
+      "tags": ["Analyse"],
+      "challenge": "Aucune visibilité sur les profils des clients, leurs habitudes d'achat et les produits les plus rentables. La stratégie commerciale reposait uniquement sur l'expérience du gérant.",
+      "solution": "Analyse complète de 3 ans de données de caisse : segmentation clients, identification des produits moteurs, cartographie des pics d'activité.",
+      "results": [
+        { "value": "+22 %", "label": "de panier moyen après réorientation" },
+        { "value": "3 segments", "label": "clients identifiés et actionnés" },
+        { "value": "-18 %", "label": "de stock dormant" }
+      ],
+      "quote": "Je savais que j'avais des données, mais je ne savais pas qu'elles pouvaient m'apprendre autant sur mes clients.",
+      "quote_author": "Gérante, commerce de détail",
+      "tools": ["Python", "Excel", "Looker Studio"],
+      "featured": true,
+      "image": "/assets/images/realisations/analyse-clientele.jpg",
+      "image_alt": "Analyse et segmentation de clientèle"
+    },
+    {
+      "id": "dashboard-rh-cabinet",
+      "title": "Tableau de bord RH et suivi des congés",
+      "client": "Cabinet de conseil",
+      "location": "Lot-et-Garonne (47)",
+      "sector": "Services",
+      "category": "Tableau de bord",
+      "tags": ["Tableau de bord", "Automatisation"],
+      "challenge": "Gestion des plannings et congés de 25 collaborateurs sur papier et email, source permanente d'erreurs et de conflits de planning.",
+      "solution": "Déploiement d'un système de suivi RH centralisé avec tableau de bord pour les managers et alertes automatiques.",
+      "results": [
+        { "value": "-90 %", "label": "de conflits de planning" },
+        { "value": "25", "label": "collaborateurs gérés en temps réel" },
+        { "value": "2 j", "label": "gagnés par mois pour l'assistante RH" }
+      ],
+      "quote": "La gestion des congés était un vrai casse-tête. Maintenant tout est visible en un coup d'œil.",
+      "quote_author": "Directrice administrative",
+      "tools": ["Google Sheets", "Looker Studio", "Apps Script"],
+      "featured": false,
+      "image": "/assets/images/realisations/dashboard-rh.jpg",
+      "image_alt": "Tableau de bord RH et gestion des congés"
+    },
+    {
+      "id": "formation-excel-pme",
+      "title": "Formation Excel avancé pour l'équipe finance",
+      "client": "PME agroalimentaire",
+      "location": "Nérac (47)",
+      "sector": "Agroalimentaire",
+      "category": "Formation",
+      "tags": ["Formation"],
+      "challenge": "L'équipe financière utilisait Excel de manière basique, créait des formules instables et ne savait pas automatiser ses tâches récurrentes.",
+      "solution": "Formation sur 2 jours aux fonctions avancées d'Excel (tableaux croisés dynamiques, Power Query, macros) avec des exercices basés sur leurs propres fichiers.",
+      "results": [
+        { "value": "2 jours", "label": "de formation pratique" },
+        { "value": "5 h", "label": "économisées chaque mois par personne" },
+        { "value": "100 %", "label": "des participants autonomes à l'issue" }
+      ],
+      "quote": "La formation était vraiment adaptée à nos fichiers. On a appris sur nos propres données, c'est beaucoup plus concret.",
+      "quote_author": "Responsable financier",
+      "tools": ["Excel", "Power Query", "VBA"],
+      "featured": false,
+      "image": "/assets/images/realisations/formation-excel.jpg",
+      "image_alt": "Formation Excel avancé pour une équipe finance"
+    },
+    {
+      "id": "strategie-data-artisan",
+      "title": "Structuration de la donnée client",
+      "client": "Artisan du bâtiment",
+      "location": "Lot-et-Garonne (47)",
+      "sector": "Artisanat / Bâtiment",
+      "category": "Stratégie",
+      "tags": ["Stratégie"],
+      "challenge": "Les informations clients étaient éparpillées : devis sur papier, contacts dans le téléphone, factures dans un dossier. Impossible de relancer, de fidéliser ou de mesurer l'activité.",
+      "solution": "Audit de l'existant, choix d'un CRM adapté, migration des données et mise en place d'un tableau de bord de suivi simple.",
+      "results": [
+        { "value": "+35 %", "label": "de relances clients réalisées" },
+        { "value": "1 outil", "label": "centralisé pour tout suivre" },
+        { "value": "3 mois", "label": "pour être pleinement opérationnel" }
+      ],
+      "quote": "Je ne perdais plus des clients faute de les relancer. Maintenant je sais exactement où j'en suis avec chacun.",
+      "quote_author": "Gérant, artisan du bâtiment",
+      "tools": ["CRM", "Google Sheets", "Looker Studio"],
+      "featured": false,
+      "image": "/assets/images/realisations/crm-artisan.jpg",
+      "image_alt": "Structuration donnée client pour artisan du bâtiment"
+    }
+  ],
+  "cta": {
+    "title": "Votre projet ressemble à l'un de ces cas ?",
+    "subtitle": "Parlons-en. Je vous explique comment une approche similaire pourrait s'appliquer à votre situation, gratuitement et sans engagement.",
+    "primary": { "label": "Discuter de mon projet", "url": "/contact/" },
+    "secondary": { "label": "Voir les services", "url": "/services/" }
+  }
+}

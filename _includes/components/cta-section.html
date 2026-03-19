@@ -1,0 +1,28 @@
+{% comment %}
+  Usage :
+  {% include components/cta-section.html
+    title="Mon titre"
+    subtitle="Mon sous-titre"
+    cta_primary_label="Bouton 1"
+    cta_primary_url="/contact/"
+    cta_secondary_label="Bouton 2"
+    cta_secondary_url="/services/"
+  %}
+{% endcomment %}
+
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>{{ include.title }}</h2>
+      <p>{{ include.subtitle }}</p>
+      <div class="cta-actions">
+        {% if include.cta_primary_label %}
+        <a href="{{ include.cta_primary_url | relative_url }}" class="btn btn-gold btn-lg">{{ include.cta_primary_label }}</a>
+        {% endif %}
+        {% if include.cta_secondary_label %}
+        <a href="{{ include.cta_secondary_url | relative_url }}" class="btn btn-outline-white btn-lg">{{ include.cta_secondary_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

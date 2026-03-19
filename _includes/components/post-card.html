@@ -1,0 +1,48 @@
+{% comment %}
+  Usage : {% include components/post-card.html post=post %}
+{% endcomment %}
+
+{% assign p = include.post %}
+
+<article class="post-card fade-up">
+  {% if p.image %}
+  <div class="post-card__image">
+    <img src="{{ p.image | relative_url }}"
+         alt="{{ p.image_alt | default: p.title }}"
+         loading="lazy"
+         width="640"
+         height="360">
+  </div>
+  {% else %}
+  <div class="post-card__image" style="background:linear-gradient(135deg,var(--color-navy-mid),var(--color-navy));display:flex;align-items:center;justify-content:center;">
+    <span style="font-size:2.5rem;opacity:.2;" aria-hidden="true">📝</span>
+  </div>
+  {% endif %}
+
+  <div class="post-card__body">
+    <div class="post-meta">
+      {% if p.category %}
+      <span class="post-category">{{ p.category }}</span>
+      {% endif %}
+      <time datetime="{{ p.date | date_to_xmlschema }}">
+        {{ p.date | date: "%d/%m/%Y" }}
+      </time>
+    </div>
+
+    <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+
+    <p>{{ p.excerpt | strip_html | truncate: 120 }}</p>
+
+    <div class="post-card__footer">
+      {% if p.read_time %}
+      <span class="post-read-time">{{ p.read_time }}</span>
+      {% else %}
+      <span class="post-read-time">Lecture : ~5 min</span>
+      {% endif %}
+      <a href="{{ p.url | relative_url }}" class="btn btn-ghost btn-sm" aria-label="Lire : {{ p.title }}">
+        Lire l'article
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,26 @@
+{
+  "main": [
+    { "label": "Accueil",       "url": "/",                "active_path": "/" },
+    { "label": "Services",      "url": "/services/",       "active_path": "/services/" },
+    { "label": "Réalisations",  "url": "/realisations/",   "active_path": "/realisations/" },
+    { "label": "À propos",      "url": "/a-propos/",       "active_path": "/a-propos/" },
+    { "label": "Blog",          "url": "/blog/",           "active_path": "/blog/" },
+    { "label": "Contact",       "url": "/contact/",        "active_path": "/contact/", "highlight": true }
+  ],
+  "footer_col1": [
+    { "label": "Accueil",       "url": "/" },
+    { "label": "Services",      "url": "/services/" },
+    { "label": "Réalisations",  "url": "/realisations/" },
+    { "label": "À propos",      "url": "/a-propos/" }
+  ],
+  "footer_col2": [
+    { "label": "Blog",                      "url": "/blog/" },
+    { "label": "Témoignages",               "url": "/temoignages/" },
+    { "label": "FAQ",                        "url": "/faq/" },
+    { "label": "Contact",                   "url": "/contact/" }
+  ],
+  "footer_col3": [
+    { "label": "Mentions légales",           "url": "/mentions-legales/" },
+    { "label": "Politique de confidentialité","url": "/politique-de-confidentialite/" }
+  ]
+}

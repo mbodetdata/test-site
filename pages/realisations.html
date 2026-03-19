@@ -1,0 +1,140 @@
+---
+layout: page
+title: "Réalisations — Projets data pour TPE/PME"
+description: "Découvrez les projets data réalisés par BM Data pour des TPE et PME du Lot-et-Garonne : tableaux de bord, automatisations, analyses et plus encore."
+permalink: /realisations/
+body_class: "page-realisations"
+---
+
+{% assign d = site.data.realisations %}
+{% assign g = site.data.global %}
+
+<!-- HERO -->
+<section class="page-hero" aria-labelledby="realisations-title">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="{{ '/' | relative_url }}">Accueil</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Réalisations</span>
+    </nav>
+    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+    <h1 id="realisations-title">{{ d.hero.title }}</h1>
+    <p>{{ d.hero.subtitle }}</p>
+  </div>
+</section>
+
+<!-- FILTRES -->
+<section class="section section--light" style="padding-top:2rem;padding-bottom:2rem;">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;" role="group" aria-label="Filtrer les projets">
+      {% for f in d.filters %}
+      <button class="btn btn-sm filter-btn {% if forloop.first %}active btn-primary{% else %}btn-outline{% endif %}"
+              data-filter="{{ f | downcase | replace: ' ', '-' }}"
+              style="{% unless forloop.first %}border-color:var(--color-gray-200);{% endunless %}">
+        {{ f }}
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- GRILLE PROJETS -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-auto">
+      {% for project in d.projects %}
+        {% include components/realisation-card.html project=project %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS DÉTAIL (ancres) -->
+<section class="section section--light">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Détails</span>
+      <h2>Quelques projets en détail</h2>
+      <p>Pour comprendre concrètement comment se déroule une mission BM Data</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4rem;">
+      {% for p in d.projects %}
+      <article id="{{ p.id }}" class="realisation-detail fade-up" style="background:white;border-radius:var(--radius-2xl);border:1px solid var(--color-gray-100);overflow:hidden;box-shadow:var(--shadow-sm);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:400px;">
+          <!-- Image -->
+          <div style="background:linear-gradient(135deg,var(--color-navy-mid),var(--color-navy));display:flex;align-items:center;justify-content:center;min-height:300px;">
+            {% if p.image %}
+            <img src="{{ p.image | relative_url }}" alt="{{ p.image_alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            {% else %}
+            <div style="text-align:center;color:rgba(255,255,255,.3);">
+              <div style="font-size:4rem;" aria-hidden="true">📊</div>
+              <p style="font-size:.875rem;margin-top:1rem;">{{ p.category }}</p>
+            </div>
+            {% endif %}
+          </div>
+          <!-- Contenu -->
+          <div style="padding:2.5rem;">
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem;">
+              <span class="badge badge-blue">{{ p.category }}</span>
+              <span class="badge badge-gray">{{ p.sector }}</span>
+              <span class="badge badge-gray">{{ p.location }}</span>
+            </div>
+            <h3 style="font-size:var(--text-2xl);margin-bottom:.5rem;">{{ p.title }}</h3>
+            <p style="font-size:var(--text-sm);color:var(--color-gold);font-weight:600;margin-bottom:1.5rem;">{{ p.client }}</p>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+              <div>
+                <h4 style="font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--color-gray-400);font-weight:700;margin-bottom:.75rem;">Problème</h4>
+                <p style="font-size:.875rem;">{{ p.challenge }}</p>
+              </div>
+              <div>
+                <h4 style="font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--color-gray-400);font-weight:700;margin-bottom:.75rem;">Solution</h4>
+                <p style="font-size:.875rem;">{{ p.solution }}</p>
+              </div>
+            </div>
+
+            <!-- Résultats -->
+            <div style="background:var(--color-gray-50);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;">
+              {% for r in p.results %}
+              <div style="text-align:center;flex:1;min-width:80px;">
+                <span style="display:block;font-size:1.5rem;font-weight:800;color:var(--color-navy);line-height:1;">{{ r.value }}</span>
+                <span style="font-size:.65rem;color:var(--color-gray-400);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-top:2px;display:block;">{{ r.label }}</span>
+              </div>
+              {% endfor %}
+            </div>
+
+            {% if p.quote %}
+            <blockquote style="border-left:3px solid var(--color-blue);padding:.75rem 1rem;margin-bottom:1rem;background:var(--color-blue-pale);border-radius:0 var(--radius-md) var(--radius-md) 0;">
+              <p style="font-size:.875rem;font-style:italic;color:var(--color-navy);margin-bottom:.5rem;">"{{ p.quote }}"</p>
+              <cite style="font-size:.75rem;color:var(--color-gray-500);font-style:normal;">— {{ p.quote_author }}</cite>
+            </blockquote>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>{{ d.cta.title }}</h2>
+      <p>{{ d.cta.subtitle }}</p>
+      <div class="cta-actions">
+        <a href="{{ d.cta.primary.url | relative_url }}" class="btn btn-gold btn-lg">{{ d.cta.primary.label }}</a>
+        <a href="{{ d.cta.secondary.url | relative_url }}" class="btn btn-outline-white btn-lg">{{ d.cta.secondary.label }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@media(max-width:768px){
+  .realisation-detail > div { grid-template-columns:1fr !important; }
+  .realisation-detail > div > div:first-child { min-height:200px !important; }
+}
+.filter-btn.active { background:var(--color-blue);color:white;border-color:var(--color-blue); }
+</style>
