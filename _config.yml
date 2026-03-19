@@ -41,7 +41,7 @@ social:
 
 # SEO & open graph
 logo: "/assets/img/logo_512.webp"
-og_image: "/assets/images/og-bmdata.jpg"
+og_image: "/assets/img/logo_512.webp"
 twitter_card: "summary_large_image"
 
 # Build
