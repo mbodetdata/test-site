@@ -19,7 +19,7 @@
 },
   "stats": [
     { "value": "5+", "label": "Années d'expérience", "icon": "calendar" },
-    { "value": "20+", "label": "Projets réalisés",     "icon": "chart" },
+    { "value": "15+", "label": "Projets réalisés",     "icon": "chart" },
     { "value": "100%", "label": "Clients satisfaits",  "icon": "star" },
     { "value": "48 h", "label": "Délai de réponse",    "icon": "clock" }
   ],

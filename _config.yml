@@ -30,17 +30,17 @@ location:
   region: "Lot-et-Garonne"
   country: "France"
   postal_code: "47000"
-  phone: "+33 (0)6 XX XX XX XX"
+  phone: "+33 (0)6 70 21 09 28"
   address: "Agen, 47000, France"
 
 # Réseaux sociaux
 social:
   linkedin: "https://www.linkedin.com/in/martial-bodet/"
-  github: ""
+  github: "https://github.com/mbodetdata"
   twitter: ""
 
 # SEO & open graph
-logo: "/assets/images/logo-bmdata.svg"
+logo: "/assets/img/logo_512.webp"
 og_image: "/assets/images/og-bmdata.jpg"
 twitter_card: "summary_large_image"
 
