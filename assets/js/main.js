@@ -237,6 +237,12 @@
         });
       });
 
+    // Stat items en cascade (desktop + mobile)
+    document.querySelectorAll('.stats-grid .stat-item').forEach((item, i) => {
+      item.classList.add('fade-up');
+      item.style.transitionDelay = (i * 0.12) + 's';
+    });
+
     // Observer unique pour tous les éléments fade-up (nouveaux + existants)
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -317,7 +323,9 @@
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animateCounter(entry.target);
+          const grid = entry.target.closest('.stats-grid');
+          const idx = grid ? Array.from(grid.querySelectorAll('.stat-value')).indexOf(entry.target) : 0;
+          setTimeout(() => animateCounter(entry.target), idx * 150);
           counterObserver.unobserve(entry.target);
         }
       });
