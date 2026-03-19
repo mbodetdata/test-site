@@ -118,22 +118,8 @@
     });
   }
 
-  /* ─── Fade-in au scroll ─── */
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
-    );
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  } else {
-    // Pas d'animation : rendre visible immédiatement
+  /* ─── Fade-in au scroll (fallback sans motion) ─── */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
     document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
   }
 
@@ -209,6 +195,38 @@
         opt.selected = true;
       }
     });
+  }
+
+  /* ─── Révélation des sections au scroll ─── */
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
+    // Chaque enfant de .section-header apparaît en cascade : eyebrow → h2 → p
+    document.querySelectorAll('.section-header').forEach(header => {
+      Array.from(header.children).forEach((child, i) => {
+        child.classList.add('fade-up');
+        child.style.transitionDelay = (i * 0.14) + 's';
+      });
+    });
+
+    // Blocs entiers qui se révèlent
+    ['.cta-banner', '.featured-quote', '.process-steps', '.about-intro-layout', '.contact-layout']
+      .forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+          if (!el.classList.contains('fade-up')) el.classList.add('fade-up');
+        });
+      });
+
+    // Observer unique pour tous les éléments fade-up (nouveaux + existants)
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -72px 0px', threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
   }
 
   /* ─── Barre de progression au scroll ─── */
