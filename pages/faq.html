@@ -9,75 +9,1009 @@ body_class: "page-faq"
 {% assign d = site.data.faq %}
 {% assign g = site.data.global %}
 
-<!-- HERO -->
-<section class="page-hero" aria-labelledby="faq-title">
-  <div class="container">
+<!-- ═══════════════════════════════════════════
+     HERO PREMIUM
+═══════════════════════════════════════════ -->
+<section class="faq-hero" aria-labelledby="faq-title">
+  <div class="faq-hero__bg" aria-hidden="true">
+    <div class="faq-hero__grid"></div>
+    <div class="faq-hero__orb faq-hero__orb--1"></div>
+    <div class="faq-hero__orb faq-hero__orb--2"></div>
+    <div class="faq-hero__orb faq-hero__orb--3"></div>
+  </div>
+  <div class="container faq-hero__content">
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <a href="{{ '/' | relative_url }}">Accueil</a>
       <span class="breadcrumb-sep">›</span>
       <span>FAQ</span>
     </nav>
-    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
-    <h1 id="faq-title">{{ d.hero.title }}</h1>
-    <p>{{ d.hero.subtitle }}</p>
-  </div>
-</section>
-
-<!-- FILTRES CATÉGORIES -->
-<section class="section section--light" style="padding:1.5rem 0;">
-  <div class="container">
-    <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;" role="tablist" aria-label="Filtrer les questions par catégorie">
-      <button class="btn btn-sm btn-primary faq-filter active" data-category="all" role="tab">Toutes les questions</button>
-      {% for cat in d.categories %}
-      <button class="btn btn-sm btn-outline faq-filter" data-category="{{ cat.id }}" role="tab">{{ cat.label }}</button>
-      {% endfor %}
+    <div class="faq-hero__eyebrow" aria-hidden="true">
+      <span class="eyebrow-dot"></span>
+      {{ d.hero.eyebrow }}
+      <span class="eyebrow-dot"></span>
+    </div>
+    <h1 id="faq-title" class="faq-hero__title">{{ d.hero.title }}</h1>
+    <p class="faq-hero__subtitle">{{ d.hero.subtitle }}</p>
+    <div class="faq-hero__stats" aria-label="Statistiques FAQ">
+      <div class="stat-pill">
+        <span class="stat-number">14</span>
+        <span class="stat-label">réponses</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-pill">
+        <span class="stat-number">5</span>
+        <span class="stat-label">thèmes</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-pill">
+        <span class="stat-number">0€</span>
+        <span class="stat-label">pour répondre</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ CONTENU -->
-<section class="section">
-  <div class="container" style="max-width:780px;margin:0 auto;">
-    {% for cat in d.categories %}
-    <div class="faq-section fade-up" data-category="{{ cat.id }}" style="margin-bottom:3rem;">
-      <h2 style="font-size:var(--text-lg);color:var(--color-blue);margin-bottom:1.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:var(--text-xs);">{{ cat.label }}</h2>
-      {% for q in cat.questions %}
-      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-question"
-                aria-expanded="false"
-                aria-controls="faq-answer-{{ q.id }}"
-                id="faq-btn-{{ q.id }}"
-                itemprop="name">
-          {{ q.question }}
-          <span class="faq-chevron" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
+<!-- ═══════════════════════════════════════════
+     CONTROLS : RECHERCHE + FILTRES (sticky)
+═══════════════════════════════════════════ -->
+<div class="faq-controls" id="faq-controls" role="search">
+  <div class="container">
+    <div class="faq-controls__inner">
+
+      <!-- Barre de recherche -->
+      <div class="faq-search-wrap">
+        <svg class="faq-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input
+          type="search"
+          class="faq-search-input"
+          id="faq-search"
+          placeholder="Rechercher une question…"
+          aria-label="Rechercher dans la FAQ"
+          autocomplete="off"
+          spellcheck="false">
+        <button class="faq-search-clear" id="faq-search-clear" aria-label="Effacer la recherche" title="Effacer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
-        <div class="faq-answer"
-             id="faq-answer-{{ q.id }}"
-             role="region"
-             aria-labelledby="faq-btn-{{ q.id }}"
-             itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <span itemprop="text">{{ q.answer }}</span>
-        </div>
       </div>
-      {% endfor %}
+
+      <!-- Filtres par catégorie -->
+      <div class="faq-filters" role="tablist" aria-label="Filtrer par thème">
+        <button class="faq-filter-btn active" data-category="all" role="tab" aria-selected="true">
+          Tout <span class="faq-filter-count">14</span>
+        </button>
+        {% for cat in d.categories %}
+        <button class="faq-filter-btn" data-category="{{ cat.id }}" role="tab" aria-selected="false">
+          {{ cat.label }} <span class="faq-filter-count">{{ cat.questions | size }}</span>
+        </button>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CONTENU FAQ
+═══════════════════════════════════════════ -->
+<section class="faq-body" aria-label="Questions fréquentes">
+  <div class="container faq-body__inner">
+
+    <!-- État "aucun résultat" -->
+    <div class="faq-empty" id="faq-empty" hidden aria-live="polite">
+      <div class="faq-empty__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><circle cx="28" cy="28" r="18" stroke="currentColor" stroke-width="3" opacity=".3"/><line x1="41" y1="41" x2="56" y2="56" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".3"/><path d="M22 28h12M28 22v12" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/></svg>
+      </div>
+      <h3 class="faq-empty__title">Aucun résultat</h3>
+      <p class="faq-empty__text">Aucune question ne correspond à votre recherche.</p>
+      <button class="btn btn-outline btn-sm" id="faq-reset">Voir toutes les questions</button>
+    </div>
+
+    <!-- Catégories -->
+    {% for cat in d.categories %}
+    {% assign cat_icons = "💡,🎯,💰,🔄,⚙️" | split: "," %}
+    {% assign cat_index = forloop.index0 %}
+    <div class="faq-category fade-up" data-category="{{ cat.id }}" id="faqcat-{{ cat.id }}">
+      <div class="faq-category__header">
+        <span class="faq-category__icon" aria-hidden="true">{% if cat.id == 'general' %}💡{% elsif cat.id == 'offre' %}🎯{% elsif cat.id == 'budget' %}💰{% elsif cat.id == 'process' %}🔄{% elsif cat.id == 'technique' %}⚙️{% else %}✦{% endif %}</span>
+        <h2 class="faq-category__title">{{ cat.label }}</h2>
+        <span class="faq-category__count" aria-label="{{ cat.questions | size }} questions">{{ cat.questions | size }}</span>
+      </div>
+
+      <div class="faq-category__items">
+        {% for q in cat.questions %}
+        <div class="faq-card" data-id="{{ q.id }}" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button
+            type="button"
+            class="faq-card__question"
+            aria-expanded="false"
+            aria-controls="fqa-{{ q.id }}"
+            id="fqb-{{ q.id }}"
+            itemprop="name">
+            <span class="faq-card__num" aria-hidden="true">{{ forloop.index }}</span>
+            <span class="faq-card__text">{{ q.question }}</span>
+            <span class="faq-card__toggle" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div
+            class="faq-card__answer"
+            id="fqa-{{ q.id }}"
+            role="region"
+            aria-labelledby="fqb-{{ q.id }}"
+            itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div class="faq-card__answer-inner">
+              <span itemprop="text">{{ q.answer }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
     {% endfor %}
+
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section section--light">
+<!-- ═══════════════════════════════════════════
+     CTA PREMIUM
+═══════════════════════════════════════════ -->
+<section class="faq-cta" aria-labelledby="faq-cta-title">
   <div class="container">
-    <div style="text-align:center;max-width:600px;margin:0 auto;">
-      <h2>{{ d.cta.title }}</h2>
-      <p style="margin:1rem auto 2rem;">{{ d.cta.subtitle }}</p>
-      <a href="{{ d.cta.primary.url | relative_url }}" class="btn btn-primary btn-lg">{{ d.cta.primary.label }}</a>
+    <div class="faq-cta__card">
+      <div class="faq-cta__glow" aria-hidden="true"></div>
+      <div class="faq-cta__rings" aria-hidden="true">
+        <span class="cta-ring cta-ring--1"></span>
+        <span class="cta-ring cta-ring--2"></span>
+      </div>
+      <div class="faq-cta__icon" aria-hidden="true">💬</div>
+      <h2 id="faq-cta-title" class="faq-cta__title">{{ d.cta.title }}</h2>
+      <p class="faq-cta__subtitle">{{ d.cta.subtitle }}</p>
+      <a href="{{ d.cta.primary.url | relative_url }}" class="btn btn-primary btn-lg faq-cta__btn">
+        {{ d.cta.primary.label }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════
+     STYLES
+═══════════════════════════════════════════ -->
 <style>
-.faq-filter.active { background:var(--color-blue);color:white;border-color:var(--color-blue); }
+/* ── FAQ PAGE : RESET HERO ── */
+.page-faq .page-hero { display: none; }
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.faq-hero {
+  position: relative;
+  padding: calc(var(--header-height, 80px) + var(--space-16)) 0 var(--space-20);
+  background: var(--color-navy);
+  overflow: hidden;
+  text-align: center;
+}
+.faq-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grille animée */
+.faq-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(102,119,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(102,119,255,.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+  animation: faqGridDrift 25s linear infinite;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+@keyframes faqGridDrift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(44px, 44px); }
+}
+
+/* Orbes flottants */
+.faq-hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  animation: faqOrbFloat 10s ease-in-out infinite alternate;
+}
+.faq-hero__orb--1 {
+  width: 480px; height: 480px;
+  top: -140px; left: -100px;
+  background: radial-gradient(circle, rgba(102,119,255,.22) 0%, transparent 65%);
+  animation-duration: 9s;
+}
+.faq-hero__orb--2 {
+  width: 380px; height: 380px;
+  bottom: -100px; right: -60px;
+  background: radial-gradient(circle, rgba(43,212,143,.18) 0%, transparent 65%);
+  animation-duration: 12s;
+  animation-delay: -5s;
+}
+.faq-hero__orb--3 {
+  width: 250px; height: 250px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(102,119,255,.06) 0%, transparent 70%);
+  animation-duration: 7s;
+  animation-delay: -2s;
+}
+@keyframes faqOrbFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(25px, -20px) scale(1.08); }
+}
+
+.faq-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Eyebrow */
+.faq-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--color-blue-light);
+  margin-bottom: var(--space-6);
+  padding: var(--space-2) var(--space-5);
+  background: rgba(102,119,255,.1);
+  border: 1px solid rgba(102,119,255,.22);
+  border-radius: var(--radius-full);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.eyebrow-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--color-blue);
+  animation: faqDotPulse 2s ease-in-out infinite;
+}
+.eyebrow-dot:last-child { animation-delay: -1s; }
+@keyframes faqDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .3; transform: scale(.5); }
+}
+
+/* Titre dégradé */
+.faq-hero__title {
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: var(--space-5);
+  background: linear-gradient(130deg, #ffffff 20%, var(--color-blue-light) 55%, var(--color-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  max-width: none;
+}
+.faq-hero__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-gray-400);
+  margin: 0 auto var(--space-10);
+  max-width: 460px;
+  line-height: 1.6;
+}
+
+/* Stats */
+.faq-hero__stats {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-5) var(--space-10);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: var(--radius-2xl);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+.stat-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.stat-number {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-gray-500);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,.15), transparent);
+}
+
+/* ════════════════════════════════════════
+   CONTROLS (sticky)
+════════════════════════════════════════ */
+.faq-controls {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(8, 11, 20, 0.88);
+  border-bottom: 1px solid rgba(102,119,255,.12);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  transition: box-shadow .3s;
+}
+.faq-controls.scrolled {
+  box-shadow: 0 4px 40px rgba(0,0,0,.5);
+  border-bottom-color: rgba(102,119,255,.2);
+}
+.faq-controls__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) 0 var(--space-4);
+}
+
+/* Recherche */
+.faq-search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+.faq-search-icon {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px; height: 18px;
+  color: var(--color-gray-400);
+  pointer-events: none;
+  transition: color .2s;
+}
+.faq-search-input {
+  width: 100%;
+  padding: 11px var(--space-10) 11px var(--space-10);
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(102,119,255,.18);
+  border-radius: var(--radius-full);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  outline: none;
+  transition: all .25s;
+}
+.faq-search-input::placeholder { color: var(--color-gray-500); }
+.faq-search-input:focus {
+  border-color: var(--color-blue);
+  background: rgba(102,119,255,.07);
+  box-shadow: 0 0 0 3px rgba(102,119,255,.18), 0 2px 20px rgba(102,119,255,.08);
+}
+.faq-search-input:focus ~ .faq-search-icon,
+.faq-search-wrap:focus-within .faq-search-icon { color: var(--color-blue-light); }
+
+.faq-search-clear {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+  border: none;
+  color: var(--color-gray-400);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+  padding: 0;
+}
+.faq-search-clear svg { width: 12px; height: 12px; }
+.faq-search-clear.visible { display: flex; }
+.faq-search-clear:hover { background: rgba(255,255,255,.2); color: white; }
+
+/* Filtres */
+.faq-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  padding: 0 var(--space-4);
+}
+.faq-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius-full);
+  color: var(--color-gray-400);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s cubic-bezier(.4,0,.2,1);
+  white-space: nowrap;
+}
+.faq-filter-btn:hover {
+  border-color: rgba(102,119,255,.35);
+  color: var(--color-gray-100);
+  background: rgba(102,119,255,.07);
+  transform: translateY(-1px);
+}
+.faq-filter-btn.active {
+  background: linear-gradient(135deg, var(--color-blue) 0%, #4a5cd6 100%);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 18px rgba(102,119,255,.38);
+  transform: translateY(-1px);
+}
+.faq-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 18px;
+  padding: 0 5px;
+  background: rgba(255,255,255,.14);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+.faq-filter-btn.active .faq-filter-count {
+  background: rgba(255,255,255,.28);
+}
+
+/* ════════════════════════════════════════
+   BODY
+════════════════════════════════════════ */
+.faq-body {
+  background: var(--color-navy);
+  padding: var(--space-16) 0 var(--space-24);
+}
+.faq-body__inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* État vide */
+.faq-empty {
+  text-align: center;
+  padding: var(--space-24) var(--space-8);
+  color: var(--color-gray-500);
+}
+.faq-empty__icon {
+  width: 64px; height: 64px;
+  margin: 0 auto var(--space-6);
+  opacity: .35;
+}
+.faq-empty__title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-2);
+}
+.faq-empty__text {
+  font-size: var(--text-base);
+  margin-bottom: var(--space-6);
+}
+
+/* Catégorie */
+.faq-category {
+  margin-bottom: var(--space-14);
+  animation: faqCatIn .5s cubic-bezier(.4,0,.2,1) both;
+}
+@keyframes faqCatIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.faq-category[hidden] { display: none; }
+
+.faq-category__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.faq-category__icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(102,119,255,.4));
+}
+.faq-category__title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin: 0;
+  flex: 1;
+}
+.faq-category__count {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-blue-light);
+  background: rgba(102,119,255,.1);
+  border: 1px solid rgba(102,119,255,.2);
+  border-radius: var(--radius-full);
+  padding: 3px 12px;
+}
+
+/* ════════════════════════════════════════
+   FAQ CARD
+════════════════════════════════════════ */
+.faq-card {
+  position: relative;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-3);
+  overflow: hidden;
+  transition: border-color .25s, box-shadow .25s, transform .2s, background .25s;
+}
+
+/* Accent gauche (gradient) */
+.faq-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--color-blue) 0%, var(--color-gold) 100%);
+  opacity: 0;
+  transition: opacity .3s;
+  border-radius: 3px 0 0 3px;
+}
+.faq-card:hover {
+  border-color: rgba(102,119,255,.2);
+  transform: translateX(3px);
+}
+.faq-card.open {
+  border-color: rgba(102,119,255,.28);
+  box-shadow: 0 8px 40px rgba(102,119,255,.1), 0 2px 8px rgba(0,0,0,.2);
+  background: rgba(102,119,255,.04);
+  transform: translateX(3px);
+}
+.faq-card.open::before { opacity: 1; }
+
+/* Données masquées */
+.faq-card[data-hidden="true"] { display: none; }
+
+/* Animation d'entrée échelonnée */
+.faq-card {
+  animation: faqCardIn .4s cubic-bezier(.4,0,.2,1) both;
+}
+@keyframes faqCardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Bouton question */
+.faq-card__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-gray-300);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.5;
+  transition: color .2s;
+}
+.faq-card.open .faq-card__question { color: var(--color-white); }
+
+/* Numéro */
+.faq-card__num {
+  min-width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(102,119,255,.1);
+  border: 1px solid rgba(102,119,255,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-blue-light);
+  flex-shrink: 0;
+  transition: all .25s;
+  font-variant-numeric: tabular-nums;
+}
+.faq-card.open .faq-card__num {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+  color: white;
+  box-shadow: 0 0 14px rgba(102,119,255,.55);
+}
+
+.faq-card__text { flex: 1; }
+
+/* Bouton toggle */
+.faq-card__toggle {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all .25s;
+}
+.faq-card__toggle svg {
+  width: 16px; height: 16px;
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.faq-card:hover .faq-card__toggle {
+  border-color: rgba(102,119,255,.35);
+}
+.faq-card.open .faq-card__toggle {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+  color: white;
+  box-shadow: 0 0 18px rgba(102,119,255,.45);
+  transform: scale(1.05);
+}
+.faq-card.open .faq-card__toggle svg { transform: rotate(180deg); }
+
+/* Réponse */
+.faq-card__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .48s cubic-bezier(.4,0,.2,1);
+}
+.faq-card.open .faq-card__answer { max-height: 1000px; }
+
+.faq-card__answer-inner {
+  padding: var(--space-5) var(--space-6) var(--space-6);
+  padding-left: calc(var(--space-6) + 28px + var(--space-4));
+  color: var(--color-gray-400);
+  font-size: var(--text-base);
+  line-height: 1.82;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+/* Surbrillance recherche */
+mark.faq-hl {
+  background: rgba(43,212,143,.18);
+  color: var(--color-gold);
+  border-radius: 3px;
+  padding: 0 2px;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ════════════════════════════════════════
+   CTA
+════════════════════════════════════════ */
+.faq-cta {
+  background: var(--color-navy);
+  padding: 0 0 var(--space-24);
+}
+.faq-cta__card {
+  max-width: 660px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--space-20) var(--space-12);
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(102,119,255,.18);
+  border-radius: var(--radius-2xl);
+  position: relative;
+  overflow: hidden;
+}
+.faq-cta__glow {
+  position: absolute;
+  top: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(102,119,255,.18) 0%, transparent 68%);
+  pointer-events: none;
+  animation: faqCtaGlow 5s ease-in-out infinite alternate;
+}
+@keyframes faqCtaGlow {
+  0%   { opacity: .5; transform: translateX(-50%) scale(1); }
+  100% { opacity: 1;  transform: translateX(-50%) scale(1.25); }
+}
+.faq-cta__rings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.cta-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(102,119,255,.08);
+  animation: faqRingPulse 6s ease-in-out infinite;
+}
+.cta-ring--1 {
+  width: 200px; height: 200px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cta-ring--2 {
+  width: 320px; height: 320px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -3s;
+}
+@keyframes faqRingPulse {
+  0%, 100% { opacity: .4; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: .1; transform: translate(-50%, -50%) scale(1.1); }
+}
+.faq-cta__icon {
+  font-size: 2.75rem;
+  margin-bottom: var(--space-5);
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 12px rgba(102,119,255,.5));
+  animation: faqIconFloat 3s ease-in-out infinite alternate;
+}
+@keyframes faqIconFloat {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+.faq-cta__title {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+  position: relative;
+  z-index: 1;
+}
+.faq-cta__subtitle {
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-8);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+.faq-cta__btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.faq-cta__btn svg {
+  width: 18px; height: 18px;
+  transition: transform .2s;
+}
+.faq-cta__btn:hover svg { transform: translateX(4px); }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .faq-hero__stats {
+    flex-direction: row;
+    gap: var(--space-5);
+    padding: var(--space-4) var(--space-6);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .stat-divider { width: 1px; height: 28px; }
+  .faq-card__answer-inner { padding-left: var(--space-5); }
+  .faq-cta__card { padding: var(--space-12) var(--space-6); }
+  .faq-hero { padding-bottom: var(--space-16); }
+  .faq-filters { gap: 6px; }
+  .faq-filter-btn { font-size: 12px; padding: 6px 12px; }
+  .faq-card__question { padding: var(--space-4) var(--space-4); gap: var(--space-3); }
+}
 </style>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Utilitaires ── */
+  function escHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function highlightInElement(el, term) {
+    if (!el || !term) return;
+    // Restaurer le texte brut d'abord
+    el.querySelectorAll('mark.faq-hl').forEach(m => m.replaceWith(document.createTextNode(m.textContent)));
+    el.normalize();
+    const text = el.textContent;
+    const idx  = text.toLowerCase().indexOf(term.toLowerCase());
+    if (idx === -1) return;
+    el.innerHTML =
+      escHtml(text.substring(0, idx)) +
+      '<mark class="faq-hl">' + escHtml(text.substring(idx, idx + term.length)) + '</mark>' +
+      escHtml(text.substring(idx + term.length));
+  }
+
+  function removeHighlights(root) {
+    root.querySelectorAll('mark.faq-hl').forEach(m => {
+      m.replaceWith(document.createTextNode(m.textContent));
+    });
+    root.normalize();
+  }
+
+  /* ── Accordion ── */
+  document.querySelectorAll('.faq-card__question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card   = btn.closest('.faq-card');
+      var isOpen = card.classList.contains('open');
+
+      // Fermer tous les autres
+      document.querySelectorAll('.faq-card.open').forEach(function (c) {
+        if (c !== card) {
+          c.classList.remove('open');
+          c.querySelector('.faq-card__question').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      card.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  /* ── Filtres ── */
+  var filterBtns = document.querySelectorAll('.faq-filter-btn');
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var cat = btn.dataset.category;
+
+      filterBtns.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      document.querySelectorAll('.faq-category').forEach(function (section) {
+        var show = cat === 'all' || section.dataset.category === cat;
+        section.hidden = !show;
+      });
+
+      // Réinitialiser la recherche
+      var searchInput = document.getElementById('faq-search');
+      if (searchInput && searchInput.value) {
+        searchInput.value = '';
+        clearSearch();
+      }
+    });
+  });
+
+  /* ── Recherche live ── */
+  var searchInput = document.getElementById('faq-search');
+  var searchClear = document.getElementById('faq-search-clear');
+  var faqEmpty    = document.getElementById('faq-empty');
+  var faqReset    = document.getElementById('faq-reset');
+
+  function clearSearch() {
+    // Retirer les masques et highlights
+    document.querySelectorAll('.faq-card').forEach(function (card) {
+      card.removeAttribute('data-hidden');
+      removeHighlights(card);
+    });
+
+    // Restaurer la visibilité des catégories selon le filtre actif
+    var activeCat = (document.querySelector('.faq-filter-btn.active') || {}).dataset && document.querySelector('.faq-filter-btn.active').dataset.category;
+    document.querySelectorAll('.faq-category').forEach(function (cat) {
+      cat.hidden = activeCat !== 'all' && activeCat !== cat.dataset.category;
+    });
+
+    if (faqEmpty)    faqEmpty.hidden = true;
+    if (searchClear) searchClear.classList.remove('visible');
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function () {
+      var raw  = searchInput.value;
+      var term = raw.trim().toLowerCase();
+
+      // Bouton effacer
+      if (searchClear) searchClear.classList.toggle('visible', raw.length > 0);
+
+      if (term.length === 0) {
+        clearSearch();
+        return;
+      }
+
+      // En recherche : activer filtre "Tout"
+      filterBtns.forEach(function (b) {
+        var isAll = b.dataset.category === 'all';
+        b.classList.toggle('active', isAll);
+        b.setAttribute('aria-selected', String(isAll));
+      });
+      document.querySelectorAll('.faq-category').forEach(function (c) { c.hidden = false; });
+
+      var visibleCount = 0;
+
+      document.querySelectorAll('.faq-card').forEach(function (card) {
+        // Retirer highlights précédents
+        removeHighlights(card);
+
+        var qEl = card.querySelector('.faq-card__text');
+        var aEl = card.querySelector('[itemprop="text"]');
+        var qTxt = (qEl && qEl.textContent.toLowerCase()) || '';
+        var aTxt = (aEl && aEl.textContent.toLowerCase()) || '';
+        var matches = qTxt.includes(term) || aTxt.includes(term);
+
+        if (matches) {
+          card.removeAttribute('data-hidden');
+          visibleCount++;
+          if (qEl && qTxt.includes(term)) highlightInElement(qEl, raw.trim());
+        } else {
+          card.setAttribute('data-hidden', 'true');
+        }
+      });
+
+      // Masquer les catégories vides
+      document.querySelectorAll('.faq-category').forEach(function (cat) {
+        var hasVisible = cat.querySelectorAll('.faq-card:not([data-hidden])').length > 0;
+        cat.hidden = !hasVisible;
+      });
+
+      if (faqEmpty) faqEmpty.hidden = visibleCount > 0;
+    });
+
+    if (searchClear) {
+      searchClear.addEventListener('click', function () {
+        searchInput.value = '';
+        clearSearch();
+        searchInput.focus();
+      });
+    }
+  }
+
+  if (faqReset) {
+    faqReset.addEventListener('click', function () {
+      if (searchInput) searchInput.value = '';
+      clearSearch();
+    });
+  }
+
+  /* ── Sticky shadow via IntersectionObserver ── */
+  var controls = document.getElementById('faq-controls');
+  if (controls && window.IntersectionObserver) {
+    var io = new IntersectionObserver(
+      function (entries) {
+        controls.classList.toggle('scrolled', entries[0].intersectionRatio < 1);
+      },
+      { threshold: [1], rootMargin: '-1px 0px 0px 0px' }
+    );
+    io.observe(controls);
+  }
+
+  /* ── Stagger animation des cards ── */
+  document.querySelectorAll('.faq-card').forEach(function (card, i) {
+    card.style.animationDelay = (i * 0.045) + 's';
+  });
+
+})();
+</script>
