@@ -2506,12 +2506,12 @@ p { line-height: 1.75; color: var(--color-gray-600); }
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0;
+    top: var(--header-height);
     right: 0;
     bottom: 0;
     width: min(300px, 86vw);
     background: var(--color-navy);
-    padding: calc(var(--header-height) + var(--space-5)) var(--space-4) var(--space-8);
+    padding: var(--space-5) var(--space-4) var(--space-8);
     gap: 3px;
     overflow-y: auto;
     z-index: 1050;
