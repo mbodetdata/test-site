@@ -158,12 +158,49 @@ body_class: "page-contact"
   color: var(--color-gray-400); cursor: pointer;
   border: none; background: none; transition: all .22s ease;
   border-bottom: 2.5px solid transparent;
+  position: relative;
 }
 .action-tab.active {
   color: var(--color-blue); background: white;
   border-bottom-color: var(--color-blue);
 }
 .action-tab:hover:not(.active) { color: var(--color-navy); background: rgba(255,255,255,.7); }
+
+/* ── TAB BOOKING FEATURED ── */
+.tab-book-btn {
+  background: linear-gradient(135deg, rgba(102,119,255,.07) 0%, rgba(167,139,250,.1) 100%);
+  color: var(--color-blue);
+  border-left: 1px solid #e8eaf6;
+}
+.tab-book-btn svg { color: var(--color-blue); }
+.tab-book-btn.active {
+  background: white;
+  color: var(--color-blue);
+}
+.tab-badge {
+  position: absolute;
+  top: 7px; right: 10px;
+  background: linear-gradient(90deg, var(--color-blue), #818cf8);
+  color: white; font-size: .56rem; font-weight: 700;
+  padding: .16rem .5rem; border-radius: 100px;
+  letter-spacing: .06em; text-transform: uppercase;
+  white-space: nowrap;
+  animation: badgePop .6s cubic-bezier(.34,1.56,.64,1) .3s both;
+}
+@keyframes badgePop { 0% { transform: scale(0) translateY(4px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
+.tab-book-btn::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: tabShimmer 3.5s ease-in-out infinite 1.5s;
+  pointer-events: none; border-radius: inherit;
+}
+@keyframes tabShimmer {
+  0%   { background-position: 200% 0; }
+  40%  { background-position: -200% 0; }
+  100% { background-position: -200% 0; }
+}
 .tab-panel { display: none; padding: 2.5rem; }
 .tab-panel.active { display: block; }
 
@@ -472,7 +509,8 @@ body_class: "page-contact"
             </svg>
             <span class="tab-text">Envoyer un message</span>
           </button>
-          <button class="action-tab" id="tab-book" role="tab" aria-selected="false" aria-controls="panel-book" type="button">
+          <button class="action-tab tab-book-btn" id="tab-book" role="tab" aria-selected="false" aria-controls="panel-book" type="button">
+            <span class="tab-badge" aria-hidden="true">⚡ Recommandé</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
               <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
