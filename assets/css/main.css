@@ -2588,7 +2588,7 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   .site-nav.nav-open .nav-link.nav-cta {
     text-align: center;
     justify-content: center;
-    margin-top: var(--space-5);
+    margin-top: var(--space-3);
     background: linear-gradient(135deg, #6366f1, #818cf8);
     color: white;
     border-color: transparent;
@@ -2611,29 +2611,28 @@ p { line-height: 1.75; color: var(--color-gray-600); }
     display: block;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
-    margin: var(--space-4) 0 var(--space-2);
+    margin: var(--space-3) 0 var(--space-2);
   }
   .nav-mobile-hub {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: 12px var(--space-4);
+    justify-content: center;
+    padding: 12px;
     border-radius: 10px;
     color: rgba(255,255,255,.4);
-    font-size: .875rem;
-    font-weight: 500;
     border: 1px solid rgba(255,255,255,.06);
     background: rgba(255,255,255,.02);
     text-decoration: none;
+    width: 44px;
     transition: background .18s ease, border-color .18s ease, color .18s ease, transform .2s ease;
   }
-  .nav-mobile-hub svg { width: 16px; height: 16px; flex-shrink: 0; }
-  .nav-mobile-hub-ext { margin-left: auto; opacity: .25; }
+  .nav-mobile-hub svg:first-child { width: 20px; height: 20px; flex-shrink: 0; }
+  .nav-mobile-hub > *:not(svg:first-child) { display: none; }
   .nav-mobile-hub:hover {
     color: #a5b4fc;
     border-color: rgba(99,102,241,.2);
     background: rgba(99,102,241,.07);
-    transform: translateX(4px);
+    transform: scale(1.08);
   }
 
   .hero-content { padding: var(--space-12) 0; }
