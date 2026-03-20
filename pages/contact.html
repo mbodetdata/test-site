@@ -266,6 +266,11 @@ body_class: "page-contact"
   border-radius: 10px; padding: .875rem 1rem;
   font-size: .8rem; color: #dc2626; margin-bottom: 1rem;
 }
+.pf-input.field-error,
+.pf-textarea.field-error {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220,38,38,.12) !important;
+}
 .pf-success { display: none; text-align: center; padding: 2.5rem 1rem; }
 .pf-success-icon {
   width: 68px; height: 68px;
@@ -742,25 +747,61 @@ body_class: "page-contact"
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var name    = form.querySelector('#name').value.trim();
-    var email   = form.querySelector('#email').value.trim();
-    var message = form.querySelector('#message').value.trim();
 
-    if (!name || !email || !message) {
-      errorEl.textContent = 'Merci de remplir les champs obligatoires : nom, email et message.';
+    var nameEl    = form.querySelector('#name');
+    var emailEl   = form.querySelector('#email');
+    var messageEl = form.querySelector('#message');
+    var name      = nameEl.value.trim();
+    var email     = emailEl.value.trim();
+    var message   = messageEl.value.trim();
+    var company   = form.querySelector('#company').value.trim();
+    var phone     = form.querySelector('#phone').value.trim();
+    var service   = form.querySelector('#service').value;
+
+    /* Réinitialiser les erreurs visuelles */
+    [nameEl, emailEl, messageEl].forEach(function (el) { el.classList.remove('field-error'); });
+    errorEl.style.display = 'none';
+
+    /* Validation */
+    var errors = [];
+    if (!name)    { nameEl.classList.add('field-error');    errors.push('nom'); }
+    if (!email)   { emailEl.classList.add('field-error');   errors.push('email'); }
+    if (!message) { messageEl.classList.add('field-error'); errors.push('message'); }
+
+    if (errors.length) {
+      errorEl.textContent = 'Merci de remplir les champs obligatoires : ' + errors.join(', ') + '.';
       errorEl.style.display = 'block';
       errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       return;
     }
 
-    errorEl.style.display = 'none';
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours…';
+    /* ── ENVOI VIA MAILTO ──
+       Quand n8n sera prêt, remplacer ce bloc par un fetch POST vers le webhook n8n.
+       Exemple :
+         fetch('https://votre-n8n.fr/webhook/contact', {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify({ name, email, company, phone, service, message })
+         }).then(...);
+    */
+    var serviceLabel = service ? form.querySelector('#service option:checked').textContent : 'Non précisé';
+    var subject = encodeURIComponent('Demande de contact BM Data — ' + (service ? serviceLabel : name));
+    var body = encodeURIComponent(
+      'Nom : ' + name + '\n' +
+      'Email : ' + email + '\n' +
+      (phone   ? 'Téléphone : ' + phone + '\n' : '') +
+      (company ? 'Entreprise : ' + company + '\n' : '') +
+      'Sujet : ' + serviceLabel + '\n\n' +
+      'Message :\n' + message
+    );
 
+    window.location.href = 'mailto:contact@bmdata.fr?subject=' + subject + '&body=' + body;
+
+    /* Afficher la confirmation après ouverture du client mail */
     setTimeout(function () {
       form.style.display = 'none';
       successEl.style.display = 'block';
-    }, 1200);
+    }, 500);
   });
 
   /* ── SCROLL ANIMATIONS ── */
