@@ -1,84 +1,32 @@
 {
   "meta": {
-    "title": "Témoignages clients — BM Data, consultant data Agen",
-    "description": "Ce que disent les clients de BM Data : témoignages de dirigeants de TPE et PME accompagnés par Martial Bodet dans leur transformation data."
+    "title": "Témoignages & recommandations — BM Data, consultant data Agen",
+    "description": "Ce que disent les personnes ayant travaillé avec BM Data : recommandations professionnelles sur la rigueur, l'autonomie et la qualité relationnelle de Martial Bodet."
   },
   "hero": {
-    "eyebrow": "Témoignages",
-    "title": "Ce que disent mes clients",
-    "subtitle": "Des dirigeants de TPE et PME qui ont transformé leur façon de piloter leur activité grâce aux données."
+    "eyebrow": "Recommandations",
+    "title": "Ce que disent les personnes qui ont travaillé avec moi",
+    "subtitle": "Des recommandations professionnelles qui mettent en avant ma rigueur, mon autonomie et la qualité de mes relations de travail."
   },
   "testimonials": [
     {
       "id": 1,
-      "quote": "Avant BM Data, je passais chaque lundi matin à préparer mon reporting à la main. Aujourd'hui c'est automatique, et j'ai enfin le temps de piloter vraiment mon activité.",
-      "author": "Jean-Pierre M.",
-      "role": "Directeur commercial",
-      "company": "PME industrielle, Agen",
-      "sector": "Industrie",
-      "service": "Automatisation",
+      "quote": "J’ai eu le plaisir de travailler avec Martial en tant qu’employeur, et je peux dire sans hésiter que c’est une personne rare. Toujours de bonne humeur, engagé, à l’écoute et prêt à rendre service, il a su créer autour de lui un climat de confiance aussi bien en interne qu’auprès des clients, qui étaient ravis de l’avoir comme interlocuteur.\n\nMartial possède une vraie capacité d’autonomie, une rigueur précieuse, et une curiosité naturelle qui le pousse à aller au fond des sujets, même les plus complexes ou inconnus. Là où certains reculent, lui avance, explore, teste, propose — toujours avec pertinence et fiabilité.\n\nC’est quelqu’un sur qui on peut vraiment compter, et avec qui il est aussi agréable qu’efficace de travailler. Je lui souhaite le meilleur pour la suite, et je le recommande chaudement à toute structure qui cherche à s’entourer de collaborateurs solides, brillants et humains.",
+      "author": "Nicolas Lambert",
+      "role": "Manager direct de Martial",
+      "company": "Axysweb",
+      "sector": "Intégrateur talend",
+      "service": "Service",
       "rating": 5,
       "featured": true
-    },
-    {
-      "id": 2,
-      "quote": "J'avais peur que ce soit trop technique pour moi. Martial explique les choses simplement, sans jargon. Le tableau de bord qu'il a créé, je le lis chaque matin en 5 minutes.",
-      "author": "Sophie L.",
-      "role": "Gérante",
-      "company": "Commerce de détail, Villeneuve-sur-Lot",
-      "sector": "Commerce",
-      "service": "Tableau de bord",
-      "rating": 5,
-      "featured": true
-    },
-    {
-      "id": 3,
-      "quote": "La segmentation de mes clients a changé ma stratégie commerciale. Je savais que j'avais des données, mais je ne savais pas qu'elles pouvaient m'en apprendre autant.",
-      "author": "Nathalie R.",
-      "role": "Directrice",
-      "company": "Société de services, Agen",
-      "sector": "Services",
-      "service": "Analyse",
-      "rating": 5,
-      "featured": true
-    },
-    {
-      "id": 4,
-      "quote": "BM Data nous a permis de passer d'un suivi production chaotique à une vision claire en temps réel. Les gains de productivité ont été visibles dès le premier mois.",
-      "author": "Laurent D.",
-      "role": "Responsable de production",
-      "company": "Industrie manufacturière, Lot-et-Garonne",
-      "sector": "Industrie",
-      "service": "Tableau de bord",
-      "rating": 5,
-      "featured": false
-    },
-    {
-      "id": 5,
-      "quote": "La formation Excel était exactement ce dont mon équipe avait besoin. Adaptée à nos fichiers, concrète, et les résultats ont été immédiats.",
-      "author": "Marc T.",
-      "role": "Responsable financier",
-      "company": "PME agroalimentaire, Nérac",
-      "sector": "Agroalimentaire",
-      "service": "Formation",
-      "rating": 5,
-      "featured": false
-    },
-    {
-      "id": 6,
-      "quote": "Nous avons enfin une vision claire de notre activité RH. Plus de conflits de planning, plus de temps perdu à chercher qui est disponible. Un vrai soulagement.",
-      "author": "Claire B.",
-      "role": "Directrice administrative",
-      "company": "Cabinet de conseil, Agen",
-      "sector": "Services",
-      "service": "Tableau de bord",
-      "rating": 5,
-      "featured": false
     }
   ],
   "cta": {
-    "title": "Votre entreprise pourrait être la prochaine",
+    "title": "Parlons de votre projet data",
     "subtitle": "Un premier échange de 30 minutes pour comprendre votre situation. Gratuit, sans engagement.",
-    "primary": { "label": "Prendre rendez-vous", "url": "/contact/" }
+    "primary": {
+      "label": "Prendre rendez-vous",
+      "url": "/contact/"
+    }
   }
 }
