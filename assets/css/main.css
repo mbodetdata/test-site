@@ -342,6 +342,14 @@ p { line-height: 1.75; color: var(--color-gray-600); }
   transition: transform .2s ease;
 }
 .site-logo:hover { transform: scale(1.02); }
+.site-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+.footer-brand .site-logo-img {
+  height: 36px;
+}
 .logo-mark {
   width: 36px;
   height: 36px;
