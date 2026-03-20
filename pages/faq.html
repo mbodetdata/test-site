@@ -8,6 +8,11 @@ body_class: "page-faq"
 
 {% assign d = site.data.faq %}
 {% assign g = site.data.global %}
+{% assign faq_total_questions = 0 %}
+{% for cat in d.categories %}
+  {% assign faq_total_questions = faq_total_questions | plus: cat.questions.size %}
+{% endfor %}
+{% assign faq_total_categories = d.categories | size %}
 
 <!-- ═══════════════════════════════════════════
      HERO PREMIUM
@@ -34,12 +39,12 @@ body_class: "page-faq"
     <p class="faq-hero__subtitle">{{ d.hero.subtitle }}</p>
     <div class="faq-hero__stats" aria-label="Statistiques FAQ">
       <div class="stat-pill">
-        <span class="stat-number">14</span>
+        <span class="stat-number">{{ faq_total_questions }}</span>
         <span class="stat-label">réponses</span>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
       <div class="stat-pill">
-        <span class="stat-number">5</span>
+        <span class="stat-number">{{ faq_total_categories }}</span>
         <span class="stat-label">thèmes</span>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
@@ -77,7 +82,7 @@ body_class: "page-faq"
       <!-- Filtres par catégorie -->
       <div class="faq-filters" role="tablist" aria-label="Filtrer par thème">
         <button class="faq-filter-btn active" data-category="all" role="tab" aria-selected="true">
-          Tout <span class="faq-filter-count">14</span>
+          Tout <span class="faq-filter-count">{{ faq_total_questions }}</span>
         </button>
         {% for cat in d.categories %}
         <button class="faq-filter-btn" data-category="{{ cat.id }}" role="tab" aria-selected="false">
