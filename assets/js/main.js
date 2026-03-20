@@ -27,6 +27,7 @@
     siteNav.classList.add('nav-open');
     navToggle.classList.add('active');
     navToggle.setAttribute('aria-expanded', 'true');
+    if (header) header.classList.add('nav-is-open');
     // Fix scroll iOS Safari : position fixed + restauration scroll
     document.body.style.position = 'fixed';
     document.body.style.top = '-' + savedScrollY + 'px';
@@ -38,6 +39,7 @@
     siteNav.classList.remove('nav-open');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
+    if (header) header.classList.remove('nav-is-open');
     // Restaurer la position de scroll
     document.body.style.position = '';
     document.body.style.top = '';
