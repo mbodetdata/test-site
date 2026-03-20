@@ -2617,22 +2617,24 @@ p { line-height: 1.75; color: var(--color-gray-600); }
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
+    padding: 10px;
     border-radius: 10px;
-    color: rgba(255,255,255,.4);
-    border: 1px solid rgba(255,255,255,.06);
-    background: rgba(255,255,255,.02);
+    color: rgba(255,255,255,.5);
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.03);
     text-decoration: none;
     width: 44px;
+    height: 44px;
+    font-size: 0;
     transition: background .18s ease, border-color .18s ease, color .18s ease, transform .2s ease;
   }
-  .nav-mobile-hub svg:first-child { width: 20px; height: 20px; flex-shrink: 0; }
-  .nav-mobile-hub > *:not(svg:first-child) { display: none; }
+  .nav-mobile-hub svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .nav-mobile-hub .nav-mobile-hub-ext { display: none; }
   .nav-mobile-hub:hover {
     color: #a5b4fc;
-    border-color: rgba(99,102,241,.2);
-    background: rgba(99,102,241,.07);
-    transform: scale(1.08);
+    border-color: rgba(99,102,241,.25);
+    background: rgba(99,102,241,.1);
+    transform: scale(1.1);
   }
 
   .hero-content { padding: var(--space-12) 0; }
