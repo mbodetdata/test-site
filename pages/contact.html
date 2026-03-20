@@ -9,159 +9,779 @@ body_class: "page-contact"
 {% assign d = site.data.contact %}
 {% assign g = site.data.global %}
 
-<!-- HERO -->
-<section class="page-hero" aria-labelledby="contact-title">
+<style>
+/* ============================================================
+   CONTACT PAGE — PREMIUM REDESIGN
+   ============================================================ */
+
+/* ── HERO ── */
+.contact-hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-navy) 0%, #1a1f5e 50%, #2d3282 100%);
+  overflow: hidden;
+  padding: 5.5rem 0 4.5rem;
+  color: white;
+}
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(102,119,255,.32) 0%, transparent 70%);
+}
+.ch-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .18;
+  animation: blobFloat 9s ease-in-out infinite;
+}
+.ch-blob--1 { width: 480px; height: 480px; background: var(--color-blue); top: -200px; right: -80px; }
+.ch-blob--2 { width: 280px; height: 280px; background: var(--color-gold); bottom: -80px; left: 8%; animation-delay: -3s; animation-duration: 12s; }
+.ch-blob--3 { width: 180px; height: 180px; background: #a78bfa; top: 45%; left: 35%; animation-delay: -6s; animation-duration: 8s; }
+@keyframes blobFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-28px) scale(1.06); }
+}
+.ch-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black, transparent);
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black, transparent);
+}
+.contact-hero .container { position: relative; z-index: 1; }
+.ch-breadcrumb {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .78rem; opacity: .55; margin-bottom: 1.75rem;
+}
+.ch-breadcrumb a { color: white; text-decoration: none; }
+.ch-eyebrow {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: rgba(255,255,255,.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.15); border-radius: 100px;
+  padding: .35rem 1rem; font-size: .76rem; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: rgba(255,255,255,.9); margin-bottom: 1.75rem;
+}
+.ch-eyebrow-dot {
+  width: 6px; height: 6px; background: #4ade80; border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(74,222,128,.3);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(74,222,128,.3); }
+  50%       { box-shadow: 0 0 0 6px rgba(74,222,128,.12); }
+}
+.ch-title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800; line-height: 1.1;
+  margin-bottom: 1.25rem; color: white;
+}
+.ch-title .highlight {
+  background: linear-gradient(90deg, #818cf8, var(--color-gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.ch-subtitle {
+  font-size: 1.1rem; opacity: .72; max-width: 540px;
+  line-height: 1.7; margin-bottom: 2.5rem;
+}
+.ch-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.btn-ch-primary {
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: white; color: var(--color-navy);
+  padding: .9rem 1.8rem; border-radius: 100px;
+  font-weight: 700; font-size: .875rem; text-decoration: none;
+  transition: all .25s ease; box-shadow: 0 4px 20px rgba(0,0,0,.2);
+}
+.btn-ch-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,.28); }
+.btn-ch-secondary {
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: rgba(255,255,255,.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,.22); color: white;
+  padding: .9rem 1.8rem; border-radius: 100px;
+  font-weight: 600; font-size: .875rem;
+  transition: all .25s ease; cursor: pointer;
+}
+.btn-ch-secondary:hover {
+  background: rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.38);
+  transform: translateY(-2px);
+}
+.ch-stats {
+  display: flex; gap: 2.5rem; flex-wrap: wrap;
+  padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.1);
+}
+.ch-stat { display: flex; flex-direction: column; gap: .2rem; }
+.ch-stat-num { font-size: 1.5rem; font-weight: 800; color: white; }
+.ch-stat-label { font-size: .72rem; opacity: .55; letter-spacing: .04em; }
+
+/* ── MAIN SECTION ── */
+.contact-main {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #f8f9ff 0%, #fff 60%);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ── INFO CARD ── */
+.info-card {
+  background: white; border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0,0,30,.07);
+  border: 1px solid rgba(0,0,60,.055);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.info-card:hover { transform: translateY(-4px); box-shadow: 0 12px 60px rgba(0,0,30,.11); }
+.info-card-top {
+  background: linear-gradient(135deg, var(--color-navy) 0%, #2d3282 100%);
+  padding: 1.75rem; position: relative; overflow: hidden;
+}
+.info-card-top::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(102,119,255,.38) 0%, transparent 60%);
+}
+.avail-badge {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(74,222,128,.13); border: 1px solid rgba(74,222,128,.28);
+  border-radius: 100px; padding: .28rem .85rem;
+  font-size: .7rem; font-weight: 600; color: #4ade80;
+  margin-bottom: 1.2rem;
+}
+.avail-dot { width: 5px; height: 5px; background: #4ade80; border-radius: 50%; animation: pulseDot 2s infinite; }
+.info-avatar {
+  position: relative; z-index: 1;
+  width: 68px; height: 68px;
+  background: linear-gradient(135deg, var(--color-blue), #a78bfa);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; font-weight: 800; color: white;
+  margin-bottom: .9rem; box-shadow: 0 4px 20px rgba(102,119,255,.38);
+}
+.info-name { position: relative; z-index: 1; font-size: 1.15rem; font-weight: 700; color: white; margin-bottom: .18rem; }
+.info-role { position: relative; z-index: 1; font-size: .76rem; color: rgba(255,255,255,.55); }
+.info-card-body { padding: 1.5rem; }
+.ci-items { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 1.5rem; }
+.ci-item {
+  display: flex; align-items: center; gap: .8rem;
+  padding: .7rem .9rem; background: #f8f9ff;
+  border-radius: 12px; border: 1px solid #eef0ff;
+  text-decoration: none; color: inherit;
+  transition: all .2s ease;
+}
+.ci-item:hover { background: #eef0ff; border-color: var(--color-blue); transform: translateX(4px); }
+.ci-item-static { pointer-events: none; }
+.ci-icon {
+  width: 34px; height: 34px; background: white;
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,60,.07);
+}
+.ci-icon svg { color: var(--color-blue); }
+.ci-text strong { display: block; font-size: .7rem; color: var(--color-gray-400); font-weight: 500; margin-bottom: 1px; }
+.ci-text span { font-size: .82rem; color: var(--color-navy); font-weight: 600; }
+.info-divider { height: 1px; background: #f0f0f8; margin: 0 1.5rem 1.5rem; }
+.info-card-footer { padding: 0 1.5rem 1.5rem; }
+.btn-linkedin {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  width: 100%; background: linear-gradient(90deg, #0077B5, #009fd4);
+  color: white; border-radius: 12px; padding: .82rem;
+  font-weight: 600; font-size: .82rem; text-decoration: none;
+  transition: all .25s ease; box-shadow: 0 4px 15px rgba(0,119,181,.22);
+}
+.btn-linkedin:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,119,181,.32); }
+
+/* ── ACTION CARD ── */
+.action-card {
+  background: white; border-radius: 24px;
+  box-shadow: 0 4px 40px rgba(0,0,30,.07);
+  border: 1px solid rgba(0,0,60,.055);
+  overflow: hidden;
+}
+.action-tabs {
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: #f8f9ff; border-bottom: 1px solid #eef0ff;
+}
+.action-tab {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: 1.1rem; font-size: .845rem; font-weight: 600;
+  color: var(--color-gray-400); cursor: pointer;
+  border: none; background: none; transition: all .22s ease;
+  border-bottom: 2.5px solid transparent;
+}
+.action-tab.active { color: var(--color-blue); background: white; border-bottom-color: var(--color-blue); }
+.action-tab:hover:not(.active) { color: var(--color-navy); background: rgba(255,255,255,.65); }
+.tab-panel { display: none; padding: 2.25rem; }
+.tab-panel.active { display: block; }
+
+/* ── PREMIUM FORM ── */
+.pf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem; }
+.pf-group { margin-bottom: 1.1rem; }
+.pf-label { display: block; font-size: .78rem; font-weight: 600; color: var(--color-navy); margin-bottom: .45rem; letter-spacing: .02em; }
+.pf-label .req { color: #ef4444; margin-left: 2px; }
+.pf-input, .pf-select, .pf-textarea {
+  width: 100%; padding: .82rem 1rem;
+  border: 1.5px solid #e8eaf6; border-radius: 12px;
+  font-size: .86rem; color: var(--color-navy);
+  background: #fafbff; transition: all .2s ease;
+  outline: none; font-family: inherit;
+}
+.pf-input:focus, .pf-select:focus, .pf-textarea:focus {
+  border-color: var(--color-blue); background: white;
+  box-shadow: 0 0 0 4px rgba(102,119,255,.1);
+}
+.pf-input::placeholder, .pf-textarea::placeholder { color: #b0b8d4; }
+.pf-textarea { min-height: 115px; resize: vertical; }
+.pf-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236677ff' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
+}
+.pf-submit {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: .6rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-blue) 0%, #4f46e5 100%);
+  color: white; border: none; border-radius: 12px;
+  font-size: .88rem; font-weight: 700; cursor: pointer;
+  transition: all .25s ease; box-shadow: 0 4px 20px rgba(102,119,255,.32); margin-top: .5rem;
+}
+.pf-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(102,119,255,.42); }
+.pf-submit:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+.pf-privacy { font-size: .7rem; color: var(--color-gray-400); margin-top: .875rem; line-height: 1.6; text-align: center; }
+.pf-privacy a { color: var(--color-blue); text-decoration: underline; }
+.pf-error {
+  display: none; background: #fef2f2; border: 1px solid #fecaca;
+  border-radius: 10px; padding: .85rem 1rem;
+  font-size: .8rem; color: #dc2626; margin-bottom: 1rem;
+}
+.pf-success {
+  display: none; text-align: center; padding: 2rem 1rem;
+}
+.pf-success-icon {
+  width: 64px; height: 64px;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+  animation: successPop .5s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes successPop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+.pf-success h4 { font-size: 1.2rem; color: var(--color-navy); margin-bottom: .5rem; }
+.pf-success p { color: var(--color-gray-500); font-size: .875rem; line-height: 1.65; }
+
+/* ── BOOKING PANEL ── */
+.booking-panel {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center;
+  padding: 2.5rem 1.5rem; min-height: 280px;
+}
+.booking-illus {
+  width: 76px; height: 76px;
+  background: linear-gradient(135deg, #f0f0ff, #e8eaff);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.4rem;
+  animation: floatAnim 3.5s ease-in-out infinite;
+}
+@keyframes floatAnim { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.booking-panel h3 { font-size: 1.15rem; color: var(--color-navy); margin-bottom: .65rem; }
+.booking-panel p { color: var(--color-gray-500); font-size: .875rem; line-height: 1.7; max-width: 360px; margin: 0 auto 1.75rem; }
+.btn-book {
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-navy), #2d3282);
+  color: white; border-radius: 12px; font-weight: 700; font-size: .88rem;
+  border: none; cursor: pointer; transition: all .25s ease;
+  box-shadow: 0 4px 20px rgba(15,23,42,.2);
+}
+.btn-book:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(15,23,42,.28); }
+.booking-badges {
+  display: flex; gap: 1.25rem; margin-top: 1.75rem; flex-wrap: wrap; justify-content: center;
+}
+.bk-badge {
+  display: flex; align-items: center; gap: .4rem;
+  font-size: .72rem; color: var(--color-gray-500);
+}
+.bk-badge svg { color: #22c55e; flex-shrink: 0; }
+
+/* ── BOOKING MODAL ── */
+.bmodal-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: all .28s ease;
+}
+.bmodal-overlay.open { opacity: 1; visibility: visible; }
+.bmodal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(8,12,45,.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.bmodal {
+  position: relative; z-index: 1;
+  width: min(960px, 95vw); height: min(720px, 90vh);
+  background: white; border-radius: 24px; overflow: hidden;
+  box-shadow: 0 30px 90px rgba(0,0,0,.32);
+  transform: scale(.9) translateY(24px);
+  transition: transform .38s cubic-bezier(.34,1.56,.64,1);
+  display: flex; flex-direction: column;
+}
+.bmodal-overlay.open .bmodal { transform: scale(1) translateY(0); }
+.bmodal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 1.6rem;
+  background: linear-gradient(135deg, var(--color-navy), #2d3282);
+  flex-shrink: 0;
+}
+.bmodal-title { display: flex; align-items: center; gap: .75rem; color: white; }
+.bmodal-title-text { font-weight: 700; font-size: .92rem; }
+.bmodal-title-sub { font-size: .72rem; color: rgba(255,255,255,.48); margin-top: .08rem; }
+.bmodal-close {
+  width: 34px; height: 34px;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: white; transition: all .2s ease;
+}
+.bmodal-close:hover { background: rgba(255,255,255,.2); transform: rotate(90deg); }
+.bmodal-body { flex: 1; position: relative; }
+.bmodal-loader {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; background: #f8f9ff; gap: .9rem;
+}
+.loader-spin {
+  width: 38px; height: 38px;
+  border: 3px solid #e8eaf6; border-top-color: var(--color-blue);
+  border-radius: 50%; animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loader-spin-label { font-size: .78rem; color: var(--color-gray-400); }
+.bmodal-body iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+/* ── PHONE CTA ── */
+.contact-phone-cta {
+  background: var(--color-navy); padding: 4rem 0;
+  position: relative; overflow: hidden;
+}
+.contact-phone-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(102,119,255,.18) 0%, transparent 70%);
+}
+.cpc-inner { position: relative; z-index: 1; text-align: center; }
+.cpc-inner .section-eyebrow { color: rgba(255,255,255,.45); }
+.cpc-inner h2 { color: white; font-size: 1.9rem; margin: .75rem 0 .9rem; }
+.cpc-inner p { color: rgba(255,255,255,.55); max-width: 460px; margin: 0 auto 2rem; line-height: 1.7; }
+
+/* ── SCROLL ANIMATIONS ── */
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up--delayed { transition-delay: .14s; }
+.btn-pill { border-radius: 100px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .pf-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 580px) {
+  .ch-actions { flex-direction: column; }
+  .btn-ch-primary, .btn-ch-secondary { justify-content: center; }
+  .ch-stats { gap: 1.5rem; }
+  .tab-text { display: none; }
+  .booking-badges { gap: .75rem; }
+}
+</style>
+
+<!-- ═══════════════════════ BOOKING MODAL ═══════════════════════ -->
+<div class="bmodal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bmodalTitle">
+  <div class="bmodal-backdrop" id="bmodalBackdrop"></div>
+  <div class="bmodal">
+    <div class="bmodal-header">
+      <div class="bmodal-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <div>
+          <div class="bmodal-title-text" id="bmodalTitle">Réserver un créneau</div>
+          <div class="bmodal-title-sub">Agenda en ligne · 30 min · Gratuit & sans engagement</div>
+        </div>
+      </div>
+      <button class="bmodal-close" id="bmodalClose" type="button" aria-label="Fermer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="bmodal-body">
+      <div class="bmodal-loader" id="bmodalLoader">
+        <div class="loader-spin"></div>
+        <span class="loader-spin-label">Chargement de l'agenda…</span>
+      </div>
+      <iframe
+        id="bookingIframe"
+        src=""
+        data-src="https://outlook.office.com/book/meeting@bmdata.fr/?ismsaljsauthenabled"
+        scrolling="yes"
+        title="Réserver un créneau avec Martial Bodet"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="contact-hero" aria-labelledby="contact-h1">
+  <div class="ch-blob ch-blob--1"></div>
+  <div class="ch-blob ch-blob--2"></div>
+  <div class="ch-blob ch-blob--3"></div>
+  <div class="ch-grid" aria-hidden="true"></div>
   <div class="container">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <nav class="ch-breadcrumb" aria-label="Fil d'Ariane">
       <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
+      <span aria-hidden="true">›</span>
       <span>Contact</span>
     </nav>
-    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
-    <h1 id="contact-title">{{ d.hero.title }}</h1>
-    <p>{{ d.hero.subtitle }}</p>
-  </div>
-</section>
-
-<!-- CONTENU CONTACT -->
-<section class="section">
-  <div class="container">
-    <div class="contact-layout">
-
-      <!-- Infos -->
-      <div class="contact-info-block">
-        <h2 style="font-size:var(--text-3xl);margin-bottom:1.5rem;">{{ d.intro.title }}</h2>
-        <p style="margin-bottom:2.5rem;line-height:1.8;">{{ d.intro.text }}</p>
-
-        <div class="contact-info-list">
-          {% for info in d.contact_info %}
-          <div class="contact-info-item">
-            <div class="contact-info-icon" aria-hidden="true">
-              {% case info.icon %}
-              {% when 'email' %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              {% when 'phone' %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.42 2 2 0 0 1 3.92 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              {% when 'location' %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              {% when 'clock' %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              {% endcase %}
-            </div>
-            <div>
-              <strong>{{ info.label }}</strong>
-              {% if info.link %}
-              <span><a href="{{ info.link }}" style="color:var(--color-blue);">{{ info.value }}</a></span>
-              {% else %}
-              <span>{{ info.value }}</span>
-              {% endif %}
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-
-        <!-- Alternatives -->
-        <div style="margin-top:3rem;">
-          <h3 style="font-size:var(--text-base);margin-bottom:1.25rem;">{{ d.alternatives.title }}</h3>
-          {% for alt in d.alternatives.items %}
-          <div style="background:var(--color-gray-50);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1rem;border:1px solid var(--color-gray-100);">
-            <h4 style="font-size:.875rem;margin-bottom:.4rem;">{{ alt.title }}</h4>
-            <p style="font-size:.8rem;color:var(--color-gray-500);margin-bottom:.75rem;">{{ alt.description }}</p>
-            <a href="{{ alt.cta_url }}" class="btn btn-outline btn-sm" {% if alt.cta_url contains 'http' %}target="_blank" rel="noopener"{% endif %}>
-              {{ alt.cta_label }}
-            </a>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-
-      <!-- Formulaire -->
-      <div>
-        <div class="form-card">
-          <h3 style="font-size:var(--text-xl);margin-bottom:2rem;">{{ d.form.title }}</h3>
-
-          <!-- Message succès -->
-          <div id="form-success" style="display:none;background:var(--color-blue-pale);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;border:1px solid var(--color-blue-light);">
-            <div style="font-size:2rem;margin-bottom:.75rem;">✅</div>
-            <h4 style="color:var(--color-navy);margin-bottom:.5rem;">Message envoyé !</h4>
-            <p style="font-size:.875rem;color:var(--color-gray-600);">{{ d.form.success_message }}</p>
-          </div>
-
-          <!-- Message erreur -->
-          <div id="form-error" style="display:none;background:#fef2f2;border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1.5rem;border:1px solid #fecaca;">
-            <p style="font-size:.875rem;color:#dc2626;">{{ d.form.error_message }}</p>
-          </div>
-
-          <!-- Formulaire -->
-          <form id="contact-form"
-                action="#"
-                method="POST"
-                novalidate
-                aria-label="Formulaire de contact BM Data">
-
-            {% for field in d.form.fields %}
-            <div class="form-group">
-              <label class="form-label" for="{{ field.id }}">
-                {{ field.label }}
-                {% if field.required %}<span class="required" aria-label="obligatoire">*</span>{% endif %}
-              </label>
-
-              {% case field.type %}
-              {% when 'textarea' %}
-              <textarea
-                id="{{ field.id }}"
-                name="{{ field.id }}"
-                class="form-textarea"
-                placeholder="{{ field.placeholder }}"
-                {% if field.required %}required aria-required="true"{% endif %}
-              ></textarea>
-
-              {% when 'select' %}
-              <select id="{{ field.id }}" name="{{ field.id }}" class="form-select">
-                <option value="">— Choisir —</option>
-                {% for opt in field.options %}
-                <option value="{{ opt | downcase | replace: ' ', '-' }}">{{ opt }}</option>
-                {% endfor %}
-              </select>
-
-              {% else %}
-              <input
-                type="{{ field.type }}"
-                id="{{ field.id }}"
-                name="{{ field.id }}"
-                class="form-input"
-                placeholder="{{ field.placeholder }}"
-                {% if field.required %}required aria-required="true"{% endif %}
-                {% if field.type == 'email' %}autocomplete="email"{% endif %}
-                {% if field.type == 'tel' %}autocomplete="tel"{% endif %}
-              >
-              {% endcase %}
-            </div>
-            {% endfor %}
-
-            <button type="submit" class="btn btn-primary w-full" style="justify-content:center;margin-top:.5rem;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              {{ d.form.submit_label }}
-            </button>
-
-            <p class="form-privacy">{{ d.form.privacy_notice }}</p>
-          </form>
-        </div>
-      </div>
-
+    <div class="ch-eyebrow" aria-hidden="true">
+      <span class="ch-eyebrow-dot"></span>
+      Premier échange gratuit &amp; sans engagement
+    </div>
+    <h1 class="ch-title" id="contact-h1">
+      Parlons de votre<br>
+      <span class="highlight">projet data</span>
+    </h1>
+    <p class="ch-subtitle">{{ d.hero.subtitle }}</p>
+    <div class="ch-actions">
+      <a href="#contact-form-section" class="btn-ch-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        Envoyer un message
+      </a>
+      <button class="btn-ch-secondary open-booking" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Réserver un créneau
+      </button>
+    </div>
+    <div class="ch-stats" aria-label="Chiffres clés">
+      <div class="ch-stat"><span class="ch-stat-num">24h</span><span class="ch-stat-label">Délai de réponse</span></div>
+      <div class="ch-stat"><span class="ch-stat-num">50+</span><span class="ch-stat-label">Projets réalisés</span></div>
+      <div class="ch-stat"><span class="ch-stat-num">100%</span><span class="ch-stat-label">Échange gratuit</span></div>
+      <div class="ch-stat"><span class="ch-stat-num">Agen</span><span class="ch-stat-label">Lot-et-Garonne</span></div>
     </div>
   </div>
 </section>
 
-<!-- MINI CTA RAPPEL -->
-<section class="section section--light">
-  <div class="container" style="text-align:center;">
-    <span class="section-eyebrow">Vous préférez un appel ?</span>
-    <h2 style="margin-bottom:1rem;">Je suis disponible par téléphone</h2>
-    <p style="max-width:480px;margin:0 auto 2rem;">Du lundi au vendredi, 9h–18h. Un appel de 10 minutes suffit souvent pour faire le point.</p>
-    <a href="tel:{{ g.contact.phone | remove: ' ' | remove: '(' | remove: ')' }}" class="btn btn-primary btn-lg">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.42 2 2 0 0 1 3.92 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Appeler le {{ g.contact.phone_display }}
-    </a>
+<!-- ═══════════════════════ MAIN SECTION ═══════════════════════ -->
+<section class="contact-main" id="contact-form-section" aria-label="Formulaire et informations de contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- INFO CARD -->
+      <div class="info-card fade-up">
+        <div class="info-card-top">
+          <div class="avail-badge">
+            <span class="avail-dot"></span>
+            Disponible
+          </div>
+          <div class="info-avatar" aria-hidden="true">MB</div>
+          <div class="info-name">Martial Bodet</div>
+          <div class="info-role">Consultant Data · Agen (47)</div>
+        </div>
+        <div class="info-card-body">
+          <div class="ci-items">
+            <a href="mailto:contact@bmdata.fr" class="ci-item">
+              <div class="ci-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="ci-text"><strong>Email</strong><span>contact@bmdata.fr</span></div>
+            </a>
+            <a href="tel:+33670210929" class="ci-item">
+              <div class="ci-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.42 2 2 0 0 1 3.92 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="ci-text"><strong>Téléphone</strong><span>06 70 21 09 29</span></div>
+            </a>
+            <div class="ci-item ci-item-static">
+              <div class="ci-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="ci-text"><strong>Localisation</strong><span>Agen, Lot-et-Garonne (47)</span></div>
+            </div>
+            <div class="ci-item ci-item-static">
+              <div class="ci-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="ci-text"><strong>Disponibilité</strong><span>Lundi – Vendredi, 9h – 18h</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-card-footer">
+          <a href="https://www.linkedin.com/in/martial-bodet/" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+            Suivre sur LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- ACTION CARD -->
+      <div class="action-card fade-up fade-up--delayed">
+        <div class="action-tabs" role="tablist" aria-label="Choisir un mode de contact">
+          <button class="action-tab active" id="tab-form" role="tab" aria-selected="true" aria-controls="panel-form" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span class="tab-text">Envoyer un message</span>
+          </button>
+          <button class="action-tab" id="tab-book" role="tab" aria-selected="false" aria-controls="panel-book" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span class="tab-text">Réserver un créneau</span>
+          </button>
+        </div>
+
+        <!-- PANEL FORMULAIRE -->
+        <div class="tab-panel active" id="panel-form" role="tabpanel" aria-labelledby="tab-form">
+          <div class="pf-error" id="pf-error" role="alert"></div>
+          <div class="pf-success" id="pf-success" aria-live="polite">
+            <div class="pf-success-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h4>Message envoyé !</h4>
+            <p>{{ d.form.success_message }}</p>
+          </div>
+          <form id="contact-form" action="#" method="POST" novalidate aria-label="Formulaire de contact BM Data">
+            <div class="pf-row">
+              <div>
+                <label class="pf-label" for="name">Nom et prénom <span class="req" aria-label="obligatoire">*</span></label>
+                <input type="text" id="name" name="name" class="pf-input" placeholder="Jean Dupont" required aria-required="true" autocomplete="name">
+              </div>
+              <div>
+                <label class="pf-label" for="company">Entreprise</label>
+                <input type="text" id="company" name="company" class="pf-input" placeholder="Votre société (facultatif)" autocomplete="organization">
+              </div>
+            </div>
+            <div class="pf-row">
+              <div>
+                <label class="pf-label" for="email">Adresse email <span class="req" aria-label="obligatoire">*</span></label>
+                <input type="email" id="email" name="email" class="pf-input" placeholder="jean@exemple.fr" required aria-required="true" autocomplete="email">
+              </div>
+              <div>
+                <label class="pf-label" for="phone">Téléphone</label>
+                <input type="tel" id="phone" name="phone" class="pf-input" placeholder="06 XX XX XX XX" autocomplete="tel">
+              </div>
+            </div>
+            <div class="pf-group">
+              <label class="pf-label" for="service">Sujet de votre demande</label>
+              <select id="service" name="service" class="pf-select">
+                <option value="">— Choisir un sujet —</option>
+                <option value="tableau-de-bord">Tableau de bord de pilotage</option>
+                <option value="automatisation">Automatisation des reportings</option>
+                <option value="analyse">Analyse de données</option>
+                <option value="strategie">Stratégie et gouvernance</option>
+                <option value="formation">Formation</option>
+                <option value="migration">Migration et intégration</option>
+                <option value="audit">Audit gratuit</option>
+                <option value="autre">Autre / Je ne sais pas encore</option>
+              </select>
+            </div>
+            <div class="pf-group">
+              <label class="pf-label" for="message">Votre message <span class="req" aria-label="obligatoire">*</span></label>
+              <textarea id="message" name="message" class="pf-textarea" placeholder="Décrivez brièvement votre situation ou votre question…" required aria-required="true"></textarea>
+            </div>
+            <button type="submit" class="pf-submit" id="pf-submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              {{ d.form.submit_label }}
+            </button>
+            <p class="pf-privacy">{{ d.form.privacy_notice }}</p>
+          </form>
+        </div>
+
+        <!-- PANEL RÉSERVATION -->
+        <div class="tab-panel" id="panel-book" role="tabpanel" aria-labelledby="tab-book">
+          <div class="booking-panel">
+            <div class="booking-illus" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+                <circle cx="8" cy="15" r="1" fill="currentColor"/><circle cx="12" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3>Choisissez votre créneau</h3>
+            <p>Réservez directement dans mon agenda en ligne. Échange de 30 minutes, visio ou téléphone, à votre convenance.</p>
+            <button class="btn-book open-booking" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Ouvrir l'agenda
+            </button>
+            <div class="booking-badges">
+              <div class="bk-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                30 minutes
+              </div>
+              <div class="bk-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Gratuit
+              </div>
+              <div class="bk-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Sans engagement
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /action-card -->
+
+    </div><!-- /contact-grid -->
   </div>
 </section>
+
+<!-- ═══════════════════════ PHONE CTA ═══════════════════════ -->
+<section class="contact-phone-cta" aria-label="Appel téléphonique">
+  <div class="container">
+    <div class="cpc-inner">
+      <span class="section-eyebrow">Vous préférez un appel direct ?</span>
+      <h2>Je suis disponible par téléphone</h2>
+      <p>Du lundi au vendredi, 9h–18h. Un appel de 10 minutes suffit souvent pour faire le point.</p>
+      <a href="tel:{{ g.contact.phone | remove: ' ' | remove: '(' | remove: ')' }}" class="btn btn-primary btn-lg btn-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.42 2 2 0 0 1 3.92 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Appeler le {{ g.contact.phone_display }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── MODAL ── */
+  var overlay  = document.getElementById('bookingModal');
+  var backdrop = document.getElementById('bmodalBackdrop');
+  var closeBtn = document.getElementById('bmodalClose');
+  var iframe   = document.getElementById('bookingIframe');
+  var loader   = document.getElementById('bmodalLoader');
+  var loaded   = false;
+
+  function openModal() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (!loaded) {
+      iframe.src = iframe.getAttribute('data-src');
+      iframe.addEventListener('load', function () { loader.style.display = 'none'; }, { once: true });
+      loaded = true;
+    }
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.open-booking').forEach(function (btn) {
+    btn.addEventListener('click', openModal);
+  });
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  /* ── TABS ── */
+  var tabForm   = document.getElementById('tab-form');
+  var tabBook   = document.getElementById('tab-book');
+  var panelForm = document.getElementById('panel-form');
+  var panelBook = document.getElementById('panel-book');
+
+  function switchTab(activeTab, activePanel, inactiveTab, inactivePanel) {
+    activeTab.classList.add('active');
+    activeTab.setAttribute('aria-selected', 'true');
+    inactiveTab.classList.remove('active');
+    inactiveTab.setAttribute('aria-selected', 'false');
+    activePanel.classList.add('active');
+    inactivePanel.classList.remove('active');
+  }
+
+  tabForm.addEventListener('click', function () { switchTab(tabForm, panelForm, tabBook, panelBook); });
+  tabBook.addEventListener('click', function () { switchTab(tabBook, panelBook, tabForm, panelForm); });
+
+  /* ── FORM ── */
+  var form      = document.getElementById('contact-form');
+  var successEl = document.getElementById('pf-success');
+  var errorEl   = document.getElementById('pf-error');
+  var submitBtn = document.getElementById('pf-submit');
+  var SUBMIT_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name    = form.querySelector('#name').value.trim();
+    var email   = form.querySelector('#email').value.trim();
+    var message = form.querySelector('#message').value.trim();
+
+    if (!name || !email || !message) {
+      errorEl.textContent = 'Merci de remplir les champs obligatoires : nom, email et message.';
+      errorEl.style.display = 'block';
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+
+    errorEl.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin .8s linear infinite;transform-origin:center" aria-hidden="true"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M12 2a10 10 0 0 1 7.07 17.07"/></svg> Envoi en cours…';
+
+    /* Simulate — remplacer fetch() par votre endpoint réel si besoin */
+    setTimeout(function () {
+      form.style.display = 'none';
+      successEl.style.display = 'block';
+    }, 1200);
+  });
+
+  /* ── SCROLL ANIMATIONS ── */
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(function (el) { observer.observe(el); });
+
+})();
+</script>
