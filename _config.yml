@@ -58,7 +58,7 @@ kramdown:
 # Plugins (compatibles GitHub Pages)
 plugins:
   - jekyll-feed
-  - jekyll-sitemap
+  # jekyll-sitemap désactivé — site de TEST, pas d'indexation
   - jekyll-seo-tag
 
 # Collections
