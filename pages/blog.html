@@ -7,92 +7,79 @@ body_class: "page-blog"
 ---
 
 {% assign g = site.data.global %}
-
-<!-- HERO -->
-<section class="page-hero" aria-labelledby="blog-title">
-  <div class="container">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Blog</span>
-    </nav>
-    <span class="section-eyebrow">Blog</span>
-    <h1 id="blog-title">Conseils data pour les dirigeants de TPE/PME</h1>
-    <p>Des articles clairs et pratiques pour comprendre comment vos données peuvent améliorer vos décisions — sans jargon technique.</p>
-  </div>
-</section>
-
-<!-- BLOG STATS -->
 {% assign all_cats = site.posts | map: "category" | compact | uniq %}
 {% assign articles_total = site.posts.size %}
 {% assign cats_total = all_cats | size %}
 {% assign read_minutes = articles_total | times: 6 %}
 
-<section class="blog-stats" aria-label="Statistiques du blog">
-  <div class="container">
-    <div class="blog-stats__inner">
+<!-- HERO + STATS (layout 2 colonnes) -->
+<section class="page-hero blog-hero-split" aria-labelledby="blog-title">
+  <canvas class="hero-particles" aria-hidden="true"></canvas>
+  <div class="container blog-hero-split__container">
 
-      <div class="blog-stats__grid">
+    <!-- Colonne gauche : texte -->
+    <div class="blog-hero-split__text">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="{{ '/' | relative_url }}">Accueil</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Blog</span>
+      </nav>
+      <span class="section-eyebrow">Blog</span>
+      <h1 id="blog-title">Conseils data pour les dirigeants de TPE/PME</h1>
+      <p>Des articles clairs et pratiques pour comprendre comment vos données peuvent améliorer vos décisions — sans jargon technique.</p>
+    </div>
 
-        <!-- Stat 1 : Articles -->
-        <div class="blog-stat" data-count="{{ articles_total }}">
-          <div class="blog-stat__glow blog-stat__glow--blue"></div>
-          <div class="blog-stat__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414A1 1 0 0 1 19 9.414V19a2 2 0 0 1-2 2z"/>
-            </svg>
+    <!-- Colonne droite : stats -->
+    <div class="blog-hero-split__panel" aria-label="Statistiques du blog">
+      <div class="blog-stats__inner">
+
+        <div class="blog-stats__grid">
+
+          <div class="blog-stat" data-count="{{ articles_total }}">
+            <div class="blog-stat__glow blog-stat__glow--blue"></div>
+            <div class="blog-stat__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414A1 1 0 0 1 19 9.414V19a2 2 0 0 1-2 2z"/></svg>
+            </div>
+            <div class="blog-stat__num"><span class="blog-stat__count" aria-live="polite">0</span></div>
+            <div class="blog-stat__label">Articles publiés</div>
+            <div class="blog-stat__bar"></div>
           </div>
-          <div class="blog-stat__num">
-            <span class="blog-stat__count" aria-live="polite">0</span>
+
+          <div class="blog-stat" data-count="{{ cats_total }}">
+            <div class="blog-stat__glow blog-stat__glow--gold"></div>
+            <div class="blog-stat__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A2 2 0 0 1 3 12V7a4 4 0 0 1 4-4z"/></svg>
+            </div>
+            <div class="blog-stat__num"><span class="blog-stat__count" aria-live="polite">0</span></div>
+            <div class="blog-stat__label">Thématiques couvertes</div>
+            <div class="blog-stat__bar"></div>
           </div>
-          <div class="blog-stat__label">Articles publiés</div>
-          <div class="blog-stat__bar"></div>
+
+          <div class="blog-stat" data-count="{{ read_minutes }}" data-suffix=" min">
+            <div class="blog-stat__glow blog-stat__glow--teal"></div>
+            <div class="blog-stat__icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+            </div>
+            <div class="blog-stat__num"><span class="blog-stat__count" aria-live="polite">0</span><span class="blog-stat__unit"> min</span></div>
+            <div class="blog-stat__label">De lecture au total</div>
+            <div class="blog-stat__bar"></div>
+          </div>
+
+        </div><!-- /.blog-stats__grid -->
+
+        {% if all_cats.size > 0 %}
+        <div class="blog-stats__cats" aria-label="Catégories">
+          <span class="blog-stats__cats-label">Catégories :</span>
+          {% for cat in all_cats %}
+            <span class="blog-stats__cat-badge">{{ cat }}</span>
+          {% endfor %}
         </div>
+        {% endif %}
 
-        <!-- Stat 2 : Thématiques -->
-        <div class="blog-stat" data-count="{{ cats_total }}">
-          <div class="blog-stat__glow blog-stat__glow--gold"></div>
-          <div class="blog-stat__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A2 2 0 0 1 3 12V7a4 4 0 0 1 4-4z"/>
-            </svg>
-          </div>
-          <div class="blog-stat__num">
-            <span class="blog-stat__count" aria-live="polite">0</span>
-          </div>
-          <div class="blog-stat__label">Thématiques couvertes</div>
-          <div class="blog-stat__bar"></div>
-        </div>
+      </div><!-- /.blog-stats__inner -->
+    </div><!-- /.blog-hero-split__panel -->
 
-        <!-- Stat 3 : Temps de lecture -->
-        <div class="blog-stat" data-count="{{ read_minutes }}" data-suffix=" min">
-          <div class="blog-stat__glow blog-stat__glow--teal"></div>
-          <div class="blog-stat__icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/>
-              <polyline points="12 7 12 12 15.5 14"/>
-            </svg>
-          </div>
-          <div class="blog-stat__num">
-            <span class="blog-stat__count" aria-live="polite">0</span><span class="blog-stat__unit"> min</span>
-          </div>
-          <div class="blog-stat__label">De lecture au total</div>
-          <div class="blog-stat__bar"></div>
-        </div>
-
-      </div><!-- /.blog-stats__grid -->
-
-      {% if all_cats.size > 0 %}
-      <div class="blog-stats__cats" aria-label="Catégories">
-        <span class="blog-stats__cats-label">Catégories :</span>
-        {% for cat in all_cats %}
-          <span class="blog-stats__cat-badge">{{ cat }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-    </div><!-- /.blog-stats__inner -->
-  </div>
+  </div><!-- /.blog-hero-split__container -->
 </section>
 
 <!-- ARTICLES -->
@@ -102,7 +89,7 @@ body_class: "page-blog"
 
     <!-- Article à la une -->
     {% assign featured = site.posts.first %}
-    <div class="fade-up" style="background:white;border-radius:var(--radius-2xl);border:1px solid var(--color-gray-100);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:4rem;box-shadow:var(--shadow-md);">
+    <div class="fade-up" style="background:white;border-radius:var(--radius-2xl);border:var(--border-card);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:4rem;box-shadow:var(--shadow-card);">
       <div style="background:linear-gradient(135deg,var(--color-navy-mid),var(--color-navy));min-height:300px;display:flex;align-items:center;justify-content:center;">
         {% if featured.image %}
         <img src="{{ featured.image | relative_url }}" alt="{{ featured.image_alt | default: featured.title }}" style="width:100%;height:100%;object-fit:cover;" loading="eager">
@@ -149,7 +136,7 @@ body_class: "page-blog"
 <!-- CTA Newsletter / Contact -->
 <section class="section section--light">
   <div class="container">
-    <div style="background:var(--color-navy);border-radius:var(--radius-2xl);padding:3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
+    <div style="background:var(--color-hero-bg);border-radius:var(--radius-2xl);padding:3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
       <div>
         <h3 style="color:white;margin-bottom:.5rem;">Une question sur la data dans votre entreprise ?</h3>
         <p style="color:rgba(255,255,255,.65);font-size:.875rem;">Je réponds à toutes les questions, sans engagement, lors d'un premier échange gratuit.</p>
@@ -161,291 +148,6 @@ body_class: "page-blog"
   </div>
 </section>
 
-<style>
-/* ── Responsive overrides (existing) ── */
-@media(max-width:768px){
-  section .container > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
-  section .container > div[style*="grid-template-columns:1fr auto"] { grid-template-columns:1fr !important; }
-  section .container > div[style*="grid-template-columns:1fr auto"] > div:last-child { text-align:left; }
-}
 
-/* ══════════════════════════════════════════════
-   BLOG STATS — Section compteurs
-══════════════════════════════════════════════ */
 
-.blog-stats {
-  padding: 0 0 2.5rem;
-  background: transparent;
-}
 
-.blog-stats__inner {
-  background: linear-gradient(135deg, #0d1528 0%, #0a0f1e 50%, #0c1422 100%);
-  border: 1px solid rgba(102,119,255,.18);
-  border-radius: var(--radius-2xl);
-  padding: 2.5rem 2rem 2rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 60px rgba(102,119,255,.06), 0 20px 60px rgba(0,0,0,.35);
-}
-
-/* Subtle grid overlay */
-.blog-stats__inner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(102,119,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(102,119,255,.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-
-/* Top accent line */
-.blog-stats__inner::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 10%; right: 10%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-blue), var(--color-gold), transparent);
-  opacity: .6;
-}
-
-/* Grid */
-.blog-stats__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  position: relative;
-  z-index: 1;
-}
-
-/* Vertical separators between cards */
-.blog-stats__grid .blog-stat + .blog-stat {
-  border-left: 1px solid rgba(255,255,255,.06);
-}
-
-/* ── Individual stat card ── */
-.blog-stat {
-  position: relative;
-  padding: 1.5rem 2rem;
-  text-align: center;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-
-.blog-stat.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.blog-stat:nth-child(2) { transition-delay: .12s; }
-.blog-stat:nth-child(3) { transition-delay: .24s; }
-
-/* Glow blobs */
-.blog-stat__glow {
-  position: absolute;
-  width: 120px; height: 120px;
-  border-radius: 50%;
-  filter: blur(50px);
-  opacity: .18;
-  pointer-events: none;
-  top: -20px; left: 50%;
-  transform: translateX(-50%);
-}
-.blog-stat__glow--blue  { background: var(--color-blue); }
-.blog-stat__glow--gold  { background: var(--color-gold); }
-.blog-stat__glow--teal  { background: var(--color-teal); }
-
-/* Icon */
-.blog-stat__icon-wrap {
-  width: 44px; height: 44px;
-  margin: 0 auto .875rem;
-  border-radius: var(--radius-lg);
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-}
-.blog-stat:nth-child(1) .blog-stat__icon-wrap {
-  background: rgba(102,119,255,.12);
-  border: 1px solid rgba(102,119,255,.25);
-  color: var(--color-blue-light);
-}
-.blog-stat:nth-child(2) .blog-stat__icon-wrap {
-  background: rgba(43,212,143,.10);
-  border: 1px solid rgba(43,212,143,.22);
-  color: var(--color-gold);
-}
-.blog-stat:nth-child(3) .blog-stat__icon-wrap {
-  background: rgba(29,185,154,.10);
-  border: 1px solid rgba(29,185,154,.22);
-  color: var(--color-teal);
-}
-.blog-stat__icon-wrap svg {
-  width: 20px; height: 20px;
-  stroke: currentColor;
-}
-
-/* Number */
-.blog-stat__num {
-  font-family: var(--font-sans);
-  font-size: clamp(2.25rem, 4vw, 3rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -.02em;
-  margin-bottom: .5rem;
-  display: flex; align-items: baseline; justify-content: center; gap: .15em;
-}
-.blog-stat:nth-child(1) .blog-stat__num {
-  background: linear-gradient(135deg, #818cf8 0%, #6677ff 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.blog-stat:nth-child(2) .blog-stat__num {
-  background: linear-gradient(135deg, #34d399 0%, #2bd48f 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.blog-stat:nth-child(3) .blog-stat__num {
-  background: linear-gradient(135deg, #5eead4 0%, #1db99a 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.blog-stat__unit {
-  font-size: .95rem;
-  font-weight: 600;
-  opacity: .75;
-}
-
-/* Label */
-.blog-stat__label {
-  font-size: .75rem;
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.45);
-}
-
-/* Bottom accent bar */
-.blog-stat__bar {
-  position: absolute;
-  bottom: 0; left: 20%; right: 20%;
-  height: 2px;
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform .5s ease .4s;
-}
-.blog-stat.is-visible .blog-stat__bar { transform: scaleX(1); }
-.blog-stat:nth-child(1) .blog-stat__bar { background: linear-gradient(90deg, transparent, var(--color-blue), transparent); }
-.blog-stat:nth-child(2) .blog-stat__bar { background: linear-gradient(90deg, transparent, var(--color-gold), transparent); }
-.blog-stat:nth-child(3) .blog-stat__bar { background: linear-gradient(90deg, transparent, var(--color-teal), transparent); }
-
-/* ── Categories row ── */
-.blog-stats__cats {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: .5rem;
-  padding: 1.25rem 2rem 0;
-  border-top: 1px solid rgba(255,255,255,.06);
-  margin-top: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-.blog-stats__cats-label {
-  font-size: .7rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  white-space: nowrap;
-}
-.blog-stats__cat-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: .25rem .75rem;
-  background: rgba(102,119,255,.08);
-  border: 1px solid rgba(102,119,255,.2);
-  border-radius: var(--radius-full);
-  font-size: .75rem;
-  font-weight: 500;
-  color: var(--color-blue-light);
-  letter-spacing: .02em;
-  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-  cursor: default;
-}
-.blog-stats__cat-badge:hover {
-  background: rgba(102,119,255,.18);
-  border-color: rgba(102,119,255,.4);
-  color: #c7d0ff;
-}
-
-/* ── Responsive ── */
-@media (max-width: 640px) {
-  .blog-stats__grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .blog-stat + .blog-stat {
-    border-left: none !important;
-    border-top: 1px solid rgba(255,255,255,.06);
-  }
-  .blog-stat { padding: 1.25rem 1.5rem; }
-  .blog-stats__inner { padding: 1.75rem 1.25rem 1.25rem; }
-  .blog-stats__cats { padding: 1rem 1.25rem 0; }
-}
-@media (min-width: 641px) and (max-width: 900px) {
-  .blog-stats__grid { grid-template-columns: 1fr 1fr; }
-  .blog-stat:nth-child(3) {
-    grid-column: span 2;
-    border-left: none !important;
-    border-top: 1px solid rgba(255,255,255,.06);
-  }
-}
-</style>
-
-<script>
-(function() {
-  /* ── Count-up utility ── */
-  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-
-  function animateCount(el, target, duration) {
-    var start = null;
-    var from = 0;
-    function step(ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var value = Math.round(easeOutCubic(progress) * target);
-      el.textContent = value;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(step);
-  }
-
-  /* ── Trigger on viewport entry ── */
-  var stats = document.querySelectorAll('.blog-stat');
-  if (!stats.length) return;
-
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      var card = entry.target;
-      card.classList.add('is-visible');
-
-      var countEl = card.querySelector('.blog-stat__count');
-      if (countEl && !card.dataset.animated) {
-        card.dataset.animated = '1';
-        var target = parseInt(card.dataset.count, 10) || 0;
-        /* Slightly longer duration for larger numbers */
-        var dur = target > 50 ? 1800 : 1200;
-        animateCount(countEl, target, dur);
-      }
-      observer.unobserve(card);
-    });
-  }, { threshold: 0.25 });
-
-  stats.forEach(function(card) { observer.observe(card); });
-})();
-</script>

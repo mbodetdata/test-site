@@ -1,0 +1,32 @@
+{% comment %}
+  Usage : {% include components/service-card.html service=service %}
+{% endcomment %}
+
+{% assign s = include.service %}
+
+<article class="service-card fade-up" id="{{ s.id }}">
+  <span class="service-number" aria-hidden="true">{{ s.number }}</span>
+
+  <div class="service-icon" aria-hidden="true">
+    {% include icons/service-icon.html id=s.icon %}
+  </div>
+
+  <h3>{{ s.title }}</h3>
+  <p class="subtitle">{{ s.subtitle }}</p>
+  <p>{{ s.description | truncate: 160 }}</p>
+
+  {% if s.benefits %}
+  <ul style="margin-top:1rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:.5rem;">
+    {% for b in s.benefits limit:3 %}
+    <li style="font-size:.875rem;color:var(--color-gray-600);">{{ b }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div style="margin-top:auto;padding-top:1.5rem;">
+    <a href="{{ s.cta.url | relative_url }}" class="btn btn-outline btn-sm">
+      {{ s.cta.label }}
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</article>

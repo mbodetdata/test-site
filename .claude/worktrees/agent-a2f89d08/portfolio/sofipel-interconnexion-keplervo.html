@@ -1,0 +1,21 @@
+---
+layout: default
+title: "SOFIPEL • Interconnexion KeplerVo | BM Data"
+description: "Cas client automobile : interconnexion API KeplerVo, base MySQL et vision consolidée pour piloter un parc multi-garages plus simplement."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "SOFIPEL • Interconnexion KeplerVo"
+    url: /portfolio/sofipel-interconnexion-keplervo.html
+permalink: /portfolio/sofipel-interconnexion-keplervo.html
+project_link: "/portfolio/sofipel-interconnexion-keplervo.html"
+sector: "Automobile & services"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

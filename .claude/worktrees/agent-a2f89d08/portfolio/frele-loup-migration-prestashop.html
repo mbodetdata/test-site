@@ -1,0 +1,21 @@
+---
+layout: default
+title: "Frère-Loup • Migration e-commerce | BM Data"
+description: "Cas client e-commerce : migration PrestaShop avec Talend et API pour conserver produits, clients et commandes sans perte de données."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "Frère-Loup • Migration e-commerce"
+    url: /portfolio/frele-loup-migration-prestashop.html
+permalink: /portfolio/frele-loup-migration-prestashop.html
+project_link: "/portfolio/frele-loup-migration-prestashop.html"
+sector: "E-commerce"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "À propos — Martial Bodet, consultant data | BM Data Agen",
+    "description": "Martial Bodet, consultant data basé à Agen. Découvrez son parcours, sa philosophie et pourquoi il accompagne les TPE et PME du Lot-et-Garonne dans la valorisation de leurs données."
+  },
+  "hero": {
+    "eyebrow": "À propos",
+    "title": "Martial Bodet, consultant data",
+    "subtitle": "Des données aux décisions : un accompagnement humain, concret et orienté résultats pour les TPE et PME.",
+    "image": "/assets/img/Photo_profil-960.webp",
+    "image_alt": "Martial Bodet, consultant data BM Data à Agen"
+  },
+  "intro": {
+    "title": "Bonjour, je suis Martial",
+    "paragraphs": [
+      "J'ai créé BM Data avec une conviction simple : les données ne sont pas réservées aux grandes entreprises. Une TPE ou une PME bien équipée, avec les bons indicateurs et les bons outils, peut prendre des décisions aussi éclairées que n'importe quel grand groupe.",
+      "Après plusieurs années dans le conseil et l'analyse de données dans des environnements variés, j'ai décidé de mettre cette expertise au service des entrepreneurs et des dirigeants locaux, ceux qui ont un vrai besoin mais qui n'ont pas la taille pour embaucher un directeur data à temps plein.",
+      "Basé à Agen, j'interviens principalement en Lot-et-Garonne et en Nouvelle-Aquitaine, en présentiel ou à distance selon vos préférences."
+    ]
+  },
+  "values": {
+    "title": "Ce qui guide ma façon de travailler",
+    "items": [
+      {
+        "icon": "clarity",
+        "title": "La clarté avant tout",
+        "description": "Je ne parle pas de data lakes, de machine learning ou de big data si ça ne vous apporte rien. Je traduis tout en bénéfices concrets pour votre activité."
+      },
+      {
+        "icon": "results",
+        "title": "Les résultats, pas les livrables",
+        "description": "Un tableau de bord que personne n'utilise, ça ne sert à rien. Mon objectif est que votre organisation s'améliore réellement après chaque mission."
+      },
+      {
+        "icon": "autonomy",
+        "title": "Votre autonomie",
+        "description": "Je ne cherche pas à vous rendre dépendant. Je vous forme, je documente, je construis des solutions que vous pouvez faire évoluer sans moi."
+      },
+      {
+        "icon": "proximity",
+        "title": "La proximité",
+        "description": "Être basé localement n'est pas qu'un argument commercial. C'est pouvoir venir chez vous, comprendre votre contexte et construire une relation de confiance durable."
+      }
+    ]
+  },
+"expertise": {
+  "title": "Expertises et outils",
+  "categories": [
+    {
+      "name": "Expertise principale",
+      "items": ["Talend", "Talaxie", "Power BI"]
+    },
+    {
+      "name": "Intégration & automatisation",
+      "items": ["Talend ETL / Data pipelines", "SQL", "API REST", "Python", "Power Automate", "Apps Script", "VBA"]
+    },
+    {
+      "name": "Analyse & reporting",
+      "items": ["Power BI", "Excel avancé", "Google Looker Studio", "Metabase"]
+    },
+    {
+      "name": "Outils en exploration",
+      "items": ["n8n", "ClicData", "TIMi"]
+    }
+  ]
+},
+ "parcours": {
+  "title": "Parcours",
+  "items": [
+    {
+      "year": "2025",
+      "title": "Création de BM Data",
+      "description": "Lancement de mon activité de conseil data indépendant à Agen, avec une volonté claire : rendre l’automatisation, la migration de données et le reporting accessibles aux TPE et PME du Lot-et-Garonne. BM Data est née pour proposer un accompagnement concret, utile et adapté aux réalités des petites structures."
+    },
+    {
+      "year": "2023-2025",
+      "title": "Analyste développeur Talend / Talaxie",
+      "description": "Accompagnement de moyennes et grandes entreprises dans leurs projets data, avec un rôle à la fois technique et fonctionnel. Mise en place de solutions décisionnelles, structuration des flux de données, amélioration des reportings et formation des équipes pour faciliter la prise en main des outils."
+    },
+    {
+      "year": "2021-2023",
+      "title": "Intégrateur Talend / Power BI",
+      "description": "Participation à des projets d’intégration et de valorisation de la donnée dans des secteurs variés comme l’industrie, les services ou le commerce. Cette expérience m’a permis de développer une approche orientée terrain, centrée sur la fiabilité des données, la clarté des tableaux de bord et l’utilité des outils pour les utilisateurs au quotidien."
+    },
+        {
+      "year": "2020",
+      "title": "Formation développeur Java JEE / Angular",
+      "description": "Première base solide dans le développement d’applications et la logique informatique. Cette formation m’a apporté les fondamentaux techniques qui me servent encore aujourd’hui : comprendre le fonctionnement des outils, structurer des solutions robustes et concevoir des environnements fiables, pensés pour durer."
+    },
+    {
+      "year": "2019",
+      "title": "Master de bio-informatique",
+      "description": "Une étape clé dans mon parcours, qui m’a permis de renforcer ma maîtrise de l’analyse de données, du traitement de l’information et de la logique scientifique. Cette formation m’a appris à manipuler des volumes de données complexes, à structurer une démarche d’analyse rigoureuse et à transformer des données brutes en informations exploitables."
+    }
+  ]
+},
+"local": {
+  "title": "Basé à Agen, disponible localement et à distance",
+  "text": "BM Data accompagne les TPE et PME depuis Agen, principalement en Lot-et-Garonne, dans le Gers, les Landes et plus largement en Nouvelle-Aquitaine. Les missions peuvent se faire sur place ou à distance, partout en France, selon vos besoins.",
+  "zones": [
+    "Agen et son agglomération",
+    "Villeneuve-sur-Lot",
+    "Marmande",
+    "Nérac",
+    "Lot-et-Garonne (47)",
+    "Gers (32)",
+    "Landes (40)",
+    "Nouvelle-Aquitaine",
+    "France entière à distance"
+  ]
+},
+"cta": {
+  "title": "Parlons simplement de vos besoins",
+  "subtitle": "Je vous propose un premier échange gratuit de 30 minutes pour faire le point sur votre organisation, vos outils et vos reportings, et voir où vous pouvez gagner du temps et en clarté.",
+  "primary": { "label": "Prendre rendez-vous", "url": "/contact/" },
+  "secondary": { "label": "Voir les réalisations", "url": "/realisations/" }
+}
+}

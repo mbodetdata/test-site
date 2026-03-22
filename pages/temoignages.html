@@ -11,15 +11,22 @@ body_class: "page-temoignages"
 
 <!-- HERO -->
 <section class="page-hero" aria-labelledby="temoignages-title">
+  <canvas class="hero-particles" aria-hidden="true"></canvas>
   <div class="container">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Témoignages</span>
-    </nav>
-    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
-    <h1 id="temoignages-title">{{ d.hero.title }}</h1>
-    <p>{{ d.hero.subtitle }}</p>
+    <div class="page-hero__content">
+      <div class="page-hero__left">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="{{ '/' | relative_url }}">Accueil</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>Témoignages</span>
+        </nav>
+        <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+        <h1 id="temoignages-title">{{ d.hero.title }}</h1>
+      </div>
+      <div class="page-hero__right">
+        <p>{{ d.hero.subtitle }}</p>
+      </div>
+    </div>
   </div>
 </section>
 

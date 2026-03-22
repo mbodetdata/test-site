@@ -1,0 +1,22 @@
+{
+  "name": "BM Data — Conseil en données pour TPE/PME",
+  "short_name": "BM Data",
+  "description": "Consultant data pour TPE/PME basé à Agen. Transformez vos données en décisions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 {
   "main": [
-    { "label": "Accueil",       "url": "/",                "active_path": "/" },
-    { "label": "Services",      "url": "/services/",       "active_path": "/services/" },
-    { "label": "Réalisations",  "url": "/realisations/",   "active_path": "/realisations/" },
-    { "label": "À propos",      "url": "/a-propos/",       "active_path": "/a-propos/" },
-    { "label": "Blog",          "url": "/blog/",           "active_path": "/blog/" },
-    { "label": "FAQ",           "url": "/faq/",            "active_path": "/faq/" },
-    { "label": "Contact",       "url": "/contact/",        "active_path": "/contact/", "highlight": true }
+    { "label": "Accueil",       "url": "/",             "active_path": "/",             "icon": "home" },
+    { "label": "Services",      "url": "/services/",    "active_path": "/services/",    "icon": "layers" },
+    { "label": "Réalisations",  "url": "/realisations/","active_path": "/realisations/","icon": "grid" },
+    { "label": "À propos",      "url": "/a-propos/",    "active_path": "/a-propos/",    "icon": "user" },
+    { "label": "Blog",          "url": "/blog/",        "active_path": "/blog/",        "icon": "edit" },
+    { "label": "FAQ",           "url": "/faq/",         "active_path": "/faq/",         "icon": "help" },
+    { "label": "Contact",       "url": "/contact/",     "active_path": "/contact/",     "icon": "mail", "highlight": true }
   ],
   "footer_col1": [
     { "label": "Accueil",       "url": "/" },
@@ -15,13 +15,13 @@
     { "label": "À propos",      "url": "/a-propos/" }
   ],
   "footer_col2": [
-    { "label": "Blog",                      "url": "/blog/" },
+    { "label": "Blog",                       "url": "/blog/" },
     { "label": "Témoignages",               "url": "/temoignages/" },
     { "label": "FAQ",                        "url": "/faq/" },
-    { "label": "Contact",                   "url": "/contact/" }
+    { "label": "Contact",                    "url": "/contact/" }
   ],
   "footer_col3": [
-    { "label": "Mentions légales",           "url": "/mentions-legales/" },
+    { "label": "Mentions légales",            "url": "/mentions-legales/" },
     { "label": "Politique de confidentialité","url": "/politique-de-confidentialite/" }
   ]
 }

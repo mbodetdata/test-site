@@ -1,0 +1,65 @@
+---
+layout: page
+title: "Réalisations — Projets data pour TPE/PME"
+description: "Découvrez les projets data réalisés par BM Data pour des TPE et PME du Lot-et-Garonne : tableaux de bord, automatisations, analyses et plus encore."
+permalink: /realisations/
+body_class: "page-realisations"
+---
+
+{% assign d = site.data.realisations %}
+{% assign g = site.data.global %}
+
+<!-- HERO -->
+<section class="page-hero" aria-labelledby="realisations-title">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="{{ '/' | relative_url }}">Accueil</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Réalisations</span>
+    </nav>
+    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+    <h1 id="realisations-title">{{ d.hero.title }}</h1>
+    <p>{{ d.hero.subtitle }}</p>
+  </div>
+</section>
+
+<!-- FILTRES -->
+<section class="section section--light" style="padding-top:2rem;padding-bottom:2rem;">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;" role="group" aria-label="Filtrer les projets">
+      {% for f in d.filters %}
+      <button class="btn btn-sm filter-btn {% if forloop.first %}active btn-primary{% else %}btn-outline{% endif %}"
+              data-filter="{{ f | downcase | replace: ' ', '-' }}"
+              style="{% unless forloop.first %}border-color:var(--color-gray-200);{% endunless %}">
+        {{ f }}
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- GRILLE PROJETS -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-auto">
+      {% for project in d.projects %}
+        {% include components/realisation-card.html project=project %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>{{ d.cta.title }}</h2>
+      <p>{{ d.cta.subtitle }}</p>
+      <div class="cta-actions">
+        <a href="{{ d.cta.primary.url | relative_url }}" class="btn btn-gold btn-lg">{{ d.cta.primary.label }}</a>
+        <a href="{{ d.cta.secondary.url | relative_url }}" class="btn btn-outline-white btn-lg">{{ d.cta.secondary.label }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+

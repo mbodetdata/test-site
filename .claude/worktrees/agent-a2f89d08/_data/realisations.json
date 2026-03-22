@@ -1,0 +1,275 @@
+{
+  "meta": {
+    "title": "Réalisations — Talend, Talaxie, Power BI, EDI & migrations | BM Data Agen",
+    "description": "Découvrez des réalisations concrètes menées par BM Data autour de Talend, Talaxie, Power BI, EDI, interconnexions API, migrations de données et automatisation."
+  },
+  "hero": {
+    "eyebrow": "Réalisations",
+    "title": "Des réalisations concrètes en automatisation, migration et reporting",
+    "subtitle": "Talend, Talaxie, Power BI, EDI, API, Azure : des projets menés sur des enjeux de continuité, de fiabilité, de migration de données et de pilotage opérationnel."
+  },
+  "filters": [
+    "Tous",
+    "Migration",
+    "Automatisation",
+    "Tableau de bord",
+    "EDI",
+    "Interconnexion"
+  ],
+  "projects": [
+    {
+      "id": "dashboardtv-operations",
+      "title": "DashboardTV • Opérations temps réel",
+      "client": "DashboardTV",
+      "location": null,
+      "sector": "Support opérationnel",
+      "category": "Tableau de bord",
+      "tags": ["Talend", "Temps réel", "Pilotage opérationnel"],
+      "challenge": "L’activité devait être suivie à partir de plusieurs sources, avec un besoin de visibilité immédiate pour détecter les blocages et éviter les consolidations manuelles.",
+      "solution": "Mise en place d’une collecte multi-sources avec Talend et d’un tableau de bord temps réel pour suivre l’activité, détecter les blocages et piloter sans ressaisie.",
+      "results": [
+        { "value": "Temps réel", "label": "suivi de l'activité opérationnelle" },
+        { "value": "Multi-sources", "label": "collecte consolidée avec Talend" },
+        { "value": "Sans ressaisie", "label": "pilotage plus fluide au quotidien" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Talend", "Collecte multi-sources", "Tableau de bord temps réel"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Pilotage temps réel des opérations DashboardTV"
+    },
+    {
+      "id": "edi-tms-oneworld",
+      "title": "EDI • TMS OneWorld",
+      "client": "Client transport",
+      "location": null,
+      "sector": "Transport & logistique",
+      "category": "EDI",
+      "tags": ["EDI", "Talend", "TMS OneWorld"],
+      "challenge": "Des logiciels clients devaient être connectés de manière fiable au TMS OneWorld afin de sécuriser les échanges et limiter les interventions manuelles.",
+      "solution": "Mise en place de flux EDI et d’automatisations Talend pour connecter les logiciels clients au TMS OneWorld de façon fiable.",
+      "results": [
+        { "value": "EDI fiable", "label": "échanges sécurisés avec le TMS" },
+        { "value": "Connecté", "label": "liaison entre logiciels clients et OneWorld" },
+        { "value": "Automatisé", "label": "traitements Talend plus robustes" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Talend", "EDI", "TMS OneWorld"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Flux EDI connectés au TMS OneWorld"
+    },
+    {
+      "id": "edi-wms-izypro",
+      "title": "EDI • WMS IzyPro",
+      "client": "Client supply chain",
+      "location": null,
+      "sector": "Supply chain multi-clients",
+      "category": "EDI",
+      "tags": ["EDI", "WMS IzyPro", "Supervision"],
+      "challenge": "Dans un contexte multi-clients, les flux devaient être standardisés et surveillés en continu pour éviter les ruptures d’exploitation.",
+      "solution": "Déploiement de flux EDI standardisés avec supervision continue et alertes automatiques pour sécuriser un environnement WMS IzyPro.",
+      "results": [
+        { "value": "Standardisé", "label": "flux EDI homogénéisés" },
+        { "value": "Supervisé", "label": "suivi continu de l'exploitation" },
+        { "value": "Alerté", "label": "détection automatique des anomalies" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["EDI", "WMS IzyPro", "Supervision continue"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Supervision de flux EDI pour WMS IzyPro"
+    },
+    {
+      "id": "edi-wms-reflex",
+      "title": "EDI • WMS Reflex",
+      "client": "Client logistique",
+      "location": null,
+      "sector": "Logistique & WMS",
+      "category": "EDI",
+      "tags": ["EDI", "WMS Reflex", "Optimisation"],
+      "challenge": "Les flux WMS devaient être maintenus et optimisés pour réduire les incidents et préserver la continuité des opérations logistiques.",
+      "solution": "Maintenance EDI et optimisation des flux WMS Reflex pour réduire les incidents et améliorer la continuité des opérations.",
+      "results": [
+        { "value": "Optimisé", "label": "flux WMS plus stables" },
+        { "value": "Moins d'incidents", "label": "exploitation mieux sécurisée" },
+        { "value": "Continuité", "label": "opérations logistiques mieux maintenues" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["EDI", "WMS Reflex"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Maintenance et optimisation de flux WMS Reflex"
+    },
+    {
+      "id": "eiffage-migration-medicale",
+      "title": "Eiffage • Migration données médicales",
+      "client": "Eiffage",
+      "location": null,
+      "sector": "BTP & santé au travail",
+      "category": "Migration",
+      "tags": ["Migration", "Oracle", "MongoDB"],
+      "challenge": "Des données médicales sensibles devaient être migrées vers une nouvelle base en renforçant la sécurité et les performances d’usage.",
+      "solution": "Passage d’Oracle vers MongoDB pour sécuriser des données médicales sensibles et améliorer la performance au quotidien.",
+      "results": [
+        { "value": "Oracle → MongoDB", "label": "migration de la base de données" },
+        { "value": "Sécurisé", "label": "données médicales sensibles mieux protégées" },
+        { "value": "Plus performant", "label": "usage quotidien amélioré" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Oracle", "MongoDB"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Migration de données médicales Oracle vers MongoDB"
+    },
+    {
+      "id": "frele-loup-migration-prestashop",
+      "title": "Frère-Loup • Migration e-commerce",
+      "client": "Frère-Loup",
+      "location": null,
+      "sector": "E-commerce",
+      "category": "Migration",
+      "tags": ["Migration", "Talend", "PrestaShop"],
+      "challenge": "La migration de la boutique devait conserver l’intégralité des produits, des clients et des commandes sans perte de données.",
+      "solution": "Migration PrestaShop avec Talend et API pour conserver produits, clients et commandes sans perte de données.",
+      "results": [
+        { "value": "Produits conservés", "label": "reprise de catalogue sécurisée" },
+        { "value": "Clients conservés", "label": "continuité de la relation commerciale" },
+        { "value": "Sans perte", "label": "commandes reprises dans le nouvel environnement" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Talend", "API", "PrestaShop"],
+      "featured": true,
+      "image": null,
+      "image_alt": "Migration e-commerce PrestaShop avec Talend"
+    },
+    {
+      "id": "media-participations-migration",
+      "title": "Media Participations • Migration applicative",
+      "client": "Media Participations",
+      "location": null,
+      "sector": "Édition & médias",
+      "category": "Migration",
+      "tags": ["Migration", "Talend", "Contrôles qualité"],
+      "challenge": "Une migration applicative devait être menée en conservant l’historique métier et en contrôlant la qualité des données.",
+      "solution": "Migration applicative avec Talend, contrôles qualité et conservation complète de l’historique métier.",
+      "results": [
+        { "value": "Historique conservé", "label": "continuité métier préservée" },
+        { "value": "Qualité contrôlée", "label": "vérifications sur les données migrées" },
+        { "value": "Migration sécurisée", "label": "bascule applicative mieux encadrée" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Talend", "Contrôles qualité", "Migration applicative"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Migration applicative avec Talend pour Media Participations"
+    },
+    {
+      "id": "migration-talend-oss-talaxie",
+      "title": "Migration Talend OSS → Talaxie",
+      "client": "Client IT interne",
+      "location": null,
+      "sector": "IT interne",
+      "category": "Migration",
+      "tags": ["Talend OSS", "Talaxie", "Cadrage"],
+      "challenge": "La fin de Talend OSS imposait d’étudier une trajectoire de migration capable de sécuriser les flux existants sans rupture de service.",
+      "solution": "Étude et cadrage d’une migration Talend OSS vers Talaxie pour sécuriser les flux de données et garantir la continuité.",
+      "results": [
+        { "value": "Étude & cadrage", "label": "migration préparée en amont" },
+        { "value": "Flux sécurisés", "label": "continuité des traitements anticipée" },
+        { "value": "Continuité garantie", "label": "risque de rupture mieux maîtrisé" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Talend OSS", "Talaxie"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Étude de migration de Talend OSS vers Talaxie"
+    },
+    {
+      "id": "reporting-change-itop",
+      "title": "Reporting Change • iTop",
+      "client": "Client support IT",
+      "location": null,
+      "sector": "ITSM & support",
+      "category": "Tableau de bord",
+      "tags": ["Power BI", "iTop", "SLA"],
+      "challenge": "L’équipe support avait besoin d’un pilotage plus lisible des SLA et du backlog pour mieux prioriser les actions.",
+      "solution": "Création d’un dashboard Power BI connecté à iTop pour piloter les SLA, suivre le backlog et prioriser plus vite.",
+      "results": [
+        { "value": "SLA pilotés", "label": "vision plus claire des engagements" },
+        { "value": "Backlog suivi", "label": "lecture consolidée de l'activité support" },
+        { "value": "Plus rapide", "label": "priorisation des actions facilitée" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Power BI", "iTop"],
+      "featured": false,
+      "image": null,
+      "image_alt": "Dashboard Power BI connecté à iTop"
+    },
+    {
+      "id": "sofipel-interconnexion-keplervo",
+      "title": "SOFIPEL • Interconnexion KeplerVo",
+      "client": "SOFIPEL",
+      "location": null,
+      "sector": "Automobile & services",
+      "category": "Interconnexion",
+      "tags": ["API", "MySQL", "KeplerVo"],
+      "challenge": "Le pilotage d’un parc multi-garages nécessitait une vue consolidée à partir d’une interconnexion fiable entre les systèmes.",
+      "solution": "Interconnexion API KeplerVo avec une base MySQL pour offrir une vision consolidée et piloter un parc multi-garages plus simplement.",
+      "results": [
+        { "value": "API connectée", "label": "échanges inter-systèmes mis en place" },
+        { "value": "MySQL consolidé", "label": "base centralisée pour le pilotage" },
+        { "value": "Vue multi-garages", "label": "lecture globale de l'activité" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["API KeplerVo", "MySQL"],
+      "featured": true,
+      "image": null,
+      "image_alt": "Interconnexion API KeplerVo et base MySQL pour SOFIPEL"
+    },
+    {
+      "id": "uba-data-automation",
+      "title": "UBA • Data & Automatisation (Azure)",
+      "client": "UBA",
+      "location": null,
+      "sector": "Services financiers",
+      "category": "Automatisation",
+      "tags": ["Azure", "Talend", "Power BI"],
+      "challenge": "Le pilotage financier devait être fiabilisé à partir d’une centralisation des données et d’automatisations limitant les doubles saisies.",
+      "solution": "Centralisation sur Azure, automatisations Talend et tableau de bord Power BI pour fiabiliser le pilotage financier sans doubles saisies.",
+      "results": [
+        { "value": "Azure", "label": "centralisation des données" },
+        { "value": "Sans doubles saisies", "label": "processus plus fluides" },
+        { "value": "Pilotage fiabilisé", "label": "lecture financière plus robuste" }
+      ],
+      "quote": null,
+      "quote_author": null,
+      "tools": ["Azure", "Talend", "Power BI"],
+      "featured": true,
+      "image": null,
+      "image_alt": "Centralisation Azure, Talend et Power BI pour UBA"
+    }
+  ],
+  "cta": {
+    "title": "Votre besoin ressemble à l’un de ces cas ?",
+    "subtitle": "Parlons de votre contexte. Je peux vous aider sur des sujets de migration, d’automatisation, d’EDI, d’interconnexion ou de reporting avec une approche concrète et adaptée à votre environnement.",
+    "primary": {
+      "label": "Discuter de mon projet",
+      "url": "/contact/"
+    },
+    "secondary": {
+      "label": "Voir les services",
+      "url": "/services/"
+    }
+  }
+}

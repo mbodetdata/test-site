@@ -11,15 +11,22 @@ body_class: "page-about"
 
 <!-- HERO -->
 <section class="page-hero" aria-labelledby="about-title">
+  <canvas class="hero-particles" aria-hidden="true"></canvas>
   <div class="container">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>À propos</span>
-    </nav>
-    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
-    <h1 id="about-title">{{ d.hero.title }}</h1>
-    <p>{{ d.hero.subtitle }}</p>
+    <div class="page-hero__content">
+      <div class="page-hero__left">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="{{ '/' | relative_url }}">Accueil</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>À propos</span>
+        </nav>
+        <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+        <h1 id="about-title">{{ d.hero.title }}</h1>
+      </div>
+      <div class="page-hero__right">
+        <p>{{ d.hero.subtitle }}</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -98,21 +105,43 @@ body_class: "page-about"
 </section>
 
 <!-- EXPERTISE -->
-<section class="section" aria-labelledby="expertise-title">
+<section class="section skills-section" aria-labelledby="expertise-title">
   <div class="container">
     <div class="section-header">
       <span class="section-eyebrow">Compétences</span>
       <h2 id="expertise-title">{{ d.expertise.title }}</h2>
     </div>
-    <div class="skills-grid">
+    <div class="skills-bento">
       {% for cat in d.expertise.categories %}
-      <div class="skill-category fade-up">
-        <h4>{{ cat.name }}</h4>
+      <div class="skill-card fade-up">
+
+        <!-- Icône catégorie -->
+        <div class="skill-card__icon-wrap" aria-hidden="true">
+          {% case forloop.index %}
+          {% when 1 %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.657-4.03 3-9 3S3 13.657 3 12"/><path d="M3 5v14c0 1.657 4.03 3 9 3s9-1.343 9-3V5"/></svg>
+          {% when 2 %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+          {% when 3 %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><polyline points="2 20 22 20"/></svg>
+          {% when 4 %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          {% endcase %}
+        </div>
+
+        <!-- En-tête : titre + compteur -->
+        <div class="skill-card__head">
+          <h4 class="skill-card__name">{{ cat.name }}</h4>
+          <span class="skill-card__count">{{ cat.items | size }} outil{% if cat.items.size > 1 %}s{% endif %}</span>
+        </div>
+
+        <!-- Tags -->
         <div class="skill-tags">
           {% for item in cat.items %}
           <span class="skill-tag">{{ item }}</span>
           {% endfor %}
         </div>
+
       </div>
       {% endfor %}
     </div>
@@ -132,8 +161,13 @@ body_class: "page-about"
         <div class="timeline-year">{{ item.year }}</div>
         <div class="timeline-line" aria-hidden="true"></div>
         <div class="timeline-content">
-          <h4>{{ item.title }}</h4>
-          <p>{{ item.description }}</p>
+          <button class="timeline-toggle" type="button" aria-expanded="false">
+            <span class="timeline-toggle-title">{{ item.title }}</span>
+            <span class="timeline-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="timeline-body">
+            <p>{{ item.description }}</p>
+          </div>
         </div>
       </div>
       {% endfor %}
@@ -158,7 +192,7 @@ body_class: "page-about"
           {% endfor %}
         </div>
       </div>
-      <div style="background:var(--color-gray-50);border-radius:var(--radius-2xl);padding:2.5rem;border:1px solid var(--color-gray-100);">
+      <div style="background:var(--color-white);border-radius:var(--radius-2xl);padding:2.5rem;border:var(--border-card);box-shadow:var(--shadow-card);">
         <div style="display:flex;flex-direction:column;gap:1.25rem;">
           <div style="display:flex;align-items:center;gap:1rem;">
             <div class="contact-info-icon">
@@ -201,10 +235,3 @@ body_class: "page-about"
   </div>
 </section>
 
-<style>
-@media(max-width:768px){
-  .about-intro-layout { grid-template-columns:1fr; }
-  .about-text h2 { font-size:var(--text-3xl); }
-  section .container > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
-}
-</style>

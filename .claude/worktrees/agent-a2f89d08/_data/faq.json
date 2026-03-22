@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "title": "FAQ automatisation de données et tableaux de bord | BM Data",
+    "description": "Questions fréquentes sur les services de BM Data à Agen : automatisation de données, intégration, ETL, tableaux de bord, Power BI, Metabase, Looker Studio, budget, délais et périmètre d'intervention."
+  },
+  "hero": {
+    "eyebrow": "FAQ",
+    "title": "Les questions qu'on me pose le plus souvent",
+    "subtitle": "Des réponses claires sur l'automatisation des données et les tableaux de bord, sans jargon inutile."
+  },
+  "categories": [
+    {
+      "id": "general",
+      "label": "En général",
+      "questions": [
+        {
+          "id": "q1",
+          "question": "À quoi sert concrètement un accompagnement en automatisation et visualisation de données ?",
+          "answer": "Mon rôle est de vous aider à mieux exploiter les données que vous avez déjà, sans complexifier votre quotidien. Concrètement, cela peut consister à automatiser des tâches répétitives, connecter plusieurs outils, fiabiliser des fichiers ou construire un tableau de bord clair pour suivre votre activité. Le but est simple : moins de manipulations manuelles, moins d'erreurs, et une meilleure lecture de vos chiffres."
+        },
+        {
+          "id": "q2",
+          "question": "Est-ce que mes données sont suffisantes pour commencer ?",
+          "answer": "Dans la plupart des cas, oui. Beaucoup d'entreprises ont déjà de quoi avancer avec leurs exports Excel, leur ERP, leur CRM, leur logiciel de gestion, leurs fichiers CSV ou leurs données de caisse. L'objectif n'est pas de créer plus de données, mais de mieux utiliser celles qui existent déjà."
+        },
+        {
+          "id": "q3",
+          "question": "Je ne suis pas à l'aise avec la technique. Est-ce un problème ?",
+          "answer": "Non. Je travaille justement pour rendre des sujets techniques compréhensibles et utiles à des personnes non techniques. Vous n'avez pas besoin de connaître Talend, n8n, Node-RED ou Power BI pour bénéficier d'un système plus simple et plus fiable."
+        },
+        {
+          "id": "q4",
+          "question": "À partir de quand une entreprise a-t-elle besoin d'automatiser ses données ?",
+          "answer": "En général, le besoin apparaît quand vous perdez du temps à refaire toujours les mêmes manipulations, quand les chiffres ne sont pas fiables, quand les données sont dispersées dans plusieurs outils ou quand le reporting devient trop lourd à produire. À ce moment-là, l'automatisation et une meilleure visualisation peuvent faire gagner un temps réel."
+        }
+      ]
+    },
+    {
+      "id": "expertise",
+      "label": "Expertise & périmètre",
+      "questions": [
+        {
+          "id": "q5",
+          "question": "Quel est exactement votre métier ?",
+          "answer": "Mon cœur de métier, c'est l'automatisation des flux de données et la visualisation. J'interviens sur la récupération, la transformation, la circulation, la fiabilisation et la restitution des données, notamment avec des outils comme Talend, Talaxie, n8n, Node-RED, Timi, ClicData, Power BI, Metabase ou Looker Studio."
+        },
+        {
+          "id": "q6",
+          "question": "Faites-vous du conseil en pilotage d'entreprise ou en stratégie ?",
+          "answer": "Non, ce n'est pas mon cœur de métier. Je peux vous aider à mettre à disposition des données propres, automatisées et lisibles pour mieux suivre votre activité, mais je ne me présente pas comme expert en stratégie d'entreprise, contrôle de gestion ou pilotage global. Quand le besoin dépasse mon périmètre, je peux vous orienter vers des contacts de confiance."
+        },
+        {
+          "id": "q7",
+          "question": "Pouvez-vous m'aider à définir mes indicateurs ?",
+          "answer": "Je peux vous aider à structurer, clarifier et mettre en forme des indicateurs de suivi, à condition qu'ils soient liés à vos besoins opérationnels et à vos données disponibles. En revanche, si votre besoin relève d'un travail poussé de pilotage d'entreprise ou d'analyse financière avancée, je préfère être transparent et vous orienter si nécessaire vers un spécialiste complémentaire."
+        },
+        {
+          "id": "q8",
+          "question": "Travaillez-vous seul ou avec d'autres experts ?",
+          "answer": "J'interviens en direct sur mon domaine d'expertise. Si un projet nécessite des compétences complémentaires en pilotage, stratégie, RGPD, juridique ou organisation, je peux vous recommander des partenaires ou contacts adaptés. Cela permet de rester sérieux sur le périmètre de chacun."
+        }
+      ]
+    },
+    {
+      "id": "prestations",
+      "label": "Prestations",
+      "questions": [
+        {
+          "id": "q9",
+          "question": "Quels types de missions proposez-vous ?",
+          "answer": "J'interviens principalement sur l'automatisation de traitements, l'intégration de données, la préparation de données, la mise en qualité, la centralisation de plusieurs sources, et la création de tableaux de bord. Cela peut aller d'un besoin ponctuel à un accompagnement plus structuré."
+        },
+        {
+          "id": "q10",
+          "question": "Pouvez-vous automatiser mes reportings Excel ?",
+          "answer": "Oui. C'est même un besoin très fréquent. Beaucoup d'entreprises passent encore du temps à copier-coller, consolider, nettoyer et reformater des données à la main. L'automatisation permet de réduire ces tâches répétitives et de produire un reporting plus régulier et plus fiable."
+        },
+        {
+          "id": "q11",
+          "question": "Pouvez-vous connecter plusieurs outils entre eux ?",
+          "answer": "Oui. Une mission peut consister à faire circuler l'information entre plusieurs logiciels ou plusieurs fichiers, par exemple entre un ERP, un CRM, des exports CSV, Excel, une base de données ou un outil métier. L'objectif est d'éviter les ressaisies et de créer une chaîne de données plus fluide."
+        },
+        {
+          "id": "q12",
+          "question": "Créez-vous aussi des tableaux de bord ?",
+          "answer": "Oui. Je conçois des tableaux de bord pour rendre les données plus lisibles et plus exploitables. Le but n'est pas d'afficher un maximum de graphiques, mais de vous donner une vue claire, utile et compréhensible de vos données."
+        },
+        {
+          "id": "q13",
+          "question": "Intervenez-vous sur des projets simples ou seulement sur des sujets techniques complexes ?",
+          "answer": "Les deux. Une mission peut être très simple, comme automatiser un export ou fiabiliser un reporting existant. Elle peut aussi être plus technique, avec plusieurs sources de données, des transformations, des règles métier ou une restitution dans un outil de BI. L'important est de garder une solution proportionnée à votre besoin."
+        }
+      ]
+    },
+    {
+      "id": "outils",
+      "label": "Outils & technologies",
+      "questions": [
+        {
+          "id": "q14",
+          "question": "Avec quels outils travaillez-vous ?",
+          "answer": "J'interviens notamment avec Talend, Talaxie, n8n, Node-RED, Timi, ClicData, Power BI, Metabase et Looker Studio. Le choix de l'outil dépend du contexte, de votre existant, de votre budget et du niveau de simplicité recherché."
+        },
+        {
+          "id": "q15",
+          "question": "Devrai-je changer mes outils actuels ?",
+          "answer": "Pas forcément. Je commence toujours par regarder ce que vous utilisez déjà. Si votre existant peut être amélioré sans tout refaire, c'est souvent la meilleure option. Je ne pousse pas un nouvel outil pour le principe ; je le recommande seulement s'il apporte un vrai gain."
+        },
+        {
+          "id": "q16",
+          "question": "Power BI, Metabase ou Looker Studio : est-ce adapté à une petite structure ?",
+          "answer": "Oui, à condition de choisir le bon outil pour le bon besoin. Une petite structure n'a pas besoin d'une usine à gaz. L'enjeu est d'avoir un tableau de bord simple à maintenir, lisible et utile au quotidien. Mon rôle est justement de vous orienter vers une solution cohérente avec votre niveau de maturité et vos moyens."
+        },
+        {
+          "id": "q17",
+          "question": "Peut-on garder Excel en complément ?",
+          "answer": "Oui, bien sûr. Excel reste souvent utile pour certaines saisies, certains contrôles ou certains exports. L'objectif n'est pas d'opposer Excel aux outils de BI, mais de donner à chaque outil le bon rôle dans votre organisation."
+        }
+      ]
+    },
+    {
+      "id": "budget",
+      "label": "Budget & délais",
+      "questions": [
+        {
+          "id": "q18",
+          "question": "Combien coûte une mission ?",
+          "answer": "Chaque mission est chiffrée sur mesure après un premier échange. Le budget dépend surtout du nombre de sources de données, du niveau de complexité, du volume de transformations à mettre en place et du livrable attendu. Je cherche toujours à proposer une solution proportionnée au besoin réel."
+        },
+        {
+          "id": "q19",
+          "question": "Peut-on commencer petit ?",
+          "answer": "Oui. C'est souvent la meilleure approche. On peut démarrer par un besoin précis : automatiser un fichier, connecter deux outils, fiabiliser un reporting ou créer un premier tableau de bord. Cela permet d'obtenir des résultats concrets rapidement, sans lancer un projet trop ambitieux dès le départ."
+        },
+        {
+          "id": "q20",
+          "question": "Combien de temps dure une mission type ?",
+          "answer": "Cela dépend du sujet. Une intervention ciblée peut aller vite. Une automatisation plus complète ou un tableau de bord connecté à plusieurs sources prendra plus de temps. Le calendrier dépend surtout du périmètre, de l'état des données et du nombre d'outils impliqués. Dans tous les cas, je cadre cela en amont."
+        },
+        {
+          "id": "q21",
+          "question": "Travaillez-vous uniquement sur des projets longs ?",
+          "answer": "Non. Je peux intervenir sur un besoin ponctuel comme sur un accompagnement plus étalé dans le temps. Tout dépend de votre situation, de vos priorités et de la taille du chantier."
+        }
+      ]
+    },
+    {
+      "id": "securite",
+      "label": "Sécurité & cadre de travail",
+      "questions": [
+        {
+          "id": "q22",
+          "question": "Mes données seront-elles traitées de manière confidentielle ?",
+          "answer": "Oui. La confidentialité fait partie du cadre de travail. Les modalités d'accès, d'échange et de traitement des données doivent être définies clairement dès le départ. Si besoin, un accord de confidentialité peut être prévu."
+        },
+        {
+          "id": "q23",
+          "question": "Intervenez-vous sur le RGPD ou la conformité juridique ?",
+          "answer": "Je peux être attentif aux bonnes pratiques de traitement des données dans le cadre technique du projet, mais je ne me présente pas comme expert juridique ou DPO. Si vous avez un besoin spécifique en conformité RGPD ou en accompagnement juridique, je préfère vous orienter vers un spécialiste."
+        },
+        {
+          "id": "q24",
+          "question": "Que se passe-t-il après la fin de la mission ?",
+          "answer": "Je peux rester disponible pour un ajustement, une correction, une évolution ou un accompagnement léger selon le besoin. L'objectif est de vous livrer quelque chose d'utile et compréhensible, pas de vous rendre dépendant inutilement."
+        }
+      ]
+    },
+    {
+      "id": "local",
+      "label": "Agen & accompagnement à distance",
+      "questions": [
+        {
+          "id": "q25",
+          "question": "Intervenez-vous uniquement à Agen et dans le Lot-et-Garonne ?",
+          "answer": "Je suis basé à Agen et j'interviens localement dans le Lot-et-Garonne, mais aussi à distance partout en France selon les projets. La majorité des missions d'automatisation de données et de tableaux de bord peut très bien se faire à distance."
+        },
+        {
+          "id": "q26",
+          "question": "Pourquoi travailler avec un spécialiste local basé à Agen ?",
+          "answer": "Un interlocuteur local peut faciliter les échanges, les rendez-vous sur site si nécessaire, et permettre une relation de travail plus directe. Cela dit, l'essentiel reste la clarté du besoin, la qualité de l'accompagnement et l'adéquation de la solution proposée."
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Vous avez une question sur l'automatisation de vos données ou vos tableaux de bord ?",
+    "subtitle": "Expliquez-moi votre besoin. Je vous dirai clairement ce que je peux prendre en charge, et ce qui relève d'un autre expert.",
+    "primary": {
+      "label": "Contacter BM Data",
+      "url": "/contact/"
+    }
+  }
+}

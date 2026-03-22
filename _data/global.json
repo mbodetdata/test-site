@@ -13,7 +13,9 @@
   },
   "social": {
     "linkedin": "https://www.linkedin.com/in/martial-bodet/",
-    "linkedin_label": "LinkedIn BM Data"
+    "linkedin_label": "LinkedIn",
+    "github": "https://github.com/mbodetdata",
+    "github_label": "GitHub BM Data"
   },
   "cta": {
     "primary_label": "Prendre rendez-vous",

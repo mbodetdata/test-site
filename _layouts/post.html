@@ -61,9 +61,9 @@ layout: default
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-qshare-btn post-qshare-btn--li" aria-label="Partager sur LinkedIn" title="Partager sur LinkedIn">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
-            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-qshare-btn post-qshare-btn--x" aria-label="Partager sur X" title="Partager sur X">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
+            <button type="button" class="post-qshare-btn post-qshare-btn--native" id="nativeShareHero" aria-label="Partager" title="Partager">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            </button>
           </div>
         </div>
 
@@ -115,9 +115,9 @@ layout: default
               <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-sidebar-share__btn post-sidebar-share__btn--li" aria-label="LinkedIn" title="Partager sur LinkedIn">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               </a>
-              <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-sidebar-share__btn post-sidebar-share__btn--x" aria-label="X / Twitter" title="Partager sur X">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
+              <button type="button" class="post-sidebar-share__btn post-sidebar-share__btn--native" id="nativeShareSidebar" aria-label="Partager" title="Partager">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
               <button class="post-sidebar-share__btn post-sidebar-share__btn--copy" id="copyLinkBtn" type="button" aria-label="Copier le lien" title="Copier le lien">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               </button>
@@ -147,45 +147,39 @@ layout: default
         </div>
         {% endif %}
 
-        <!-- Share CTA inline -->
-        <div class="post-share-cta reveal" aria-label="Partager cet article">
-          <div class="post-share-cta__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <!-- Share Banner -->
+        <div class="post-share-banner reveal" aria-label="Partager cet article">
+          <div class="post-share-banner__bg" aria-hidden="true">
+            <div class="post-share-banner__orb post-share-banner__orb--1"></div>
+            <div class="post-share-banner__orb post-share-banner__orb--2"></div>
+            <div class="post-share-banner__orb post-share-banner__orb--3"></div>
           </div>
-          <div class="post-share-cta__copy">
-            <strong>Cet article vous a été utile ?</strong>
-            <p>Partagez-le avec votre réseau — ça aide vraiment.</p>
-          </div>
-          <div class="post-share-cta__actions">
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-cta__btn post-share-cta__btn--li" aria-label="Partager sur LinkedIn">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
-            </a>
-            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-cta__btn post-share-cta__btn--x" aria-label="Partager sur X">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              X
-            </a>
-            <button class="post-share-cta__btn post-share-cta__btn--copy" id="copyLinkBtn2" type="button">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              Copier
-            </button>
+          <div class="post-share-banner__inner">
+            <div class="post-share-banner__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <div class="post-share-banner__text">
+              <p class="post-share-banner__eyebrow">Vous avez apprécié cet article ?</p>
+              <h3 class="post-share-banner__title">Partagez-le avec votre réseau</h3>
+              <p class="post-share-banner__sub">Un simple partage aide d'autres professionnels à découvrir ces ressources — et ça ne prend que 2 secondes.</p>
+            </div>
+            <div class="post-share-banner__actions">
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer" class="post-share-banner__btn post-share-banner__btn--li" aria-label="Partager sur LinkedIn">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <span>LinkedIn</span>
+              </a>
+              <button type="button" class="post-share-banner__btn post-share-banner__btn--native" id="nativeShareCta" aria-label="Partager">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                <span>Partager</span>
+              </button>
+              <button type="button" class="post-share-banner__btn post-share-banner__btn--copy" id="copyLinkBtn2" aria-label="Copier le lien">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copier le lien</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Author card -->
-        <div class="post-author-card reveal">
-          <div class="post-author-card__avatar" aria-hidden="true">MB</div>
-          <div class="post-author-card__body">
-            <div class="post-author-card__header">
-              <div>
-                <div class="post-author-card__name">{{ page.author | default: g.author.name }}</div>
-                <div class="post-author-card__role">Consultant Data Indépendant · Fondateur BM Data</div>
-              </div>
-              <a href="{{ '/contact/' | relative_url }}" class="btn btn-sm btn-outline post-author-card__cta">Me contacter</a>
-            </div>
-            <p class="post-author-card__bio">J'accompagne les TPE et PME du Lot-et-Garonne dans la maîtrise de leurs données — de l'architecture ETL au tableau de bord opérationnel.</p>
-          </div>
-        </div>
 
       </div><!-- /.post-content -->
     </div><!-- /.post-layout -->
@@ -223,157 +217,10 @@ layout: default
       {% include components/post-card.html post=post %}
       {% endfor %}
     </div>
-    <div style="text-align:center;margin-top:3rem;">
+    <div class="section-footer">
       <a href="{{ '/blog/' | relative_url }}" class="btn btn-outline">Voir tous les articles</a>
     </div>
   </div>
 </section>
 
-<!-- ── Scripts post ── -->
-<script>
-(function () {
-  'use strict';
 
-  /* ─── 1. Reading progress bar ─── */
-  var bar  = document.getElementById('readingProgressBar');
-  var prog = document.getElementById('readingProgress');
-  var art  = document.getElementById('postArticle');
-
-  if (bar && art) {
-    window.addEventListener('scroll', function () {
-      var rect  = art.getBoundingClientRect();
-      var total = art.offsetHeight - window.innerHeight;
-      var done  = Math.max(0, -rect.top);
-      var pct   = total > 0 ? Math.min(100, (done / total) * 100) : 0;
-      bar.style.width = pct + '%';
-      prog.setAttribute('aria-valuenow', Math.round(pct));
-    }, { passive: true });
-  }
-
-  /* ─── 2. Table des matières ─── */
-  var content = document.getElementById('postContent');
-  var tocEl   = document.getElementById('postToc');
-  var tocList = document.getElementById('postTocList');
-
-  if (content && tocList) {
-    var headings = content.querySelectorAll('h2, h3');
-
-    if (headings.length >= 2) {
-      tocEl.classList.remove('post-toc--hidden');
-
-      headings.forEach(function (h, i) {
-        /* assign id if missing */
-        if (!h.id) {
-          h.id = 'heading-' + i + '-' + h.textContent
-            .toLowerCase()
-            .replace(/[^a-z0-9\u00C0-\u017E]+/gi, '-')
-            .replace(/^-|-$/g, '')
-            .substring(0, 50);
-        }
-
-        var li  = document.createElement('li');
-        var a   = document.createElement('a');
-        a.href  = '#' + h.id;
-        a.textContent = h.textContent;
-        a.className   = 'post-toc__link';
-        if (h.tagName === 'H3') li.classList.add('post-toc__item--sub');
-        li.className  = 'post-toc__item';
-        li.appendChild(a);
-        tocList.appendChild(li);
-
-        /* smooth scroll */
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          var target = document.getElementById(h.id);
-          if (target) {
-            var offset = 88;
-            var top    = target.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-          }
-        });
-      });
-
-      /* ── Active heading tracking via IntersectionObserver ── */
-      var links     = tocList.querySelectorAll('.post-toc__link');
-      var headingIds = Array.from(headings).map(function (h) { return h.id; });
-
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var idx = headingIds.indexOf(entry.target.id);
-            links.forEach(function (l) { l.classList.remove('is-active'); });
-            if (idx > -1 && links[idx]) links[idx].classList.add('is-active');
-          }
-        });
-      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
-
-      headings.forEach(function (h) { observer.observe(h); });
-    }
-  }
-
-  /* ─── 3. Scroll-reveal ─── */
-  if ('IntersectionObserver' in window) {
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-
-    /* auto-reveal post content children */
-    if (content) {
-      var revealEls = content.querySelectorAll(
-        'h2, h3, p, ul, ol, blockquote, pre, img, table, .post-tags, .post-share-cta, .post-author-card'
-      );
-      revealEls.forEach(function (el) {
-        el.classList.add('reveal');
-        revealObserver.observe(el);
-      });
-    }
-
-    /* manual .reveal on other elements */
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      if (!el.classList.contains('is-visible')) revealObserver.observe(el);
-    });
-  } else {
-    /* fallback: show everything */
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      el.classList.add('is-visible');
-    });
-  }
-
-  /* ─── 4. Copy link ─── */
-  function setupCopy(btn, label) {
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var self = this;
-      navigator.clipboard.writeText(window.location.href).then(function () {
-        var svg = self.querySelector('svg') ? self.querySelector('svg').outerHTML : '';
-        self.innerHTML = svg + (label ? '<span>Copié !</span>' : 'Copié !');
-        self.classList.add('is-copied');
-        setTimeout(function () {
-          self.classList.remove('is-copied');
-          self.innerHTML = svg + (label ? '<span>' + label + '</span>' : label || 'Copier');
-        }, 2200);
-      });
-    });
-  }
-
-  setupCopy(document.getElementById('copyLinkBtn'),  'Copier le lien');
-  setupCopy(document.getElementById('copyLinkBtn2'), false);
-
-  /* ─── 5. Back to top ─── */
-  var btt = document.getElementById('backToTop');
-  if (btt) {
-    window.addEventListener('scroll', function () {
-      btt.classList.toggle('is-visible', window.scrollY > 600);
-    }, { passive: true });
-    btt.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-})();
-</script>

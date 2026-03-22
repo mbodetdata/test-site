@@ -2,7 +2,8 @@
 "hero": {
   "eyebrow": "Automatisation · Changement d’outil · Tableaux de bord",
   "title": "Gagnez du temps et voyez plus clair dans votre activité",
-"subtitle": "BM Data aide les TPE et PME à automatiser les tâches répétitives, simplifier les changements d’outils et mettre en place des tableaux de bord clairs pour mieux suivre leur activité.\nAvec BM Data, la bonne donnée, au bon endroit, au bon moment.",
+"subtitle": "BM Data aide les TPE et PME à automatiser les tâches répétitives, simplifier les changements d’outils et mettre en place des tableaux de bord clairs pour mieux suivre leur activité.",
+"slogan": ["La bonne donnée,", "Au bon endroit,", "Au bon moment."],
   "cta_primary": {
     "label": "Parler de votre besoin",
     "url": "/contact/"
@@ -21,7 +22,7 @@
     { "value": "5+", "label": "Années d'expérience", "icon": "calendar" },
     { "value": "15+", "label": "Projets réalisés",     "icon": "chart" },
     { "value": "100%", "label": "Clients satisfaits",  "icon": "star" },
-    { "value": "48 h", "label": "Délai de réponse",    "icon": "clock" }
+    { "value": "24 h", "label": "Délai de réponse",    "icon": "clock" }
   ],
 
   "problems": {
@@ -119,7 +120,7 @@
     "title": "Prêt à prendre les bonnes décisions avec vos données ?",
     "subtitle": "Premier échange offert, sans engagement. Je vous explique concrètement comment vos données peuvent devenir un vrai levier pour votre activité.",
     "cta_primary": {
-      "label": "Réserver un échange découverte",
+      "label": "Réserver un échange",
       "url": "/contact/"
     },
     "cta_secondary": {

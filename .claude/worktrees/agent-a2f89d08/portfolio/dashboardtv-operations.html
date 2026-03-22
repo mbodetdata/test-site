@@ -1,0 +1,21 @@
+---
+layout: default
+title: "DashboardTV • Opérations temps réel | BM Data"
+description: "Cas client support : collecte multi-sources avec Talend et tableau de bord temps réel pour suivre l'activité, détecter les blocages et piloter sans ressaisie."
+keywords_groups:
+  - competences
+  - outils
+  - secteurs
+breadcrumbs:
+  - name: Accueil
+    url: /
+  - name: Réalisations
+    url: /realisations/
+  - name: "DashboardTV • Opérations temps réel"
+    url: /portfolio/dashboardtv-operations.html
+permalink: /portfolio/dashboardtv-operations.html
+project_link: "/portfolio/dashboardtv-operations.html"
+sector: "Support opérationnel"
+---
+{% assign project = site.data.projets | where: "link", page.project_link | first %}
+{% include portfolio-case.html project=project sector=page.sector %}

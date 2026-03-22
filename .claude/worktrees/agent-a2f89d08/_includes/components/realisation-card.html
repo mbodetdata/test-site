@@ -1,0 +1,103 @@
+{% comment %}
+  Usage : {% include components/realisation-card.html project=project %}
+{% endcomment %}
+
+{% assign p = include.project %}
+
+<article class="realisation-card fade-up"
+         data-category="{{ p.category | downcase | replace: ' ', '-' }}"
+         {% if p.featured %}data-featured="true"{% endif %}>
+
+  <!-- ── VISUEL ── -->
+  <div class="rc-visual">
+    {% if p.image %}
+    <img src="{{ p.image | relative_url }}"
+         alt="{{ p.image_alt }}"
+         loading="lazy"
+         width="640" height="360">
+    {% else %}
+    <div class="rc-visual__bg" aria-hidden="true">
+      <div class="rc-visual__glow"></div>
+      {% if p.category == "Migration" %}
+      <svg class="rc-visual__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="12" cy="6" rx="8" ry="2.5"/>
+        <path d="M4 6v4c0 1.38 3.58 2.5 8 2.5S20 11.38 20 10V6"/>
+        <path d="M4 10v4c0 1.38 3.58 2.5 8 2.5S20 15.38 20 14v-4"/>
+        <path d="M4 14v4c0 1.38 3.58 2.5 8 2.5S20 19.38 20 18v-4"/>
+      </svg>
+      {% elsif p.category == "EDI" %}
+      <svg class="rc-visual__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="7" height="5" rx="1.5"/>
+        <rect x="15" y="12" width="7" height="5" rx="1.5"/>
+        <path d="M9 9.5h3l3-3"/>
+        <path d="M9 9.5l3 3h3"/>
+      </svg>
+      {% elsif p.category == "Tableau de bord" %}
+      <svg class="rc-visual__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="14" rx="2"/>
+        <path d="M8 18v2M16 18v2M5 18h14"/>
+        <path d="M7 11l3-3 2 2 3-4 2 2"/>
+      </svg>
+      {% elsif p.category == "Automatisation" %}
+      <svg class="rc-visual__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+      {% else %}
+      <svg class="rc-visual__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="2.5"/>
+        <circle cx="6" cy="12" r="2.5"/>
+        <circle cx="18" cy="19" r="2.5"/>
+        <line x1="8.47" y1="13.22" x2="15.53" y2="17.78"/>
+        <line x1="15.53" y1="6.22" x2="8.47" y2="10.78"/>
+      </svg>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if p.featured %}
+    <span class="rc-featured-badge" aria-label="Projet mis en avant">
+      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      Projet phare
+    </span>
+    {% endif %}
+  </div>
+
+  <!-- ── CORPS ── -->
+  <div class="rc-body">
+    <p class="rc-eyebrow">{{ p.sector }}</p>
+    <h3 class="rc-title">{{ p.title }}</h3>
+    <p class="rc-desc">{{ p.challenge | truncate: 105 }}</p>
+
+    {% if p.tools %}
+    <div class="rc-tools" aria-label="Outils utilisés">
+      {% for t in p.tools limit: 3 %}
+      <span class="rc-tool">{{ t }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- ── CTA ── -->
+  {% assign proj_detail = site.data.projets | where: "id", p.id | first %}
+  {% if proj_detail %}
+    {% assign rc_href = proj_detail.link | relative_url %}
+  {% else %}
+    {% assign rc_href = '/realisations/' | append: '#' | append: p.id | relative_url %}
+  {% endif %}
+  <a href="{{ rc_href }}"
+     class="rc-cta"
+     aria-label="Voir le projet : {{ p.title }}">
+    <span class="rc-cta__label">{{ p.category }}</span>
+    <span class="rc-cta__link">
+      Voir le projet
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </span>
+  </a>
+
+</article>

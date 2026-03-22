@@ -1,0 +1,538 @@
+{% assign g = site.data.global %}
+{% assign svc = site.data.services %}
+{% assign temo = site.data.temoignages %}
+{% assign real = site.data.realisations %}
+
+{% comment %}— Type de page dynamique —{% endcomment %}
+{% if page.url contains '/a-propos' %}
+  {% assign wp_type = "ProfilePage" %}
+{% elsif page.url contains '/contact' %}
+  {% assign wp_type = "ContactPage" %}
+{% elsif page.url contains '/realisations' %}
+  {% assign wp_type = "CollectionPage" %}
+{% elsif page.url contains '/blog' %}
+  {% assign wp_type = "CollectionPage" %}
+{% else %}
+  {% assign wp_type = "WebPage" %}
+{% endif %}
+
+{% comment %}— Breadcrumb : construction dynamique —{% endcomment %}
+{% assign bc_depth = 1 %}
+{% unless page.url == "/" or page.url == "" %}
+  {% assign bc_depth = 2 %}
+  {% if page.layout == "post" %}{% assign bc_depth = 3 %}{% endif %}
+{% endunless %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "{{ site.url }}/#business",
+      "name": "BM Data",
+      "alternateName": "BM Data — Conseil en données",
+      "legalName": "BM Data",
+      "description": "BM Data est un consultant data indépendant basé à Agen, spécialisé dans l'automatisation des données, la création de tableaux de bord et la migration de données pour les TPE et PME du Lot-et-Garonne et de Nouvelle-Aquitaine.",
+      "url": "{{ site.url }}",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "{{ site.url }}/#logo",
+        "url": "{{ site.url }}/assets/img/logo_512.webp",
+        "width": 512,
+        "height": 512,
+        "caption": "BM Data — Consultant Data pour TPE/PME"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/assets/img/logo_512.webp",
+        "width": 512,
+        "height": 512
+      },
+      "telephone": "+33670210928",
+      "email": "contact@bmdata.fr",
+      "foundingDate": "2025",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": 1
+      },
+      "founder": { "@id": "{{ site.url }}/#martial-bodet" },
+      "employee": { "@id": "{{ site.url }}/#martial-bodet" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Agen",
+        "addressLocality": "Agen",
+        "addressRegion": "Lot-et-Garonne",
+        "postalCode": "47000",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.2004,
+        "longitude": 0.6167
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Agen" },
+        { "@type": "City", "name": "Villeneuve-sur-Lot" },
+        { "@type": "City", "name": "Marmande" },
+        { "@type": "City", "name": "Nérac" },
+        { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
+        { "@type": "AdministrativeArea", "name": "Gers" },
+        { "@type": "AdministrativeArea", "name": "Landes" },
+        { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" },
+        { "@type": "Country", "name": "France" }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+33670210928",
+        "email": "contact@bmdata.fr",
+        "contactType": "customer service",
+        "availableLanguage": { "@type": "Language", "name": "French" },
+        "areaServed": "FR"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:30"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services data pour TPE/PME",
+        "numberOfItems": 6,
+        "itemListElement": [
+          {% for service in svc.services %}
+          {
+            "@type": "Offer",
+            "name": {{ service.title | jsonify }},
+            "description": {{ service.description | strip_html | truncate: 200 | jsonify }},
+            "url": "{{ site.url }}/services/#{{ service.id }}",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "{{ site.url }}/services/#{{ service.id }}",
+              "name": {{ service.title | jsonify }},
+              "serviceType": {{ service.title | jsonify }},
+              "provider": { "@id": "{{ site.url }}/#business" }
+            }
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      },
+      "knowsAbout": [
+        "Data analytics",
+        "Business Intelligence",
+        "Power BI",
+        "Google Looker Studio",
+        "Metabase",
+        "Talend ETL",
+        "Talaxie",
+        "ETL",
+        "Python",
+        "SQL",
+        "API REST",
+        "Power Automate",
+        "n8n",
+        "Automatisation de données",
+        "Tableaux de bord de pilotage",
+        "Migration de données",
+        "Intégration de données",
+        "Gouvernance des données",
+        "Formation data",
+        "TPE PME"
+      ],
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Virement bancaire",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "1",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {% for t in temo.testimonials %}
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "{{ t.rating }}",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "author": {
+            "@type": "Person",
+            "name": {{ t.author | jsonify }},
+            "jobTitle": {{ t.role | jsonify }}
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": {{ t.company | jsonify }}
+          },
+          "reviewBody": {{ t.quote | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/martial-bodet/",
+        "https://github.com/mbodetdata"
+      ]
+    },
+
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/#martial-bodet",
+      "name": "Martial Bodet",
+      "givenName": "Martial",
+      "familyName": "Bodet",
+      "jobTitle": "Consultant Data indépendant",
+      "description": "Consultant data basé à Agen, spécialisé dans l'automatisation des flux de données, l'intégration ETL (Talend, Talaxie), la création de tableaux de bord (Power BI, Looker Studio, Metabase) et la valorisation des données pour les TPE et PME.",
+      "url": "{{ site.url }}/a-propos/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/assets/img/Photo_profil-960.webp",
+        "caption": "Martial Bodet, consultant data BM Data à Agen"
+      },
+      "email": "contact@bmdata.fr",
+      "telephone": "+33670210928",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Agen",
+        "addressRegion": "Lot-et-Garonne",
+        "postalCode": "47000",
+        "addressCountry": "FR"
+      },
+      "worksFor": { "@id": "{{ site.url }}/#business" },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Consultant Data",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Agen"
+        },
+        "description": "Spécialisé dans l'automatisation des flux de données, l'intégration ETL, la création de tableaux de bord et la valorisation des données pour les TPE et PME en France.",
+        "skills": "Talend, Talaxie, Power BI, Looker Studio, Metabase, SQL, Python, ETL, Data Integration, Business Intelligence, Power Automate, API REST, n8n"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Master Bio-informatique",
+          "description": "Analyse de données, traitement de l'information et logique scientifique appliquée aux données complexes",
+          "dateCreated": "2019"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Formation développeur Java JEE / Angular",
+          "description": "Développement d'applications et logique informatique avancée",
+          "dateCreated": "2020"
+        }
+      ],
+      "knowsAbout": [
+        "Talend ETL",
+        "Talaxie",
+        "Power BI",
+        "Google Looker Studio",
+        "Metabase",
+        "ClicData",
+        "TIMi",
+        "n8n",
+        "SQL",
+        "Python",
+        "API REST",
+        "Power Automate",
+        "VBA",
+        "Apps Script",
+        "Business Intelligence",
+        "Data Analytics",
+        "ETL",
+        "Automatisation de données",
+        "Migration de données",
+        "Intégration de données",
+        "Tableaux de bord",
+        "Reporting automatisé",
+        "Gouvernance des données",
+        "Bio-informatique",
+        "Java JEE"
+      ],
+      "knowsLanguage": [
+        { "@type": "Language", "name": "Français" }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/martial-bodet/",
+        "https://github.com/mbodetdata"
+      ]
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}",
+      "name": "BM Data",
+      "alternateName": "BM Data — Conseil en données pour TPE/PME",
+      "description": "{{ site.description }}",
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": "{{ site.url }}/#business" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ site.url }}/blog/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+
+    {
+      "@type": {{ wp_type | jsonify }},
+      "@id": "{{ page.url | absolute_url }}#webpage",
+      "url": "{{ page.url | absolute_url }}",
+      "name": {{ page.title | default: site.title | strip_html | jsonify }},
+      "description": {{ page.description | default: site.description | strip_html | truncate: 200 | jsonify }},
+      "inLanguage": "fr-FR",
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "about": { "@id": "{{ site.url }}/#business" },
+      "publisher": { "@id": "{{ site.url }}/#business" },
+      "breadcrumb": { "@id": "{{ page.url | absolute_url }}#breadcrumb" }
+    },
+
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ page.url | absolute_url }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "{{ site.url }}/"
+        }{% if bc_depth >= 2 %},
+        {% if page.layout == "post" %}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "{{ site.url }}/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | strip_html | jsonify }},
+          "item": "{{ page.url | absolute_url }}"
+        }
+        {% else %}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page.title | default: site.title | strip_html | jsonify }},
+          "item": "{{ page.url | absolute_url }}"
+        }
+        {% endif %}
+        {% endif %}
+      ]
+    }
+
+    {% if page.layout == "post" %},
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ page.url | absolute_url }}#article",
+      "headline": {{ page.title | strip_html | jsonify }},
+      "name": {{ page.title | strip_html | jsonify }},
+      "description": {{ page.description | default: page.excerpt | strip_html | truncate: 200 | jsonify }},
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+      "author": { "@id": "{{ site.url }}/#martial-bodet" },
+      "publisher": { "@id": "{{ site.url }}/#business" },
+      "mainEntityOfPage": { "@id": "{{ page.url | absolute_url }}#webpage" },
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "inLanguage": "fr-FR"
+      {% if page.image %},
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}{{ page.image }}"
+      }
+      {% endif %}
+      {% if page.tags %},
+      "keywords": {{ page.tags | join: ', ' | jsonify }}
+      {% endif %}
+      {% if page.categories %},
+      "articleSection": {{ page.categories | first | jsonify }}
+      {% endif %}
+    }
+    {% endif %}
+
+    {% if page.url contains '/faq' %},
+    {
+      "@type": "FAQPage",
+      "@id": "{{ page.url | absolute_url }}#faqpage",
+      "name": "Questions fréquentes — BM Data, consultant data Agen",
+      "description": "Réponses aux questions fréquentes sur les services de BM Data : automatisation de données, tableaux de bord, intégration, outils, budget et délais.",
+      "mainEntity": [
+        {% assign all_questions = "" | split: "" %}
+        {% for category in site.data.faq.categories %}
+          {% for q in category.questions %}
+            {% assign all_questions = all_questions | push: q %}
+          {% endfor %}
+        {% endfor %}
+        {% for q in all_questions %}
+        {
+          "@type": "Question",
+          "name": {{ q.question | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ q.answer | jsonify }}
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    {% endif %}
+
+    {% if page.url contains '/services' %},
+    {
+      "@type": "ItemList",
+      "@id": "{{ page.url | absolute_url }}#services-list",
+      "name": "Services data pour TPE/PME — BM Data Agen",
+      "description": "Tableaux de bord, analyse de données, automatisation des reportings, stratégie data, formation et migration : les 6 services de BM Data pour les TPE et PME.",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {% for service in svc.services %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "item": {
+            "@type": "Service",
+            "@id": "{{ site.url }}/services/#{{ service.id }}",
+            "name": {{ service.title | jsonify }},
+            "alternateName": {{ service.subtitle | jsonify }},
+            "description": {{ service.description | strip_html | jsonify }},
+            "provider": { "@id": "{{ site.url }}/#business" },
+            "areaServed": [
+              { "@type": "AdministrativeArea", "name": "Lot-et-Garonne" },
+              { "@type": "AdministrativeArea", "name": "Nouvelle-Aquitaine" },
+              { "@type": "Country", "name": "France" }
+            ],
+            "serviceType": {{ service.title | jsonify }},
+            "url": "{{ site.url }}/services/#{{ service.id }}"
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "{{ page.url | absolute_url }}#process",
+      "name": {{ svc.process.title | jsonify }},
+      "description": {{ svc.process.subtitle | jsonify }},
+      "totalTime": "P14D",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "EUR",
+        "value": "Sur devis"
+      },
+      "step": [
+        {% for step in svc.process.steps %}
+        {
+          "@type": "HowToStep",
+          "position": {{ step.number }},
+          "name": {{ step.title | jsonify }},
+          "text": {{ step.description | jsonify }},
+          "url": "{{ site.url }}/services/#step-{{ step.number }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    {% endif %}
+
+    {% if page.url contains '/realisations' %},
+    {
+      "@type": "ItemList",
+      "@id": "{{ page.url | absolute_url }}#portfolio",
+      "name": "Réalisations BM Data — Projets data pour TPE/PME",
+      "description": "Découvrez les réalisations concrètes de BM Data : migrations Talend, automatisations, tableaux de bord Power BI, intégrations EDI et interconnexions API.",
+      "numberOfItems": {{ real.projects | size }},
+      "itemListElement": [
+        {% for project in real.projects %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "item": {
+            "@type": "CreativeWork",
+            "name": {{ project.title | jsonify }},
+            "description": {{ project.challenge | jsonify }},
+            "url": "{{ site.url }}{{ project.link }}",
+            "genre": {{ project.category | jsonify }},
+            "keywords": {{ project.tags | join: ', ' | jsonify }},
+            "creator": { "@id": "{{ site.url }}/#martial-bodet" }
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    {% endif %}
+
+    {% if page.url contains '/temoignages' %},
+    {
+      "@type": "ItemList",
+      "@id": "{{ page.url | absolute_url }}#reviews",
+      "name": "Témoignages et recommandations — BM Data",
+      "description": "Ce que disent les collaborateurs et clients de Martial Bodet, consultant data BM Data à Agen.",
+      "itemListElement": [
+        {% for t in temo.testimonials %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "item": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "{{ t.rating }}",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "author": {
+              "@type": "Person",
+              "name": {{ t.author | jsonify }},
+              "jobTitle": {{ t.role | jsonify }}
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": {{ t.company | jsonify }}
+            },
+            "itemReviewed": { "@id": "{{ site.url }}/#business" },
+            "reviewBody": {{ t.quote | jsonify }}
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    {% endif %}
+
+    {% if page.url contains '/a-propos' %},
+    {
+      "@type": "ProfilePage",
+      "@id": "{{ page.url | absolute_url }}#profilepage",
+      "name": "À propos — Martial Bodet, consultant data BM Data Agen",
+      "url": "{{ page.url | absolute_url }}",
+      "description": "Martial Bodet, consultant data indépendant basé à Agen. Découvrez son parcours, ses expertises (Talend, Power BI, ETL) et sa philosophie d'accompagnement pour les TPE et PME.",
+      "mainEntity": { "@id": "{{ site.url }}/#martial-bodet" },
+      "about": { "@id": "{{ site.url }}/#martial-bodet" }
+    }
+    {% endif %}
+
+    {% if page.url contains '/contact' %},
+    {
+      "@type": "ContactPage",
+      "@id": "{{ page.url | absolute_url }}#contactpage",
+      "name": "Contact — Prendre rendez-vous avec BM Data",
+      "url": "{{ page.url | absolute_url }}",
+      "description": "Contactez Martial Bodet, consultant data BM Data à Agen. Premier échange de 30 minutes gratuit et sans engagement pour analyser vos besoins en données.",
+      "mainEntity": { "@id": "{{ site.url }}/#business" },
+      "significantLink": "{{ site.url }}/services/"
+    }
+    {% endif %}
+
+  ]
+}
+</script>

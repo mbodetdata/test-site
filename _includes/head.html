@@ -22,12 +22,9 @@
 <!-- Canonical -->
 <link rel="canonical" href="{{ canonical_url }}">
 
-<!-- Robots -->
-{% if page.robots %}
-<meta name="robots" content="{{ page.robots }}">
-{% else %}
-<meta name="robots" content="index, follow">
-{% endif %}
+<!-- Robots : SITE DE TEST — jamais indexé -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 
 <!-- Open Graph -->
 <meta property="og:type"         content="{{ page.og_type | default: 'website' }}">

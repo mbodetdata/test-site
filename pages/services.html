@@ -9,122 +9,192 @@ body_class: "page-services"
 {% assign d = site.data.services %}
 {% assign g = site.data.global %}
 
-<!-- HERO -->
-<section class="page-hero" aria-labelledby="services-title">
+
+<!-- ══════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════ -->
+<section class="page-hero svc-hero" aria-labelledby="services-title">
+  <canvas class="hero-particles" aria-hidden="true"></canvas>
   <div class="container">
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
-      <a href="{{ '/' | relative_url }}">Accueil</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Services</span>
-    </nav>
-    <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
-    <h1 id="services-title">{{ d.hero.title }}</h1>
-    <p>{{ d.hero.subtitle }}</p>
-  </div>
-</section>
-
-<!-- INTRO -->
-<section class="section section--light">
-  <div class="container" style="max-width:780px;margin:0 auto;text-align:center;">
-    <h2>{{ d.intro.title }}</h2>
-    <p style="font-size:var(--text-lg);margin-top:1.5rem;">{{ d.intro.text }}</p>
-  </div>
-</section>
-
-<!-- SERVICES LISTE -->
-<section class="section" aria-label="Liste des services">
-  <div class="container">
-    <div style="display:flex;flex-direction:column;gap:5rem;">
-      {% for s in d.services %}
-      <div id="{{ s.id }}" class="service-detail fade-up" style="display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start;">
-        <!-- Info gauche -->
-        <div>
-          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
-            <div class="service-icon">
-              {% include icons/service-icon.html id=s.icon %}
-            </div>
-            <span style="font-size:var(--text-xs);font-weight:800;color:var(--color-gray-300);letter-spacing:.05em;">{{ s.number }}</span>
-          </div>
-          <h2 style="font-size:var(--text-3xl);margin-bottom:.5rem;">{{ s.title }}</h2>
-          <p style="font-size:var(--text-base);color:var(--color-gold);font-weight:600;margin-bottom:1.5rem;">{{ s.subtitle }}</p>
-          <p style="font-size:var(--text-base);line-height:1.8;">{{ s.description }}</p>
-
-          <div style="margin-top:2rem;">
-            <a href="{{ s.cta.url | relative_url }}" class="btn btn-primary">
-              {{ s.cta.label }}
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Détails droite -->
-        <div>
-          {% if s.benefits %}
-          <div style="background:var(--color-gray-50);border-radius:var(--radius-xl);padding:2rem;margin-bottom:1.5rem;border:1px solid var(--color-gray-100);">
-            <h4 style="font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.05em;color:var(--color-blue);margin-bottom:1.25rem;">Bénéfices pour vous</h4>
-            <ul style="display:flex;flex-direction:column;gap:.875rem;">
-              {% for b in s.benefits %}
-              <li style="display:flex;align-items:flex-start;gap:.75rem;font-size:.9rem;color:var(--color-gray-700);">
-                <span style="color:var(--color-blue);font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
-                {{ b }}
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-
-          <div style="display:flex;flex-wrap:wrap;gap:1rem;">
-            {% if s.tools %}
-            <div style="flex:1;min-width:140px;background:white;border:1px solid var(--color-gray-100);border-radius:var(--radius-lg);padding:1.25rem;">
-              <p style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em;color:var(--color-gray-400);font-weight:700;margin-bottom:.75rem;">Outils</p>
-              <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
-                {% for t in s.tools %}
-                <span class="badge badge-gray">{{ t }}</span>
-                {% endfor %}
-              </div>
-            </div>
-            {% endif %}
-            {% if s.target %}
-            <div style="flex:1;min-width:140px;background:white;border:1px solid var(--color-gray-100);border-radius:var(--radius-lg);padding:1.25rem;">
-              <p style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em;color:var(--color-gray-400);font-weight:700;margin-bottom:.75rem;">Pour qui</p>
-              <p style="font-size:.85rem;color:var(--color-gray-600);">{{ s.target }}</p>
-            </div>
-            {% endif %}
-          </div>
-        </div>
+    <div class="page-hero__content">
+      <div class="page-hero__left">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="{{ '/' | relative_url }}">Accueil</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>Services</span>
+        </nav>
+        <span class="section-eyebrow">{{ d.hero.eyebrow }}</span>
+        <h1 id="services-title" class="svc-hero__title">Des solutions simples pour <span class="svc-hero__accent">automatiser, migrer et mieux suivre vos chiffres</span></h1>
       </div>
-      {% unless forloop.last %}
-      <div class="divider"></div>
-      {% endunless %}
-      {% endfor %}
+      <div class="page-hero__right">
+        <p class="svc-hero__sub">{{ d.hero.subtitle }}</p>
+        <!-- Ancres rapides vers chaque service -->
+        <nav class="svc-pills" aria-label="Accès rapide aux services">
+          {% for s in d.services %}
+          <a href="#{{ s.id }}" class="svc-pill">
+            <span class="svc-pill__num">{{ s.number }}</span>
+            <span>{{ s.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="section section--light" aria-labelledby="process-title">
+
+<!-- ══════════════════════════════════════════════
+     INTRO — 3 promesses clés
+     ══════════════════════════════════════════════ -->
+<section class="section svc-intro-section">
+  <div class="container">
+    <div class="svc-intro-header">
+      <h2>{{ d.intro.title }}</h2>
+      <p>{{ d.intro.text }}</p>
+    </div>
+
+    <div class="svc-value-grid">
+      <div class="svc-value-card fade-up">
+        <div class="svc-value-icon svc-value-icon--blue">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Gain de temps immédiat</h3>
+        <p>Moins de tâches répétitives, plus de temps pour ce qui compte vraiment dans votre activité.</p>
+      </div>
+
+      <div class="svc-value-card fade-up delay-1">
+        <div class="svc-value-icon svc-value-icon--green">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Informations fiables</h3>
+        <p>Vos chiffres sont exacts, accessibles et à jour quand vous en avez besoin.</p>
+      </div>
+
+      <div class="svc-value-card fade-up delay-2">
+        <div class="svc-value-icon svc-value-icon--amber">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Adapté à votre réalité</h3>
+        <p>Chaque mission est conçue selon vos outils, vos contraintes et votre fonctionnement réel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     SERVICES — Cartes premium
+     ══════════════════════════════════════════════ -->
+<section class="section svc-section" aria-label="Liste des services">
+  <div class="container">
+    <div class="svc-cards-list">
+
+      {% for s in d.services %}
+      <article id="{{ s.id }}" class="svc-card fade-up delay-{{ forloop.index }}" aria-labelledby="svc-title-{{ s.id }}">
+
+        <!-- Numéro décoratif en arrière-plan -->
+        <span class="svc-card__bg-num" aria-hidden="true">{{ s.number }}</span>
+
+        <div class="svc-card__body">
+
+          <!-- ── COLONNE GAUCHE : info principale ── -->
+          <div class="svc-card__main">
+
+            <div class="svc-card__top">
+              <div class="svc-card__icon-wrap">
+                {% include icons/service-icon.html id=s.icon %}
+              </div>
+              <div>
+                <h2 id="svc-title-{{ s.id }}" class="svc-card__name">{{ s.title }}</h2>
+                <p class="svc-card__tagline">{{ s.subtitle }}</p>
+              </div>
+            </div>
+
+            <p class="svc-card__desc">{{ s.description }}</p>
+
+            <div class="svc-card__bottom">
+              {% if s.tools %}
+              <div class="svc-card__tools" aria-label="Outils utilisés">
+                {% for t in s.tools %}
+                <span class="svc-badge-tool">{{ t }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+              <a href="{{ s.cta.url | relative_url }}" class="btn btn-primary svc-card__cta">
+                {{ s.cta.label }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- ── COLONNE DROITE : bénéfices + cible ── -->
+          <div class="svc-card__side">
+
+            {% if s.benefits %}
+            <div class="svc-benefits-box">
+              <p class="svc-benefits-box__label">Ce que vous gagnez</p>
+              {% for b in s.benefits %}
+              <div class="svc-benefit-row">
+                <span class="svc-benefit-check" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>{{ b }}</span>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if s.target %}
+            <div class="svc-target-box">
+              <svg class="svc-target-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>{{ s.target }}</span>
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+
+      </article>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     PROCESS — 4 étapes
+     ══════════════════════════════════════════════ -->
+<section class="section svc-process-section" aria-labelledby="process-title">
   <div class="container">
     <div class="section-header">
       <span class="section-eyebrow">Méthode</span>
       <h2 id="process-title">{{ d.process.title }}</h2>
       <p>{{ d.process.subtitle }}</p>
     </div>
-    <div class="process-steps">
+
+    <div class="svc-process">
       {% for step in d.process.steps %}
-      <div class="process-step fade-up">
-        <div class="process-number" aria-hidden="true">{{ step.number }}</div>
-        <h3>{{ step.title }}</h3>
-        <p>{{ step.description }}</p>
+      <div class="svc-process__step fade-up delay-{{ forloop.index }}">
+        <div class="svc-process__num" aria-hidden="true">{{ step.number }}</div>
+        <h3 class="svc-process__title">{{ step.title }}</h3>
+        <p class="svc-process__desc">{{ step.description }}</p>
       </div>
       {% endfor %}
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+
+<!-- ══════════════════════════════════════════════
+     CTA FINAL
+     ══════════════════════════════════════════════ -->
 <section class="section">
   <div class="container">
-    <div class="cta-banner">
+    <div class="cta-banner cta-banner--gold">
       <h2>{{ d.cta.title }}</h2>
       <p>{{ d.cta.subtitle }}</p>
       <div class="cta-actions">
@@ -135,8 +205,5 @@ body_class: "page-services"
   </div>
 </section>
 
-<style>
-@media(max-width:768px){
-  .service-detail { grid-template-columns:1fr !important; }
-}
-</style>
+
+

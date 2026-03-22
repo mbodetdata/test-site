@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "title": "Contact — Prendre rendez-vous avec BM Data | Consultant data Agen",
+    "description": "Contactez BM Data pour un premier échange gratuit. Martial Bodet, consultant data à Agen, répond sous 24 h. Formulaire, téléphone ou email."
+  },
+  "hero": {
+    "eyebrow": "Contact",
+    "title": "Parlons de votre projet",
+    "subtitle": "Premier échange gratuit et sans engagement. Je vous réponds sous 24 h ouvrées."
+  },
+  "intro": {
+    "title": "Comment puis-je vous aider ?",
+    "text": "Que vous ayez un projet précis en tête ou que vous souhaitiez simplement comprendre comment les données pourraient améliorer votre activité, le premier échange est là pour ça. Pas de discours commercial, pas de pression : juste une conversation honnête."
+  },
+  "contact_info": [
+    {
+      "icon": "email",
+      "label": "Email",
+      "value": "contact@bmdata.fr",
+      "link": "mailto:contact@bmdata.fr"
+    },
+    {
+      "icon": "phone",
+      "label": "Téléphone",
+      "value": "06 70 21 09 29",
+      "link": "tel:+33670210928"
+    },
+    {
+      "icon": "location",
+      "label": "Localisation",
+      "value": "Agen, Lot-et-Garonne (47)",
+      "link": null
+    },
+    {
+      "icon": "clock",
+      "label": "Disponibilité",
+      "value": "Lundi – Vendredi, 9h – 18h",
+      "link": null
+    }
+  ],
+  "form": {
+    "title": "Envoyer un message",
+    "fields": [
+      { "id": "name",    "label": "Nom et prénom",     "type": "text",     "required": true,  "placeholder": "Jean Dupont" },
+      { "id": "company", "label": "Entreprise",         "type": "text",     "required": false, "placeholder": "Votre entreprise (facultatif)" },
+      { "id": "email",   "label": "Adresse email",      "type": "email",    "required": true,  "placeholder": "jean.dupont@exemple.fr" },
+      { "id": "phone",   "label": "Téléphone",          "type": "tel",      "required": false, "placeholder": "06 XX XX XX XX" },
+      {
+        "id": "service",
+        "label": "Sujet de votre demande",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Tableau de bord de pilotage",
+          "Automatisation des reportings",
+          "Analyse de données",
+          "Stratégie et gouvernance",
+          "Formation",
+          "Migration et intégration",
+          "Audit gratuit",
+          "Autre / Je ne sais pas encore"
+        ]
+      },
+      { "id": "message", "label": "Votre message",       "type": "textarea", "required": true,  "placeholder": "Décrivez brièvement votre situation ou votre question..." }
+    ],
+    "submit_label": "Envoyer ma demande",
+    "privacy_notice": "Vos données sont utilisées uniquement pour répondre à votre demande et ne sont jamais transmises à des tiers. Consultez notre <a href='/politique-de-confidentialite/'>politique de confidentialité</a>.",
+    "success_message": "Merci pour votre message ! Je vous réponds sous 24 h ouvrées.",
+    "error_message": "Une erreur est survenue. Veuillez réessayer ou me contacter directement par email."
+  },
+  "alternatives": {
+    "title": "D'autres façons de me contacter",
+    "items": [
+      {
+        "icon": "calendar",
+        "title": "Réserver un créneau",
+        "description": "Prenez directement rendez-vous dans mon agenda en ligne pour un échange de 30 minutes.",
+        "cta_label": "Choisir un créneau",
+        "cta_url": "/contact/"
+      },
+      {
+        "icon": "linkedin",
+        "title": "LinkedIn",
+        "description": "Suivez BM Data sur LinkedIn pour des conseils data réguliers à destination des TPE/PME.",
+        "cta_label": "Voir le profil",
+        "cta_url": "https://www.linkedin.com/in/martial-bodet/"
+      }
+    ]
+  }
+}
